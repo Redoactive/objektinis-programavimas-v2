@@ -41,7 +41,7 @@ int main(){
     int n;
     cout << "Iveskite namu darbu balu kieki\n";
     cin >> n;
-    
+
     //pagrindinis ciklas
     for (int i = 0; i < m; i++){
         double vidurkis = 0, mediana;
@@ -52,7 +52,7 @@ int main(){
         cin >> duomenys[i].pavarde;
         
 
-
+        //ivedami namu darbu irasai ranka
         cout << "Iveskite " << n << " namu darbu balus\n";
         vector<int> namuDarbai;
         int temp;
@@ -60,7 +60,7 @@ int main(){
             cin >> temp;
             namuDarbai.push_back(temp);
             vidurkis += temp;
-        }
+        }//surandama mediana
         sort(namuDarbai.begin(), namuDarbai.end());
         if(n % 2 == 0){
             mediana = namuDarbai[n/2];
@@ -73,6 +73,7 @@ int main(){
         cout << "Iveskite egzamino rezultata\n";
         cin >> duomenys[i].egzaminas;
         vidurkis /= n;
+        //apskaiciuojamas galutinis balas
         if (arMediana == false){
             duomenys[i].balas = 0.4 * vidurkis + 0.6 * duomenys[i].egzaminas;
         }
@@ -99,9 +100,6 @@ int main(){
         << duomenys[i].vardas <<  tarpai(duomenys[i].vardas) << duomenys[i].balas << endl;
     }
 
-    
-    
-
 }
 //funckija spausdinti tarpus
 string tarpai(string a){
@@ -112,4 +110,3 @@ string tarpai(string a){
     }
     return kiekis;
 }
-//testavimas
