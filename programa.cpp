@@ -62,3 +62,4 @@ string tarpai(string a){
     }
     return kiekis;
 }
+//testavimas
