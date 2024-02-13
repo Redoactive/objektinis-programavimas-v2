@@ -1,20 +1,21 @@
 #include <iostream>
 #include <iomanip>
-#include <vector>
 #include <algorithm>
 #include <ctime>
+#include <array>
 using namespace std;
 
-
+const int N = 100;
+int studentuSkc = 0;
 struct studentai{
     string vardas;
     string pavarde;
-    vector<int> balai;
+    array<int, N> balai;
     int egzaminas;
 };
 
 bool arMediana;
-vector<studentai> duomenys;
+array<studentai, N> duomenys;
 
 string tarpai(string a);
 
@@ -23,6 +24,7 @@ void pirmasPasirinkimas(){
     studentai dabartinisStudentas;
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
+        dabartinisStudentas.balai.fill(11);
         double vidurkis = 0, mediana;
         cout << "Iveskite varda\n";
         cin >> dabartinisStudentas.vardas;
@@ -32,21 +34,23 @@ void pirmasPasirinkimas(){
         //ivedami namu darbu irasai ranka
         cout << "Iveskite namu darbu balus. Jei norite nustoti ivedineti, parasykite ( -1 )\n";
         int temporary;
-
+        int i = 0;
+        
         while (true){
             cin >> temporary;
             if (temporary == -1){
                 break;
             }
-            dabartinisStudentas.balai.push_back(temporary);
+            dabartinisStudentas.balai[i] = temporary;
+            i++;
         }
 
         cout << "Iveskite egzamino rezultata\n";
         cin >> dabartinisStudentas.egzaminas;
 
         //issaugomi duomenys
-        duomenys.push_back(dabartinisStudentas);        
-
+        duomenys[studentuSkc] = dabartinisStudentas;        
+        studentuSkc++;
 
         //paprasoma baigti ivesti
         cout << "Jeigu norite baigti ivedineti duomenys, parasykite ( stop )\n";
@@ -63,6 +67,7 @@ void antrasPasirinkimas(){
     studentai dabartinisStudentas;
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
+        dabartinisStudentas.balai.fill(11);
         double vidurkis = 0, mediana;
         cout << "Iveskite varda\n";
         cin >> dabartinisStudentas.vardas;
@@ -76,13 +81,14 @@ void antrasPasirinkimas(){
         srand(time(NULL));
         for (int i = 0; i < n; i++){
             int temp = rand() % 10 + 1;
-            dabartinisStudentas.balai.push_back(temp);
+            dabartinisStudentas.balai[i] = temp;
         }
 
         dabartinisStudentas.egzaminas = rand() % 10 + 1;
 
         //issaugomi duomenys
-        duomenys.push_back(dabartinisStudentas);        
+        duomenys[studentuSkc] = dabartinisStudentas;        
+        studentuSkc++;       
 
 
         //paprasoma baigti ivesti
@@ -97,13 +103,10 @@ void antrasPasirinkimas(){
 
 void treciasPasirinkimas(){
     //Vardu baze || vardai gali nesutapti su ne mergiotinem pavardem
-    vector<string> bVardas = {"Povilas", "Andrius", "Marius", "Ignas", "Petras",
-    "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante"};
-    vector<string> bPavarde = {"Petrauskas", "Pavardenis", "Maliauka", "Ablamas",
+    array<string, 10> bVardas = {"Povilas", "Andrius", "Marius", "Ignas", "Petras",
+    "Ieva", "Liepa", "Rugile", "Onute", "Asta"};
+    array<string, 10> bPavarde = {"Petrauskas", "Pavardenis", "Maliauka", "Ablamas",
     "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis"};
-
-
-
 
 
     //pagrindinis ciklas
@@ -112,6 +115,7 @@ void treciasPasirinkimas(){
     cout << "Pasirinkite kiek studentu bus automatiskai sugeneruota\n";
     cin >> m;
     for (int i = 0; i < m; i++){
+        dabartinisStudentas.balai.fill(11);
         srand(time(NULL));
         int temp;
         temp = rand() % 10 + 1;
@@ -125,35 +129,41 @@ void treciasPasirinkimas(){
         cin >> n;
         for (int i = 0; i < n; i++){
             int temp = rand() % 10 + 1;
-            dabartinisStudentas.balai.push_back(temp);
+            dabartinisStudentas.balai[i] = temp;
         }
 
         dabartinisStudentas.egzaminas = rand() % 10 + 1;
 
         //issaugomi duomenys
-        duomenys.push_back(dabartinisStudentas);        
+        duomenys[studentuSkc] = dabartinisStudentas;        
+        studentuSkc++;       
 
     }
 }
 
-double medianosApsk(vector<int> a, int egzaminas){
-    
+double medianosApsk(array<int, N> a, int egzaminas){
+    int n = 0;
     sort(a.begin(), a.end());
-    int n = a.size() / 2;
+    while(a[n] != 11){
+        n++;
+    }
+    n /= 2;
     if(n % 2 == 0){
-        return a[n / 2] * 0.4 + egzaminas * 0.6;
+        return a[n] * 0.4 + egzaminas * 0.6;
     }
     else {
         return (a[n] + a[n++]) / 2 * 0.4 + egzaminas * 0.6;
     }
 }
 
-double vidurkioApsk(vector<int> a, int egzaminas){
+double vidurkioApsk(array<int, N> a, int egzaminas){
+    int n = 0;
     double vidurkis = 0;
-    for (int i : a){
-        vidurkis += i;
+    while(a[n] != 11){
+        vidurkis += a[n];
+        n++;
     }
-    return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
+    return vidurkis / n * 0.4 + 0.6 * egzaminas;
 }
 
 
@@ -165,10 +175,11 @@ int main(){
     //pasirinkimu menu
     while (darbasBaigtas == false)
     {
+        cout << duomenys[0].balai.size();
         cout << "Pasirinkite, ka norite daryti\n"
         << "( 1 ) - Ivesti duomenys ranka\n"
         << "( 2 ) - Generuoti pazymius atsitiktinai\n"
-        << "( 3 ) - Generuoti ir pažymius ir studentų vardus, pavardės\n"
+        << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
         << "( 4 ) - Baigti darba\n";
         int pasirinkimas;
         cin >> pasirinkimas;
@@ -228,6 +239,7 @@ int main(){
 
         cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
         << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+
         if (arMediana){
             cout << medianosApsk(duomenys[i].balai, duomenys[i].egzaminas) << endl;
         }
