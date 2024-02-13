@@ -1,27 +1,48 @@
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <algorithm>
-#include "Vector.cpp"
-#include "C.cpp"
+#include "headerFile.h"
+#include "vector.cpp"
 using namespace std;
 
-const int N = 50;
+int studentuSkc = 0;
+bool arMediana;
 
-struct studentai{
-    string vardas;
-    string pavarde;
-    double balas;
-    int egzaminas;
-};
 
 string tarpai(string a);
 
-void pirmasPasirinkimas();
+void pirmasPasirinkimas(){
+    //pagrindinis ciklas
+    bool darbasBaigtas = false;
+    while (darbasBaigtas == false){
+        double vidurkis = 0, mediana;
+        string temp;
+        cout << "Iveskite varda\n";
+        cin >> temp;
+        duomenys[studentuSkc].vardas = temp;
 
-void antrasPasirinkimas();
+        cout << "Iveskite pavarde\n";
+        cin >> temp;
+        duomenys[studentuSkc].pavarde = temp;
+        
+        
 
-void treciasPasirinkimas();
+        //ivedami namu darbu irasai ranka
+        cout << "Iveskite namu darbu balus\n";        
+        while (true){
+            int temporary;
+            cin >> temporary;
+            duomenys[studentuSkc].balai.push_back(temporary);
+        }
+
+        cout << "Iveskite egzamino rezultata\n";
+        cin >> duomenys[studentuSkc].egzaminas;
+
+        // 
+        
+    }
+}
+
+void antrasPasirinkimas(){};
+
+void treciasPasirinkimas(){};
 
 int main(){
     bool darbasBaigtas = false;
@@ -55,93 +76,72 @@ int main(){
             break;
         }
     }
-    
 
+     //klausiama ar vartotojas nori vidurio, ar medianos
+    darbasBaigtas = false;
 
-
-    int m;
-    bool arMediana;
-    studentai duomenys[50];
-    //setprecision(2);
-    cout << "Iveskite studentu kieki\n";
-    cin >> m;
-
-    //klausiama ar vartotojas nori vidurio, ar medianos
+    while (darbasBaigtas == false){
     cout << "Norite naudoti namu darbu balo apskaiciavimui vidurki (vid) ar mediana (med)\n";
     string pasirinkimas;
     cin >> pasirinkimas;
+
     if (pasirinkimas == "vid"){
         arMediana = false;
+        darbasBaigtas = true;
     } 
     else if(pasirinkimas == "med"){
         arMediana = true;
+        darbasBaigtas = true;
     }
     else{
-        cout << "err";
+        cout << "Blogai ivedete duomenys, bandykite dar karta\n";
     }
-
-    //namu darbu kiekis
-    int n;
-    cout << "Iveskite namu darbu balu kieki\n";
-    cin >> n;
-
-    //pagrindinis ciklas
-    for (int i = 0; i < m; i++){
-        double vidurkis = 0, mediana;
-        
-        cout << "Iveskite varda\n";
-        cin >> duomenys[i].vardas;
-        cout << "Iveskite pavarde\n";
-        cin >> duomenys[i].pavarde;
-        
-
-        //ivedami namu darbu irasai ranka
-        cout << "Iveskite " << n << " namu darbu balus\n";
-        vector<int> namuDarbai;
-        int temp;
-        for (int j = 0; j < n; j++){
-            cin >> temp;
-            namuDarbai.push_back(temp);
-            vidurkis += temp;
-        }//surandama mediana
-        sort(namuDarbai.begin(), namuDarbai.end());
-        if(n % 2 == 0){
-            mediana = namuDarbai[n/2];
-        }
-        else {
-            int temp = n / 2;
-            mediana = (namuDarbai[temp] + namuDarbai[temp++]) / 2;
-        }
-
-        cout << "Iveskite egzamino rezultata\n";
-        cin >> duomenys[i].egzaminas;
-        vidurkis /= n;
-        //apskaiciuojamas galutinis balas
-        if (arMediana == false){
-            duomenys[i].balas = 0.4 * vidurkis + 0.6 * duomenys[i].egzaminas;
-        }
-        else{
-            duomenys[i].balas = 0.4 * mediana + 0.6 * duomenys[i].egzaminas;
-        }
-        
     }
+   
+
+
+
+    // int m;
+    // studentai duomenys[50];
+    // cout << "Iveskite studentu kieki\n";
+    // cin >> m;
+    // //namu darbu kiekis
+    // int n;
+    // cout << "Iveskite namu darbu balu kieki\n";
+    // cin >> n;
 
     
+// //surandama mediana
+        // sort(namuDarbai.begin(), namuDarbai.end());
+        // if(n % 2 == 0){
+        //     mediana = namuDarbai[n/2];
+        // }
+        // else {
+        //     int temp = n / 2;
+        //     mediana = (namuDarbai[temp] + namuDarbai[temp++]) / 2;
+        // }
+    //apskaiciuojamas galutinis balas
+        // if (arMediana == false){
+        //     duomenys[i].balas = 0.4 * vidurkis + 0.6 * duomenys[i].egzaminas;
+        // }
+        // else{
+        //     duomenys[i].balas = 0.4 * mediana + 0.6 * duomenys[i].egzaminas;
+        // }
     //output
 
     cout << "Pavarde        Vardas         ";
-    if (arMediana == false){
-        cout << "Galutinis (Vid.)\n";
-    }
-    else{
-        cout << "Galutinis (Med.)\n";
-    }    
-    cout << "------------------------------------------------------------------------\n";
-    for (int i = 0; i < m; i++){
+    // if (arMediana == false){
+    //     cout << "Galutinis (Vid.)\n";
+    // }
+    // else{
+    //     cout << "Galutinis (Med.)\n";
+    // }    
+    // cout << "------------------------------------------------------------------------\n";
+    // for (int i = 0; i < m; i++){
         
-        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
-        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas) << duomenys[i].balas << endl;
-    }
+    //     cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
+    //     << duomenys[i].vardas <<  tarpai(duomenys[i].vardas) << duomenys[i].balas << endl;
+    // }
 
 }
 //funckija spausdinti tarpus
