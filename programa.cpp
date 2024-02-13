@@ -2,17 +2,9 @@
 #include <iomanip>
 #include <vector>
 #include <algorithm>
+#include <ctime>
 using namespace std;
 
-int studentuSkc = 0;
-bool arMediana;
-
-// struct studentai {
-//     vector<string> vardas;
-//     vector<string> pavarde;
-//     vector<int> egzaminas;
-//     vector<int> balas;
-// };
 
 struct studentai{
     string vardas;
@@ -20,7 +12,10 @@ struct studentai{
     vector<int> balai;
     int egzaminas;
 };
+
+bool arMediana;
 vector<studentai> duomenys;
+
 string tarpai(string a);
 
 void pirmasPasirinkimas(){
@@ -63,9 +58,83 @@ void pirmasPasirinkimas(){
     }
 }
 
-void antrasPasirinkimas(){};
+void antrasPasirinkimas(){
+    //pagrindinis ciklas
+    studentai dabartinisStudentas;
+    bool darbasBaigtas = false;
+    while (darbasBaigtas == false){
+        double vidurkis = 0, mediana;
+        cout << "Iveskite varda\n";
+        cin >> dabartinisStudentas.vardas;
+        cout << "Iveskite pavarde\n";
+        cin >> dabartinisStudentas.pavarde;
 
-void treciasPasirinkimas(){};
+        //namu darbu irasai
+        cout << "Iveskite kiek norite namu darbu balu\n";
+        int n;
+        cin >> n;
+        srand(time(NULL));
+        for (int i = 0; i < n; i++){
+            int temp = rand() % 10 + 1;
+            dabartinisStudentas.balai.push_back(temp);
+        }
+
+        dabartinisStudentas.egzaminas = rand() % 10 + 1;
+
+        //issaugomi duomenys
+        duomenys.push_back(dabartinisStudentas);        
+
+
+        //paprasoma baigti ivesti
+        cout << "Jeigu norite baigti ivedineti duomenys, parasykite ( stop )\n";
+        string temp;
+        cin >> temp;
+        if (temp == "stop"){
+            return;
+        }
+    }
+}
+
+void treciasPasirinkimas(){
+    //Vardu baze || vardai gali nesutapti su ne mergiotinem pavardem
+    vector<string> bVardas = {"Povilas", "Andrius", "Marius", "Ignas", "Petras",
+    "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante"};
+    vector<string> bPavarde = {"Petrauskas", "Pavardenis", "Maliauka", "Ablamas",
+    "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis"};
+
+
+
+
+
+    //pagrindinis ciklas
+    studentai dabartinisStudentas;
+    int m;
+    cout << "Pasirinkite kiek studentu bus automatiskai sugeneruota\n";
+    cin >> m;
+    for (int i = 0; i < m; i++){
+        srand(time(NULL));
+        int temp;
+        temp = rand() % 10 + 1;
+        dabartinisStudentas.vardas = bVardas[temp];
+        temp = rand() % 10 + 1;
+        dabartinisStudentas.pavarde = bPavarde[temp];
+
+        //namu darbu irasai
+        cout << "Iveskite kiek norite namu darbu balu\n";
+        int n;
+        cin >> n;
+        for (int i = 0; i < n; i++){
+            int temp = rand() % 10 + 1;
+            dabartinisStudentas.balai.push_back(temp);
+        }
+
+        dabartinisStudentas.egzaminas = rand() % 10 + 1;
+
+        //issaugomi duomenys
+        duomenys.push_back(dabartinisStudentas);        
+
+    }
+}
 
 double medianosApsk(vector<int> a, int egzaminas){
     
@@ -145,16 +214,6 @@ int main(){
         }
     }
     
-    //surandama mediana
-    // sort(namuDarbai.begin(), namuDarbai.end());
-    // if(n % 2 == 0){
-    //     mediana = namuDarbai[n/2];
-    // }
-    // else {
-    //     int temp = n / 2;
-    //     mediana = (namuDarbai[temp] + namuDarbai[temp++]) / 2;
-    // }
-    //apskaiciuojamas galutinis balas
 
     cout << "Pavarde        Vardas         ";
     if (arMediana == false){
@@ -178,30 +237,6 @@ int main(){
     
     }
     //reiketu sutvarkyti ivedimo tvarka- pavardes pirmos
-
-
-
-    // if (arMediana == false){
-    //     duomenys.bala = 0.4 * vidurkis + 0.6 * duomenys[i].egzaminas;
-    // }
-    // else{
-    //     duomenys[i].balas = 0.4 * mediana + 0.6 * duomenys[i].egzaminas;
-    // }
-    // //output
-
-    // cout << "Pavarde        Vardas         ";
-    // if (arMediana == false){
-    //     cout << "Galutinis (Vid.)\n";
-    // }
-    // else{
-    //     cout << "Galutinis (Med.)\n";
-    // }    
-    // cout << "------------------------------------------------------------------------\n";
-    // for (int i = 0; i < m; i++){
-        
-    //     cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
-    //     << duomenys[i].vardas <<  tarpai(duomenys[i].vardas) << duomenys[i].balas << endl;
-    // }
 
 }
 //funckija spausdinti tarpus
