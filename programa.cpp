@@ -2,6 +2,8 @@
 #include <iomanip>
 #include <vector>
 #include <algorithm>
+#include "Vector.cpp"
+#include "C.cpp"
 using namespace std;
 
 const int N = 50;
@@ -15,7 +17,48 @@ struct studentai{
 
 string tarpai(string a);
 
+void pirmasPasirinkimas();
+
+void antrasPasirinkimas();
+
+void treciasPasirinkimas();
+
 int main(){
+    bool darbasBaigtas = false;
+    //pasirinkimu menu
+    while (darbasBaigtas == false)
+    {
+        cout << "Pasirinkite, ka norite daryti\n"
+        << "( 1 ) - Ivesti duomenys ranka\n"
+        << "( 2 ) - Generuoti pazymius atsitiktinai\n"
+        << "( 3 ) - Generuoti ir pažymius ir studentų vardus, pavardės"
+        << "( 4 ) - Baigti darba";
+        int pasirinkimas;
+        cin >> pasirinkimas;
+        switch (pasirinkimas)
+        {
+        case 1:
+            pirmasPasirinkimas();
+            break;
+        case 2:
+            antrasPasirinkimas();
+            break;
+        case 3:
+            treciasPasirinkimas();
+            break;
+        case 4:
+            darbasBaigtas = true;
+            //spausdina main
+            break;
+        default:
+            cout << "Blogai ivedete duomenys, bandykite dar karta\n";
+            break;
+        }
+    }
+    
+
+
+
     int m;
     bool arMediana;
     studentai duomenys[50];
