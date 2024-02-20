@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <ctime>
+#include <fstream>
 using namespace std;
 
 
@@ -24,10 +25,11 @@ void pirmasPasirinkimas(){
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         double vidurkis = 0, mediana;
+        cout << "Iveskite pavarde\n";
+        cin >> dabartinisStudentas.pavarde; 
         cout << "Iveskite varda\n";
         cin >> dabartinisStudentas.vardas;
-        cout << "Iveskite pavarde\n";
-        cin >> dabartinisStudentas.pavarde;   
+          
 
         //ivedami namu darbu irasai ranka
         cout << "Iveskite namu darbu balus. Jei norite nustoti ivedineti, parasykite ( -1 )\n";
@@ -64,10 +66,11 @@ void antrasPasirinkimas(){
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         double vidurkis = 0, mediana;
-        cout << "Iveskite varda\n";
-        cin >> dabartinisStudentas.vardas;
         cout << "Iveskite pavarde\n";
         cin >> dabartinisStudentas.pavarde;
+        cout << "Iveskite varda\n";
+        cin >> dabartinisStudentas.vardas;
+        
 
         //namu darbu irasai
         cout << "Iveskite kiek norite namu darbu balu\n";
@@ -136,6 +139,19 @@ void treciasPasirinkimas(){
     }
 }
 
+
+void NuskaitymasFailo(){
+    ifstream fin;
+    fin.open("kursiokai.txt");
+    studentai dabartinisStudentas;
+    fin.ignore();
+    fin >> dabartinisStudentas.vardas >> dabartinisStudentas.pavarde;
+    
+
+}
+
+
+
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -169,7 +185,8 @@ int main(){
         << "( 1 ) - Ivesti duomenys ranka\n"
         << "( 2 ) - Generuoti pazymius atsitiktinai\n"
         << "( 3 ) - Generuoti ir pažymius ir studentų vardus, pavardės\n"
-        << "( 4 ) - Baigti darba\n";
+        << "( 4 ) - Baigti darba\n"
+        << "( 5 ) - Nuskaityti is failo\n";
         int pasirinkimas;
         cin >> pasirinkimas;
         switch (pasirinkimas)
@@ -187,6 +204,8 @@ int main(){
             darbasBaigtas = true;
             //spausdina main
             break;
+        case 5:
+            NuskaitymasFailo();
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
             break;
@@ -236,7 +255,6 @@ int main(){
         }
     
     }
-    //reiketu sutvarkyti ivedimo tvarka- pavardes pirmos
 
 }
 //funckija spausdinti tarpus
