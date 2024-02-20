@@ -18,7 +18,11 @@ struct studentai{
 vector<studentai> duomenys;
 
 string tarpai(string a);
-void rusiavimas();
+void rusiavimasVardas();
+void rusiavimasPavarde();
+void rusiavimasVidurkis();
+void rusiavimasMediana();
+
 void pirmasPasirinkimas(){
     //pagrindinis ciklas
     studentai dabartinisStudentas;
@@ -279,7 +283,7 @@ int main(){
         cout << "Kaip norite rusiuoti output?\n"
         << "( 1 ) - Pagal varda\n"
         << "( 2 ) - Pagal pavarde\n"
-        << "( 3 ) - Pagal vidurki\n"
+        << "( 3 ) - Pagal vidurkis\n"
         << "( 4 ) - Pagal mediana\n";
         int pasirinkimas;
         cin >> pasirinkimas;
@@ -287,17 +291,19 @@ int main(){
         switch (pasirinkimas)
         {
         case 1:
-            rusiavimas();
+            rusiavimasVardas();
             darbasBaigtas = true;
             break;
         case 2:
-            
+            rusiavimasPavarde();
             darbasBaigtas = true;
             break;
         case 3:
+            rusiavimasVidurkis();
             darbasBaigtas = true;
             break;
         case 4:
+            rusiavimasMediana();
             darbasBaigtas = true;
             
             break;
@@ -340,10 +346,46 @@ string tarpai(string a){
 }
 
 
-void rusiavimas(){
+void rusiavimasVardas(){
     for (int i = 0; i < duomenys.size() - 1; i++){
         for (int j = i + 1; j < duomenys.size(); j++){
             if (duomenys[j].vardas < duomenys[i].vardas){
+                studentai temp;
+                temp = duomenys[j];
+                duomenys[j] = duomenys[i];
+                duomenys[i] = temp;
+            }
+        }
+    }
+}
+void rusiavimasPavarde(){
+    for (int i = 0; i < duomenys.size() - 1; i++){
+        for (int j = i + 1; j < duomenys.size(); j++){
+            if (duomenys[j].pavarde < duomenys[i].pavarde){
+                studentai temp;
+                temp = duomenys[j];
+                duomenys[j] = duomenys[i];
+                duomenys[i] = temp;
+            }
+        }
+    }
+}
+void rusiavimasVidurkis(){
+    for (int i = 0; i < duomenys.size() - 1; i++){
+        for (int j = i + 1; j < duomenys.size(); j++){
+            if (duomenys[j].vardas < duomenys[i].vardas){
+                studentai temp;
+                temp = duomenys[j];
+                duomenys[j] = duomenys[i];
+                duomenys[i] = temp;
+            }
+        }
+    }
+}
+void rusiavimasMediana(){
+    for (int i = 0; i < duomenys.size() - 1; i++){
+        for (int j = i + 1; j < duomenys.size(); j++){
+            if (duomenys[j].pavarde < duomenys[i].pavarde){
                 studentai temp;
                 temp = duomenys[j];
                 duomenys[j] = duomenys[i];
