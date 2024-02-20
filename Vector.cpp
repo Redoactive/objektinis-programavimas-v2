@@ -144,8 +144,32 @@ void NuskaitymasFailo(){
     ifstream fin;
     fin.open("kursiokai.txt");
     studentai dabartinisStudentas;
-    fin.ignore();
-    fin >> dabartinisStudentas.vardas >> dabartinisStudentas.pavarde;
+
+    //patikrinti kiek namu darbu yra faile
+    string temp;
+    fin >> temp >> temp;
+    int i = 0;
+    while (true){
+        fin >> temp;
+        if (temp == "Egz."){
+            break;
+        }
+        i++;
+    }
+
+
+
+    while (!fin.eof()){
+        fin >> dabartinisStudentas.vardas >> dabartinisStudentas.pavarde;
+        for (int j = 0; j < i; j++){
+            int ivestis;
+            fin >> ivestis;
+            dabartinisStudentas.balai.push_back(ivestis);
+        }
+        fin >> dabartinisStudentas.egzaminas;
+        duomenys.push_back(dabartinisStudentas);
+    }
+    fin.close();
     
 
 }
