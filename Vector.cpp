@@ -140,9 +140,9 @@ void treciasPasirinkimas(){
 }
 
 
-void NuskaitymasFailo(){
+void NuskaitymasFailo(string fileName){
     ifstream fin;
-    fin.open("kursiokai.txt");
+    fin.open(fileName);
     studentai dabartinisStudentas;
 
     //patikrinti kiek namu darbu yra faile
@@ -213,6 +213,7 @@ int main(){
         << "( 5 ) - Nuskaityti is failo\n";
         int pasirinkimas;
         cin >> pasirinkimas;
+        string failoPav;
         switch (pasirinkimas)
         {
         case 1:
@@ -229,7 +230,10 @@ int main(){
             //spausdina main
             break;
         case 5:
-            NuskaitymasFailo();
+            cout << "Iveskite failo pavadinima\n";
+            cin >> failoPav;
+            NuskaitymasFailo(failoPav);
+            break;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
             break;
