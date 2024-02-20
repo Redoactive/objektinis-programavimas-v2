@@ -18,7 +18,7 @@ struct studentai{
 vector<studentai> duomenys;
 
 string tarpai(string a);
-
+void rusiavimas();
 void pirmasPasirinkimas(){
     //pagrindinis ciklas
     studentai dabartinisStudentas;
@@ -273,7 +273,39 @@ int main(){
             break;
         }
     }
-
+    //klausiama kaip vartotojas nori isrusiuoti outputa
+    darbasBaigtas = false;
+    while (darbasBaigtas == false){
+        cout << "Kaip norite rusiuoti output?\n"
+        << "( 1 ) - Pagal varda\n"
+        << "( 2 ) - Pagal pavarde\n"
+        << "( 3 ) - Pagal vidurki\n"
+        << "( 4 ) - Pagal mediana\n";
+        int pasirinkimas;
+        cin >> pasirinkimas;
+        
+        switch (pasirinkimas)
+        {
+        case 1:
+            rusiavimas();
+            darbasBaigtas = true;
+            break;
+        case 2:
+            
+            darbasBaigtas = true;
+            break;
+        case 3:
+            darbasBaigtas = true;
+            break;
+        case 4:
+            darbasBaigtas = true;
+            
+            break;
+        default:
+            cout << "Blogai ivedete duomenys, bandykite dar karta\n";
+            break;
+        }
+    }
      //klausiama ar vartotojas spausdinti ekrane ar faile
     darbasBaigtas = false;
     while (darbasBaigtas == false){
@@ -305,4 +337,18 @@ string tarpai(string a){
         kiekis += " ";
     }
     return kiekis;
+}
+
+
+void rusiavimas(){
+    for (int i = 0; i < duomenys.size() - 1; i++){
+        for (int j = i + 1; j < duomenys.size(); j++){
+            if (duomenys[j].vardas < duomenys[i].vardas){
+                studentai temp;
+                temp = duomenys[j];
+                duomenys[j] = duomenys[i];
+                duomenys[i] = temp;
+            }
+        }
+    }
 }
