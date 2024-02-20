@@ -12,16 +12,22 @@ struct studentai{
     string pavarde;
     vector<int> balai;
     int egzaminas;
+    double vidurkis;
+    double mediana;
 };
 
 // bool arMediana;
 vector<studentai> duomenys;
-
+double vidurkioApsk(vector<int> a, int egzaminas);
+double medianosApsk(vector<int> a, int egzaminas);
 string tarpai(string a);
 void rusiavimasVardas();
 void rusiavimasPavarde();
 void rusiavimasVidurkis();
 void rusiavimasMediana();
+
+
+
 
 void pirmasPasirinkimas(){
     //pagrindinis ciklas
@@ -50,6 +56,8 @@ void pirmasPasirinkimas(){
         cout << "Iveskite egzamino rezultata\n";
         cin >> dabartinisStudentas.egzaminas;
 
+        dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
+        dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         //issaugomi duomenys
         duomenys.push_back(dabartinisStudentas);        
 
@@ -87,7 +95,9 @@ void antrasPasirinkimas(){
         }
 
         dabartinisStudentas.egzaminas = rand() % 10 + 1;
-
+        
+        dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
+        dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         //issaugomi duomenys
         duomenys.push_back(dabartinisStudentas);        
 
@@ -108,10 +118,6 @@ void treciasPasirinkimas(){
     "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante"};
     vector<string> bPavarde = {"Petrauskas", "Pavardenis", "Maliauka", "Ablamas",
     "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis"};
-
-
-
-
 
     //pagrindinis ciklas
     studentai dabartinisStudentas;
@@ -137,6 +143,8 @@ void treciasPasirinkimas(){
 
         dabartinisStudentas.egzaminas = rand() % 10 + 1;
 
+        dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
+        dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         //issaugomi duomenys
         duomenys.push_back(dabartinisStudentas);        
 
@@ -173,6 +181,8 @@ void NuskaitymasFailo(string fileName){
             dabartinisStudentas.balai.push_back(ivestis);
         }
         fin >> dabartinisStudentas.egzaminas;
+        dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
+        dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         duomenys.push_back(dabartinisStudentas);
     }
     fin.close();
@@ -182,25 +192,7 @@ void NuskaitymasFailo(string fileName){
 
 
 
-double medianosApsk(vector<int> a, int egzaminas){
-    
-    sort(a.begin(), a.end());
-    int n = a.size() / 2;
-    if(n % 2 == 0){
-        return a[n] * 0.4 + egzaminas * 0.6;
-    }
-    else {
-        return (a[n] + a[n++]) / 2 * 0.4 + egzaminas * 0.6;
-    }
-}
 
-double vidurkioApsk(vector<int> a, int egzaminas){
-    double vidurkis = 0;
-    for (int i : a){
-        vidurkis += i;
-    }
-    return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
-}
 
 
 void spausdinimasFaile(){
@@ -218,8 +210,7 @@ void spausdinimasFaile(){
 
         fout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
         << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
-        fout << medianosApsk(duomenys[i].balai, duomenys[i].egzaminas) << "             ";
-        fout << vidurkioApsk(duomenys[i].balai, duomenys[i].egzaminas) << endl;
+        fout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
         
     }
     fout.close();
@@ -232,8 +223,7 @@ void spausdinimasTerminale(){
 
         cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
         << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
-        cout << medianosApsk(duomenys[i].balai, duomenys[i].egzaminas) << "             ";
-        cout << vidurkioApsk(duomenys[i].balai, duomenys[i].egzaminas) << endl;
+        cout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
         
     }
 }
@@ -246,7 +236,7 @@ int main(){
         cout << "Pasirinkite, ka norite daryti\n"
         << "( 1 ) - Ivesti duomenys ranka\n"
         << "( 2 ) - Generuoti pazymius atsitiktinai\n"
-        << "( 3 ) - Generuoti ir pažymius ir studentų vardus, pavardės\n"
+        << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
         << "( 4 ) - Baigti darba\n"
         << "( 5 ) - Nuskaityti is failo\n";
         int pasirinkimas;
@@ -373,7 +363,7 @@ void rusiavimasPavarde(){
 void rusiavimasVidurkis(){
     for (int i = 0; i < duomenys.size() - 1; i++){
         for (int j = i + 1; j < duomenys.size(); j++){
-            if (duomenys[j].vardas < duomenys[i].vardas){
+            if (duomenys[j].vidurkis < duomenys[i].vidurkis){
                 studentai temp;
                 temp = duomenys[j];
                 duomenys[j] = duomenys[i];
@@ -385,7 +375,7 @@ void rusiavimasVidurkis(){
 void rusiavimasMediana(){
     for (int i = 0; i < duomenys.size() - 1; i++){
         for (int j = i + 1; j < duomenys.size(); j++){
-            if (duomenys[j].pavarde < duomenys[i].pavarde){
+            if (duomenys[j].mediana < duomenys[i].mediana){
                 studentai temp;
                 temp = duomenys[j];
                 duomenys[j] = duomenys[i];
@@ -393,4 +383,23 @@ void rusiavimasMediana(){
             }
         }
     }
+}
+double medianosApsk(vector<int> a, int egzaminas){
+    
+    sort(a.begin(), a.end());
+    int n = a.size() / 2;
+    if(n % 2 == 0){
+        return a[n] * 0.4 + egzaminas * 0.6;
+    }
+    else {
+        return (a[n] + a[n++]) / 2 * 0.4 + egzaminas * 0.6;
+    }
+}
+
+double vidurkioApsk(vector<int> a, int egzaminas){
+    double vidurkis = 0;
+    for (int i : a){
+        vidurkis += i;
+    }
+    return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
 }
