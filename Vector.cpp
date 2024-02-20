@@ -14,7 +14,7 @@ struct studentai{
     int egzaminas;
 };
 
-bool arMediana;
+// bool arMediana;
 vector<studentai> duomenys;
 
 string tarpai(string a);
@@ -140,6 +140,8 @@ void treciasPasirinkimas(){
 }
 
 
+
+
 void NuskaitymasFailo(string fileName){
     ifstream fin;
     fin.open(fileName);
@@ -197,8 +199,40 @@ double vidurkioApsk(vector<int> a, int egzaminas){
 }
 
 
+void spausdinimasFaile(){
+    cout << "Kaip norite pavadinti savo faila?\n";
+    string pavadinimas;
+    cin >> pavadinimas;
 
+    ofstream fout;
+    fout.open(pavadinimas);
 
+    fout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    fout << "-------------------------------------------------------------------\n";
+
+    for (int i = 0; i < duomenys.size(); i++){
+
+        fout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+        fout << medianosApsk(duomenys[i].balai, duomenys[i].egzaminas) << "             ";
+        fout << vidurkioApsk(duomenys[i].balai, duomenys[i].egzaminas) << endl;
+        
+    }
+    fout.close();
+}
+void spausdinimasTerminale(){
+    cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    cout << "-------------------------------------------------------------------\n";
+
+    for (int i = 0; i < duomenys.size(); i++){
+
+        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+        cout << medianosApsk(duomenys[i].balai, duomenys[i].egzaminas) << "             ";
+        cout << vidurkioApsk(duomenys[i].balai, duomenys[i].egzaminas) << endl;
+        
+    }
+}
 
 int main(){
     bool darbasBaigtas = false;
@@ -240,40 +274,28 @@ int main(){
         }
     }
 
-     //klausiama ar vartotojas nori vidurio, ar medianos
-    // darbasBaigtas = false;
+     //klausiama ar vartotojas spausdinti ekrane ar faile
+    darbasBaigtas = false;
+    while (darbasBaigtas == false){
+        cout << "Norite spausdini terminale ( t ) ar faile ( f )?\n";
+        string pasirinkimas;
+        cin >> pasirinkimas;
 
-    // while (darbasBaigtas == false){
-    //     cout << "Norite naudoti namu darbu balo apskaiciavimui vidurki (vid) ar mediana (med)\n";
-    //     string pasirinkimas;
-    //     cin >> pasirinkimas;
-
-    //     if (pasirinkimas == "vid"){
-    //         arMediana = false;
-    //         darbasBaigtas = true;
-    //     } 
-    //     else if(pasirinkimas == "med"){
-    //         arMediana = true;
-    //         darbasBaigtas = true;
-    //     }
-    //     else{
-    //         cout << "Blogai ivedete duomenys, bandykite dar karta\n";
-    //     }
-    // }
+        if (pasirinkimas == "t"){
+            spausdinimasTerminale();
+            darbasBaigtas = true;
+        } 
+        else if(pasirinkimas == "f"){
+            spausdinimasFaile();
+            darbasBaigtas = true;
+        }
+        else{
+            cout << "Blogai ivedete duomenys, bandykite dar karta\n";
+        }
+    }
     
 
-    cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
-    cout << "-------------------------------------------------------------------\n";
-
-    for (int i = 0; i < duomenys.size(); i++){
-
-        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
-        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
-        cout << medianosApsk(duomenys[i].balai, duomenys[i].egzaminas) << "             ";
-        cout << vidurkioApsk(duomenys[i].balai, duomenys[i].egzaminas) << endl;
-        
-    }
-
+    
 }
 //funckija spausdinti tarpus
 string tarpai(string a){
