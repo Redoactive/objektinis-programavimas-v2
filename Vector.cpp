@@ -21,12 +21,20 @@ vector<studentai> duomenys;
 double vidurkioApsk(vector<int> a, int egzaminas);
 double medianosApsk(vector<int> a, int egzaminas);
 string tarpai(string a);
-void rusiavimasVardas();
-void rusiavimasPavarde();
-void rusiavimasVidurkis();
-void rusiavimasMediana();
+bool rusiavimasVardas(const studentai &a, const studentai &b){
+    return a.vardas < b.vardas;
+}
+bool rusiavimasPavarde(const studentai &a, const studentai &b){
+    return a.pavarde < b.pavarde;
+}
 
+bool rusiavimasMediana(const studentai &a, const studentai &b){
+    return a.mediana < b.mediana;
+}
 
+bool rusiavimasVidurkis(const studentai &a, const studentai &b){
+    return a.vidurkis < b.vidurkis;
+}
 
 
 void pirmasPasirinkimas(){
@@ -174,12 +182,14 @@ void NuskaitymasFailo(string fileName){
 
 
     while (!fin.eof()){
+        dabartinisStudentas.balai.clear();
         fin >> dabartinisStudentas.vardas >> dabartinisStudentas.pavarde;
         for (int j = 0; j < i; j++){
             int ivestis;
             fin >> ivestis;
             dabartinisStudentas.balai.push_back(ivestis);
         }
+        
         fin >> dabartinisStudentas.egzaminas;
         dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
@@ -230,6 +240,7 @@ void spausdinimasTerminale(){
 
 int main(){
     bool darbasBaigtas = false;
+    double startTime;
     //pasirinkimu menu
     while (darbasBaigtas == false)
     {
@@ -238,7 +249,9 @@ int main(){
         << "( 2 ) - Generuoti pazymius atsitiktinai\n"
         << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
         << "( 4 ) - Baigti darba\n"
-        << "( 5 ) - Nuskaityti is failo\n";
+        << "( 5 ) - Nuskaityti is failo\n"
+        << "( 6 ) - Testuoti su laiku - studentai10000\n"
+        << "( 7 ) - Testuoti su laiku - studentai1000000\n";
         int pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
@@ -260,9 +273,22 @@ int main(){
         case 5:
             cout << "Iveskite failo pavadinima\n";
             cin >> failoPav;
+            startTime = clock();
             NuskaitymasFailo(failoPav);
+           cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
+            break;
+        case 6:
+            startTime = clock();
+            NuskaitymasFailo("studentai10000.txt");
+            cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
+            break;
+        case 7:
+            startTime = clock();
+            NuskaitymasFailo("studentai1000000.txt");
+            cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
             break;
         default:
+            
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
             break;
         }
@@ -275,27 +301,35 @@ int main(){
         << "( 2 ) - Pagal pavarde\n"
         << "( 3 ) - Pagal vidurkis\n"
         << "( 4 ) - Pagal mediana\n";
+        
         int pasirinkimas;
         cin >> pasirinkimas;
         
         switch (pasirinkimas)
         {
         case 1:
-            rusiavimasVardas();
+            startTime = clock();
+            sort(duomenys.begin(), duomenys.end(), rusiavimasVardas);
             darbasBaigtas = true;
+            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
             break;
         case 2:
-            rusiavimasPavarde();
+            startTime = clock();
+            sort(duomenys.begin(), duomenys.end(), rusiavimasPavarde);
             darbasBaigtas = true;
+            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
             break;
         case 3:
-            rusiavimasVidurkis();
+            startTime = clock();
+            sort(duomenys.begin(), duomenys.end(), rusiavimasVidurkis);
             darbasBaigtas = true;
+            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
             break;
         case 4:
-            rusiavimasMediana();
+            startTime = clock();
+            sort(duomenys.begin(), duomenys.end(), rusiavimasMediana);
             darbasBaigtas = true;
-            
+            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
             break;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
@@ -336,54 +370,7 @@ string tarpai(string a){
 }
 
 
-void rusiavimasVardas(){
-    for (int i = 0; i < duomenys.size() - 1; i++){
-        for (int j = i + 1; j < duomenys.size(); j++){
-            if (duomenys[j].vardas < duomenys[i].vardas){
-                studentai temp;
-                temp = duomenys[j];
-                duomenys[j] = duomenys[i];
-                duomenys[i] = temp;
-            }
-        }
-    }
-}
-void rusiavimasPavarde(){
-    for (int i = 0; i < duomenys.size() - 1; i++){
-        for (int j = i + 1; j < duomenys.size(); j++){
-            if (duomenys[j].pavarde < duomenys[i].pavarde){
-                studentai temp;
-                temp = duomenys[j];
-                duomenys[j] = duomenys[i];
-                duomenys[i] = temp;
-            }
-        }
-    }
-}
-void rusiavimasVidurkis(){
-    for (int i = 0; i < duomenys.size() - 1; i++){
-        for (int j = i + 1; j < duomenys.size(); j++){
-            if (duomenys[j].vidurkis < duomenys[i].vidurkis){
-                studentai temp;
-                temp = duomenys[j];
-                duomenys[j] = duomenys[i];
-                duomenys[i] = temp;
-            }
-        }
-    }
-}
-void rusiavimasMediana(){
-    for (int i = 0; i < duomenys.size() - 1; i++){
-        for (int j = i + 1; j < duomenys.size(); j++){
-            if (duomenys[j].mediana < duomenys[i].mediana){
-                studentai temp;
-                temp = duomenys[j];
-                duomenys[j] = duomenys[i];
-                duomenys[i] = temp;
-            }
-        }
-    }
-}
+
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
