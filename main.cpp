@@ -3,7 +3,7 @@
 
 int main(){
     bool darbasBaigtas = false;
-    double startTime;
+
     //pasirinkimu menu
     while (darbasBaigtas == false)
     {
@@ -11,10 +11,10 @@ int main(){
         << "( 1 ) - Ivesti duomenys ranka\n"
         << "( 2 ) - Generuoti pazymius atsitiktinai\n"
         << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
-        << "( 4 ) - Baigti darba\n"
-        << "( 5 ) - Nuskaityti is failo\n"
-        << "( 6 ) - Testuoti su laiku - studentai10000\n"
-        << "( 7 ) - Testuoti su laiku - studentai1000000\n";
+        << "( 4 ) - Nuskaityti is failo\n"
+        << "( 5 ) - Testuoti su laiku - studentai10000\n"
+        << "( 6 ) - Testuoti su laiku - studentai1000000\n"
+        << "( 7 ) - Baigti darba\n";
         int pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
@@ -30,25 +30,18 @@ int main(){
             treciasPasirinkimas();
             break;
         case 4:
-            darbasBaigtas = true;
-            //spausdina main
-            break;
-        case 5:
             cout << "Iveskite failo pavadinima\n";
             cin >> failoPav;
-            startTime = clock();
             NuskaitymasFailo(failoPav);
-           cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
+            break;
+        case 5:
+            NuskaitymasFailo("studentai10000.txt");
             break;
         case 6:
-            startTime = clock();
-            NuskaitymasFailo("studentai10000.txt");
-            cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
+            NuskaitymasFailo("studentai1000000.txt");
             break;
         case 7:
-            startTime = clock();
-            NuskaitymasFailo("studentai1000000.txt");
-            cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
+            darbasBaigtas = true;
             break;
         default:
             
@@ -67,7 +60,7 @@ int main(){
         
         int pasirinkimas;
         cin >> pasirinkimas;
-        
+        double startTime;
         switch (pasirinkimas)
         {
         case 1:

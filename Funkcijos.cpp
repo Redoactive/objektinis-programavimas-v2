@@ -151,7 +151,21 @@ void treciasPasirinkimas(){
 //Nuskaitymas is failo
 void NuskaitymasFailo(string fileName){
     ifstream fin;
+    
+    double startTime;
+    startTime = clock();
+    
     fin.open(fileName);
+    try{
+        if(!fin){
+            throw "Klaida, failas neegzistuoja!";
+        }
+    }
+    catch(const char* msg){
+        cerr << msg << endl;
+        return;
+    }
+    
     studentai dabartinisStudentas;
 
     //patikrinti kiek namu darbu yra faile
@@ -182,6 +196,7 @@ void NuskaitymasFailo(string fileName){
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         duomenys.push_back(dabartinisStudentas);
     }
+    cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
     fin.close();
 }
 
