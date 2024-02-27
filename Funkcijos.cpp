@@ -148,3 +148,90 @@ void treciasPasirinkimas(){
 
     }
 }
+//Nuskaitymas is failo
+void NuskaitymasFailo(string fileName){
+    ifstream fin;
+    fin.open(fileName);
+    studentai dabartinisStudentas;
+
+    //patikrinti kiek namu darbu yra faile
+    string temp;
+    fin >> temp >> temp;
+    int i = 0;
+    while (true){
+        fin >> temp;
+        if (temp == "Egz."){
+            break;
+        }
+        i++;
+    }
+
+
+
+    while (!fin.eof()){
+        dabartinisStudentas.balai.clear();
+        fin >> dabartinisStudentas.vardas >> dabartinisStudentas.pavarde;
+        for (int j = 0; j < i; j++){
+            int ivestis;
+            fin >> ivestis;
+            dabartinisStudentas.balai.push_back(ivestis);
+        }
+        
+        fin >> dabartinisStudentas.egzaminas;
+        dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
+        dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
+        duomenys.push_back(dabartinisStudentas);
+    }
+    fin.close();
+}
+
+//Spausdinimo funkcijos
+void spausdinimasFaile(){
+    cout << "Kaip norite pavadinti savo faila?\n";
+    string pavadinimas;
+    cin >> pavadinimas;
+
+    ofstream fout;
+    fout.open(pavadinimas);
+
+    fout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    fout << "-------------------------------------------------------------------\n";
+
+    for (int i = 0; i < duomenys.size(); i++){
+
+        fout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+        fout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
+        
+    }
+    fout.close();
+}
+void spausdinimasTerminale(){
+    cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    cout << "-------------------------------------------------------------------\n";
+
+    for (int i = 0; i < duomenys.size(); i++){
+
+        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+        cout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
+        
+    }
+}
+
+//rusiavimas
+bool rusiavimasVardas(const studentai &a, const studentai &b){
+    return a.vardas < b.vardas;
+}
+bool rusiavimasPavarde(const studentai &a, const studentai &b){
+    return a.pavarde < b.pavarde;
+}
+
+bool rusiavimasMediana(const studentai &a, const studentai &b){
+    return a.mediana < b.mediana;
+}
+
+bool rusiavimasVidurkis(const studentai &a, const studentai &b){
+    return a.vidurkis < b.vidurkis;
+}
+

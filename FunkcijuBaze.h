@@ -15,3 +15,10 @@ bool rusiavimasMediana(const studentai &a, const studentai &b);
 void pirmasPasirinkimas();
 void antrasPasirinkimas();
 void treciasPasirinkimas();
+
+//spausdinimo funkcijos
+void spausdinimasFaile();
+void spausdinimasTerminale();
+
+//nuskaitymas is failo
+void NuskaitymasFailo(string fileName);
