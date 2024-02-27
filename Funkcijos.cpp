@@ -55,9 +55,22 @@ void pirmasPasirinkimas(){
         int temporary;
 
         while (true){
-            cin >> temporary;
-            if (temporary == -1){
-                break;
+            //tikrinama ar desimtbaleje sistemoje
+            try{
+                cin >> temporary;
+                if (temporary == -1){
+                    break;
+                }
+                if (!isdigit(temporary + 48) && temporary != 10){
+                    throw "Ivestas balas nera skaicius";
+                }
+                else if(temporary > 10 || temporary < 1){
+                    throw "Ivestas balas nera desimtbaleje sistemoje";
+                }
+            }
+            catch(char const *msg){
+                cerr << msg << endl;
+                continue;
             }
             dabartinisStudentas.balai.push_back(temporary);
         }
@@ -72,10 +85,10 @@ void pirmasPasirinkimas(){
 
 
         //paprasoma baigti ivesti
-        cout << "Jeigu norite baigti ivedineti duomenys, parasykite ( stop )\n";
+        cout << "Jeigu norite baigti ivedineti duomenys, parasykite ( s )\n";
         string temp;
         cin >> temp;
-        if (temp == "stop"){
+        if (temp == "s"){
             return;
         }
     }
@@ -124,10 +137,10 @@ void antrasPasirinkimas(){
 
 
         //paprasoma baigti ivesti
-        cout << "Jeigu norite baigti ivedineti duomenys, parasykite ( stop )\n";
+        cout << "Jeigu norite baigti ivedineti duomenys, parasykite ( s )\n";
         string temp;
         cin >> temp;
-        if (temp == "stop"){
+        if (temp == "s"){
             return;
         }
     }
