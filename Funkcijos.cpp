@@ -33,11 +33,22 @@ void pirmasPasirinkimas(){
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         double vidurkis = 0, mediana;
-        cout << "Iveskite pavarde\n";
-        cin >> dabartinisStudentas.pavarde; 
-        cout << "Iveskite varda\n";
-        cin >> dabartinisStudentas.vardas;
-          
+        try{
+            cout << "Iveskite pavarde\n";
+            cin >> dabartinisStudentas.pavarde; 
+            if(dabartinisStudentas.pavarde.length() > 15){
+                throw "Jusu ivesta pavarde yra per ilga (limitas yra 15 simboliu)";
+            }
+            cout << "Iveskite varda\n";
+            cin >> dabartinisStudentas.vardas;
+            if(dabartinisStudentas.vardas.length() > 15){
+                throw "Jusu ivestas vardas yra per ilgas (limitas yra 15 simboliu)";
+            }
+        }
+        catch(char const *msg){
+            cerr << msg << endl;
+            terminate();
+        }
 
         //ivedami namu darbu irasai ranka
         cout << "Iveskite namu darbu balus. Jei norite nustoti ivedineti, parasykite ( -1 )\n";
@@ -76,10 +87,22 @@ void antrasPasirinkimas(){
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         double vidurkis = 0, mediana;
-        cout << "Iveskite pavarde\n";
-        cin >> dabartinisStudentas.pavarde;
-        cout << "Iveskite varda\n";
-        cin >> dabartinisStudentas.vardas;
+        try{
+            cout << "Iveskite pavarde\n";
+            cin >> dabartinisStudentas.pavarde; 
+            if(dabartinisStudentas.pavarde.length() > 15){
+                throw "Jusu ivesta pavarde yra per ilga (limitas yra 15 simboliu)";
+            }
+            cout << "Iveskite varda\n";
+            cin >> dabartinisStudentas.vardas;
+            if(dabartinisStudentas.vardas.length() > 15){
+                throw "Jusu ivestas vardas yra per ilgas (limitas yra 15 simboliu)";
+            }
+        }
+        catch(char const *msg){
+            cerr << msg << endl;
+            terminate();
+        }
         
 
         //namu darbu irasai
