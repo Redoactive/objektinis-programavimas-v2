@@ -12,9 +12,8 @@ int main(){
         << "( 2 ) - Generuoti pazymius atsitiktinai\n"
         << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
         << "( 4 ) - Nuskaityti is failo\n"
-        << "( 5 ) - Testuoti su laiku - studentai10000\n"
-        << "( 6 ) - Testuoti su laiku - studentai1000000\n"
-        << "( 7 ) - Baigti darba\n";
+        << "( 5 ) - Testuoti automatiskai faila - studentai1000000\n"
+        << "( 6 ) - Baigti darba\n";
         int pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
@@ -35,12 +34,9 @@ int main(){
             NuskaitymasFailo(failoPav);
             break;
         case 5:
-            NuskaitymasFailo("studentai10000.txt");
-            break;
-        case 6:
             NuskaitymasFailo("studentai1000000.txt");
             break;
-        case 7:
+        case 6:
             darbasBaigtas = true;
             break;
         default:
@@ -93,22 +89,25 @@ int main(){
         }
     }
      //klausiama ar vartotojas spausdinti ekrane ar faile
-    darbasBaigtas = false;
-    while (darbasBaigtas == false){
-        cout << "Norite spausdini terminale ( t ) ar faile ( f )?\n";
-        string pasirinkimas;
-        cin >> pasirinkimas;
-
-        if (pasirinkimas == "t"){
-            spausdinimasTerminale();
-            darbasBaigtas = true;
-        } 
-        else if(pasirinkimas == "f"){
-            spausdinimasFaile();
-            darbasBaigtas = true;
+    while(true){
+        try {
+            cout << "Norite spausdini terminale ( t ) ar faile ( f )?\n";
+            string pasirinkimas;
+            cin >> pasirinkimas;
+            if (pasirinkimas == "t"){
+                spausdinimasTerminale();
+                break;
+            } 
+            else if(pasirinkimas == "f"){
+                spausdinimasFaile();
+                break;
+            }
+            else{
+                throw "Blogai ivesta raide, bandykite dar karta\n";
+            }
         }
-        else{
-            cout << "Blogai ivedete duomenys, bandykite dar karta\n";
+        catch(char const* msg){
+            cerr << msg << endl;
         }
     }
 }
