@@ -70,6 +70,7 @@ void pirmasPasirinkimas(){
             }
             catch(char const *msg){
                 cerr << msg << endl;
+                terminate();
                 continue;
             }
             dabartinisStudentas.balai.push_back(temporary);
