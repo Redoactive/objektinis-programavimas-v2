@@ -1,5 +1,5 @@
-#ifndef includes.h
-#define includes.h
+#ifndef include
+#define include
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -7,7 +7,7 @@
 #include <ctime>
 #include <fstream>
 
-#include "funkcijuBaze.h"
+
 using namespace std;
 
 struct studentai{
@@ -18,4 +18,6 @@ struct studentai{
     double vidurkis;
     double mediana;
 };
+vector<studentai> duomenys;
+
 #endif
