@@ -1,20 +1,7 @@
-#include "Includes.h"
+#include "includes.h"
+#include "funkcijuBaze.h"
 
-
-struct studentai{
-    string vardas;
-    string pavarde;
-    vector<int> balai;
-    int egzaminas;
-    double vidurkis;
-    double mediana;
-};
-
-// bool arMediana;
 vector<studentai> duomenys;
-double vidurkioApsk(vector<int> a, int egzaminas);
-double medianosApsk(vector<int> a, int egzaminas);
-string tarpai(string a);
 bool rusiavimasVardas(const studentai &a, const studentai &b){
     return a.vardas < b.vardas;
 }
@@ -29,8 +16,6 @@ bool rusiavimasMediana(const studentai &a, const studentai &b){
 bool rusiavimasVidurkis(const studentai &a, const studentai &b){
     return a.vidurkis < b.vidurkis;
 }
-
-
 void pirmasPasirinkimas(){
     //pagrindinis ciklas
     studentai dabartinisStudentas;
