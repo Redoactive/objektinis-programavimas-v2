@@ -1,4 +1,3 @@
-#include "includes.h"
 #include "funkcijuBaze.h"
 #include "Funkcijos.cpp"
 int main(){

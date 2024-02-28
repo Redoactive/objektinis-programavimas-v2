@@ -19,5 +19,4 @@ struct studentai{
     double mediana;
 };
 vector<studentai> duomenys;
-
 #endif
