@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "FunkcijuBaze.h"
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
