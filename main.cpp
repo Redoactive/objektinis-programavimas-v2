@@ -12,7 +12,7 @@ int main(){
         << "( 2 ) - Generuoti pazymius atsitiktinai\n"
         << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
         << "( 4 ) - Nuskaityti is failo\n"
-        << "( 5 ) - Testuoti automatiskai faila - studentai1000000\n"
+        << "( 5 ) - Generuoti faila\n"
         << "( 6 ) - Baigti darba\n";
         int pasirinkimas;
         cin >> pasirinkimas;
@@ -34,7 +34,7 @@ int main(){
             NuskaitymasFailo(failoPav);
             break;
         case 5:
-            NuskaitymasFailo("studentai1000000.txt");
+            failoGeneracija();
             break;
         case 6:
             darbasBaigtas = true;

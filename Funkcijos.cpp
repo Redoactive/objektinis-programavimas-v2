@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "FunkcijuBaze.h"
 vector<studentai> duomenys;
 double medianosApsk(vector<int> a, int egzaminas){
     
@@ -338,4 +339,29 @@ void rusiavimoMenu(){
             break;
         }
     }
+}
+string extraSpace (string a, int b){
+    
+    string space;
+    for (int i = 0; i < b; i++){
+        space += " ";
+    }
+    return space;
+}
+
+void failoGeneracija(){
+    cout << "Parasykite, kokio dydzio norite naujo failo\n";
+    int n;
+    cin >> n;
+    cout << "Parasykite failo pavadinima (be .txt)\n";
+    string name;
+    cin >> name;
+    name += ".txt";
+    ofstream fout;
+    fout.open(name);
+    for (int i = 0; i < n; i++){
+        fout << "Vardas" << i << tarpai("Vardas" + to_string(i))
+        << "Pavarde" << i << tarpai("Pavarde" + to_string(i)) << endl;
+    }
+    fout.close();
 }
