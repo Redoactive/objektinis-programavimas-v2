@@ -9,6 +9,7 @@ duration<double> createTime;
 duration<double> readTime;
 duration<double> sortTime;
 duration<double> printTime;
+duration<double> typeTime;
 duration<double> allTime;
 
 
@@ -311,6 +312,7 @@ void spausdinimasFaileSkirstymas(){
     cin >> pavadinimas;
     pavadinimas += ".txt";
     ofstream foutB;
+    auto printTimeS = high_resolution_clock::now();
     foutB.open(pavadinimas);
 
 
@@ -339,6 +341,8 @@ void spausdinimasFaileSkirstymas(){
         
     }
     foutB.close();
+    auto printTimeE = high_resolution_clock::now();
+    printTime = printTimeE - printTimeS;
 }
 void spausdinimasTerminaleSkirstymas(){
     if (geriStudentai.empty()){
@@ -396,32 +400,36 @@ void rusiavimoMenu(){
         
         int pasirinkimas = 0;
         cin >> pasirinkimas;
-        double startTime;
+        
         switch (pasirinkimas)
         {
         case 1:
-            startTime = clock();
+            auto sortTimeS = high_resolution_clock::now();
             sort(duomenys.begin(), duomenys.end(), rusiavimasVardas);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            auto sortTimeE = high_resolution_clock::now();
+            sortTime = sortTimeE - sortTimeS;
             break;
         case 2:
-            startTime = clock();
+            auto sortTimeS = high_resolution_clock::now();
             sort(duomenys.begin(), duomenys.end(), rusiavimasPavarde);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            auto sortTimeE = high_resolution_clock::now();
+            sortTime = sortTimeE - sortTimeS;
             break;
         case 3:
-            startTime = clock();
+            auto sortTimeS = high_resolution_clock::now();
             sort(duomenys.begin(), duomenys.end(), rusiavimasVidurkis);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            auto sortTimeE = high_resolution_clock::now();
+            sortTime = sortTimeE - sortTimeS;
             break;
         case 4:
-            startTime = clock();
+            auto sortTimeS = high_resolution_clock::now();
             sort(duomenys.begin(), duomenys.end(), rusiavimasMediana);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            auto sortTimeE = high_resolution_clock::now();
+            sortTime = sortTimeE - sortTimeS;
             break;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
@@ -429,6 +437,7 @@ void rusiavimoMenu(){
             break;
         }
     }
+    
 }
 
 void rusiavimoMenuSkirstymas(){
@@ -449,32 +458,36 @@ void rusiavimoMenuSkirstymas(){
         switch (pasirinkimas)
         {
         case 1:
-            startTime = clock();
+            auto sortTimeS = high_resolution_clock::now();
             sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVardas);
             sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardas);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            auto sortTimeE = high_resolution_clock::now();
+            sortTime = sortTimeE - sortTimeS;
             break;
         case 2:
-            startTime = clock();
+            auto sortTimeS = high_resolution_clock::now();
             sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasPavarde);
             sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasPavarde);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            auto sortTimeE = high_resolution_clock::now();
+            sortTime = sortTimeE - sortTimeS;
             break;
         case 3:
-            startTime = clock();
+            auto sortTimeS = high_resolution_clock::now();
             sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVidurkis);
             sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVidurkis);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            auto sortTimeE = high_resolution_clock::now();
+            sortTime = sortTimeE - sortTimeS;
             break;
         case 4:
-            startTime = clock();
+            auto sortTimeS = high_resolution_clock::now();
             sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasMediana);
             sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasMediana);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            auto sortTimeE = high_resolution_clock::now();
+            sortTime = sortTimeE - sortTimeS;
             break;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
