@@ -129,11 +129,11 @@ void antrasPasirinkimas(){
         cin >> n;
         srand(time(NULL));
         for (int i = 0; i < n; i++){
-            int temp = rand() % 10 + 1;
+            int temp = (rand() - (rand() % 10)) % 10 + 1;
             dabartinisStudentas.balai.push_back(temp);
         }
 
-        dabartinisStudentas.egzaminas = rand() % 10 + 1;
+        dabartinisStudentas.egzaminas = (rand() - (rand() % 10)) % 10 + 1;
         
         dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
@@ -170,9 +170,9 @@ void treciasPasirinkimas(){
     for (int i = 0; i < m; i++){
         
         int temp;
-        temp = rand() % 10 + 1;
+        temp = (rand() - (rand() % 10)) % 10 + 1;
         dabartinisStudentas.vardas = bVardas[temp];
-        temp = rand() % 10 + 1;
+        temp = (rand() - (rand() % 10)) % 10 + 1;
         dabartinisStudentas.pavarde = bPavarde[temp];
         
         //namu darbu irasai
@@ -182,11 +182,11 @@ void treciasPasirinkimas(){
         // cout << dabartinisStudentas.balai.size() << " ";
         // cout << dabartinisStudentas.balai.capacity() << endl;
         for (int i = 0; i < n; i++){
-            int temp = rand() % 10 + 1;
+            int temp = (rand() - (rand() % 10)) % 10 + 1;
             dabartinisStudentas.balai.push_back(temp);
         }
 
-        dabartinisStudentas.egzaminas = rand() % 10 + 1;
+        dabartinisStudentas.egzaminas = (rand() - (rand() % 10)) % 10 + 1;
 
         dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
@@ -512,7 +512,7 @@ void failoGeneracija(){
         fout << "Vardas" << i << tarpai("Vardas" + to_string(i), 15)
         << "Pavarde" << i << tarpai("Pavarde" + to_string(i), 15);
         for (int j = 0; j < m; j++){// balu spausdinimas
-            int a = rand() % 10 + 1;
+            int a = (rand() - (rand() % 10)) % 10 + 1;
             fout << a;
             if (a == 10){
                 fout << "   ";
@@ -520,7 +520,7 @@ void failoGeneracija(){
                 fout << "    ";
             }
         }
-        fout << rand() % 10 + 1 << endl;
+        fout << (rand() - (rand() % 10)) % 10 + 1 << endl;
     }
     fout.close();
     

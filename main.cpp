@@ -3,7 +3,6 @@
 
 int main(){
     bool darbasBaigtas = false;
-
     //pasirinkimu menu
     while (darbasBaigtas == false)
     {
