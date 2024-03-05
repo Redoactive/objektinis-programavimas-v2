@@ -18,5 +18,5 @@ struct studentai{
     double vidurkis;
     double mediana;
 };
-vector<studentai> duomenys;
+
 #endif

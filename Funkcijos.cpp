@@ -1,4 +1,5 @@
 #include "includes.h"
+vector<studentai> duomenys;
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -159,18 +160,24 @@ void treciasPasirinkimas(){
     int m;
     cout << "Pasirinkite kiek studentu bus automatiskai sugeneruota\n";
     cin >> m;
+    cout << "Iveskite kiek norite namu darbu balu\n";
+    int n;
+    cin >> n;
+    srand(time(NULL));
     for (int i = 0; i < m; i++){
-        srand(time(NULL));
+        
         int temp;
         temp = rand() % 10 + 1;
         dabartinisStudentas.vardas = bVardas[temp];
         temp = rand() % 10 + 1;
         dabartinisStudentas.pavarde = bPavarde[temp];
-
+        
         //namu darbu irasai
-        cout << "Iveskite kiek norite namu darbu balu\n";
-        int n;
-        cin >> n;
+
+        // potenciali klaida
+        // dabartinisStudentas.balai.clear();
+        // cout << dabartinisStudentas.balai.size() << " ";
+        // cout << dabartinisStudentas.balai.capacity() << endl;
         for (int i = 0; i < n; i++){
             int temp = rand() % 10 + 1;
             dabartinisStudentas.balai.push_back(temp);
@@ -287,3 +294,48 @@ bool rusiavimasVidurkis(const studentai &a, const studentai &b){
     return a.vidurkis < b.vidurkis;
 }
 
+void rusiavimoMenu(){
+    bool darbasBaigtas = false;
+    while (darbasBaigtas == false){
+        cout << "Kaip norite rusiuoti output?\n"
+        << "( 1 ) - Pagal varda\n"
+        << "( 2 ) - Pagal pavarde\n"
+        << "( 3 ) - Pagal vidurkis\n"
+        << "( 4 ) - Pagal mediana\n";
+        
+        int pasirinkimas = 0;
+        cin >> pasirinkimas;
+        double startTime;
+        switch (pasirinkimas)
+        {
+        case 1:
+            startTime = clock();
+            sort(duomenys.begin(), duomenys.end(), rusiavimasVardas);
+            darbasBaigtas = true;
+            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            break;
+        case 2:
+            startTime = clock();
+            sort(duomenys.begin(), duomenys.end(), rusiavimasPavarde);
+            darbasBaigtas = true;
+            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            break;
+        case 3:
+            startTime = clock();
+            sort(duomenys.begin(), duomenys.end(), rusiavimasVidurkis);
+            darbasBaigtas = true;
+            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            break;
+        case 4:
+            startTime = clock();
+            sort(duomenys.begin(), duomenys.end(), rusiavimasMediana);
+            darbasBaigtas = true;
+            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
+            break;
+        default:
+            cout << "Blogai ivedete duomenys, bandykite dar karta\n";
+            terminate();
+            break;
+        }
+    }
+}
