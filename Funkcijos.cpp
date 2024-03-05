@@ -208,9 +208,7 @@ void treciasPasirinkimas(){
 void NuskaitymasFailo(string fileName){
     ifstream fin;
     
-    double startTime;
-    startTime = clock();
-    
+    auto readTimeS = high_resolution_clock::now();
     fin.open(fileName);
     try{
         if(!fin){
@@ -252,7 +250,8 @@ void NuskaitymasFailo(string fileName){
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         duomenys.push_back(dabartinisStudentas);
     }
-    cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
+    auto readTimeE = high_resolution_clock::now();
+    readTime = readTimeE - readTimeS;
     fin.close();
 }
 
