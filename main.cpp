@@ -13,7 +13,8 @@ int main(){
         << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
         << "( 4 ) - Nuskaityti is failo\n"
         << "( 5 ) - Generuoti faila\n"
-        << "( 6 ) - Baigti darba\n";
+        << "( 6 ) - Suskirstyti i gerus mokinius ir i nereikalingus civilizacijai mokinius ir baigti\n"
+        << "( 7 ) - Baigti darba\n";
         int pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
@@ -38,7 +39,13 @@ int main(){
             break;
         case 6:
             darbasBaigtas = true;
+            skirstymas();
             break;
+        case 7:
+            darbasBaigtas = true;
+            break;
+        case 8:
+            terminate();
         default:
             
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";

@@ -1,6 +1,8 @@
 #include "includes.h"
 #include "FunkcijuBaze.h"
 vector<studentai> duomenys;
+vector<studentai> geriStudentai;
+vector<studentai> blogiStudentai;
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -350,6 +352,7 @@ string extraSpace (string a, int b){
 }
 
 void failoGeneracija(){
+    
     cout << "Parasykite, kokio dydzio norite naujo failo\n";
     int n;
     cin >> n;
@@ -362,21 +365,20 @@ void failoGeneracija(){
     name += ".txt";
     //random
     srand(time(NULL));
-
-
-
     //spausdinimas
     ofstream fout;
     fout.open(name);
+    //pirma eilute
     fout << "Vardas         Pavarde        ";
     for (int i = 1; i <= m; i++){
         fout << "ND" << i << tarpai("ND" + to_string(i), 5);
     }
     fout << "Egz." << endl;
+    //kitos eilutes
     for (int i = 0; i < n; i++){
         fout << "Vardas" << i << tarpai("Vardas" + to_string(i), 15)
         << "Pavarde" << i << tarpai("Pavarde" + to_string(i), 15);
-        for (int j = 0; j < m; j++){
+        for (int j = 0; j < m; j++){// balu spausdinimas
             int a = rand() % 10 + 1;
             fout << a;
             if (a == 10){
@@ -388,4 +390,35 @@ void failoGeneracija(){
         fout << rand() % 10 + 1 << endl;
     }
     fout.close();
+    
+}
+
+void skirstymas(){
+    cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)";
+    char pasirinkimas;
+    try{
+        cin >> pasirinkimas;
+        if (pasirinkimas == 'v'){
+            for (int i = 0; i < duomenys.size(); i++){
+                if (duomenys[i].vidurkis < 5){
+                    
+                }
+                else{
+
+                }
+            }
+
+
+        }else if(pasirinkimas == 'm'){
+
+        }
+        else{
+            throw "Blogai ivesta";
+        }
+    }
+    catch (const char* msg){
+        cerr << msg;
+        terminate();
+    }
+
 }

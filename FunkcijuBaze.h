@@ -25,6 +25,6 @@ void spausdinimasTerminale();
 
 //nuskaitymas is failo
 void NuskaitymasFailo(string fileName);
-
+void skirstymas();
 //failu generacija 
 void failoGeneracija();
