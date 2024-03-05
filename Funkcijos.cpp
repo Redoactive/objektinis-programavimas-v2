@@ -574,11 +574,11 @@ void skirstymas(){
 }
 
 void laikoSpausdinimas(){
-        cout << "Failu kurimas - " << createTime.count() << endl;
-        cout << "duomenu nuskaitymas is failo - " << readTime.count() << endl;
-        cout << "Skirstymas i dvi grupes uztruko - " << typeTime.count() << endl;
-        cout << "studentu rusiavimas i dvi grupes/kategorijas - " << sortTime.count() << endl;
-        cout << "surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << endl;
+        cout << "Failu kurimas - " << createTime.count() << " s.\n";
+        cout << "Duomenu nuskaitymas is failo - " << readTime.count() << " s.\n";
+        cout << "Skirstymas i dvi grupes uztruko - " << typeTime.count() << " s.\n";
+        cout << "Studentu rusiavimas i dvi grupes/kategorijas - " << sortTime.count() << " s.\n";
+        cout << "Surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << " s.\n";
         allTime = createTime + readTime + typeTime + sortTime + printTime;
-        cout << "visos programos veikimo laikas - " << allTime.count() << endl;
+        cout << "Visos programos veikimo laikas - " << allTime.count() << " s.\n";
     }
