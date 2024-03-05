@@ -6,11 +6,14 @@
 
 
 # studentai10000.txt
-|Task       |Time|
-|Failu kurimas|----|
-|Duomenu nuskaitymas is failo
-|Skirstymas i dvi grupes
-|
+|Darbas                          |Laikas      |
+|--------------------------------|------------|
+|Failu kurimas                   |0.0694658 s.|
+|Duomenu nuskaitymas is failo    |0.0365163 s.|
+|Rusiavimas uztruko              |0.0063748 s.|
+|Studentu skirstymas i dvi grupes|0.0037312 s.|
+|Surusiuotu studentu isvedimas   |0.0594699 s.|
+|Visos programos veikimo laikas  |0.175558 s. |
 
 
 
