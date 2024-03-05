@@ -11,9 +11,10 @@ bool rusiavimasVardas(const studentai &a, const studentai &b);
 bool rusiavimasPavarde(const studentai &a, const studentai &b);
 bool rusiavimasVidurkis(const studentai &a, const studentai &b);
 bool rusiavimasMediana(const studentai &a, const studentai &b);
-
 void rusiavimoMenu();
 
+//laikas
+void laikoSpausdinimas();
 
 //pagrindines funkcijos
 void pirmasPasirinkimas();

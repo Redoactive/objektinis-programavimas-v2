@@ -80,4 +80,5 @@ int main(){
             cerr << msg << endl;
         }
     }
+    laikoSpausdinimas();
 }

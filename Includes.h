@@ -9,7 +9,7 @@
 #include <chrono>
 
 using namespace std;
-
+using namespace std::chrono;
 struct studentai{
     string vardas;
     string pavarde;

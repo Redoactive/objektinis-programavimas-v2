@@ -3,6 +3,15 @@
 vector<studentai> duomenys;
 vector<studentai> geriStudentai;
 vector<studentai> blogiStudentai;
+
+//globalus laikai
+duration<double> createTime;
+duration<double> readTime;
+duration<double> sortTime;
+duration<double> printTime;
+duration<double> allTime;
+
+
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -498,6 +507,9 @@ void failoGeneracija(){
     name += ".txt";
     //random
     srand(time(NULL));
+
+    auto createTimeS = high_resolution_clock::now();
+
     //spausdinimas
     ofstream fout;
     fout.open(name);
@@ -523,7 +535,8 @@ void failoGeneracija(){
         fout << (rand() - (rand() % 10)) % 10 + 1 << endl;
     }
     fout.close();
-    
+    auto createTimeE = high_resolution_clock::now();
+    createTime = createTimeE - createTimeS;
 }
 
 void skirstymas(){
@@ -565,3 +578,10 @@ void skirstymas(){
 
 }
 
+void laikoSpausdinimas(){
+        cout << "Failu kurimas - " << createTime.count() << endl;
+        // cout << "duomenu nuskaitymas is failo - " << readTime.count() << endl;
+        // cout << "studentu rusiavimas i dvi grupes/kategorijas - " << sortTime.count() << endl;
+        // cout << "surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << endl;
+        // cout << "visos programos veikimo laikas - " << allTime.count() << endl;
+    }
