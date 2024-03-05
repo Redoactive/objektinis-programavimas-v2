@@ -20,9 +20,9 @@ double vidurkioApsk(vector<int> a, int egzaminas){
     return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
 }
 //funckija spausdinti tarpus
-string tarpai(string a){
+string tarpai(string a, int tarpuDydis){
     string kiekis;
-    int m = 15 - a.length();
+    int m = tarpuDydis - a.length();
     for (int i = 0; i < m; i++){
         kiekis += " ";
     }
@@ -259,8 +259,8 @@ void spausdinimasFaile(){
 
     for (int i = 0; i < duomenys.size(); i++){
 
-        fout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
-        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+        fout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde, 15)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas, 15);
         fout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
         
     }
@@ -272,8 +272,8 @@ void spausdinimasTerminale(){
 
     for (int i = 0; i < duomenys.size(); i++){
 
-        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
-        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde, 15)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas, 15);
         cout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
         
     }
@@ -353,15 +353,39 @@ void failoGeneracija(){
     cout << "Parasykite, kokio dydzio norite naujo failo\n";
     int n;
     cin >> n;
+    cout << "Parasykite, koks bus kiekis studentu balu\n";
+    int m;
+    cin >> m;
     cout << "Parasykite failo pavadinima (be .txt)\n";
     string name;
     cin >> name;
     name += ".txt";
+    //random
+    srand(time(NULL));
+
+
+
+    //spausdinimas
     ofstream fout;
     fout.open(name);
+    fout << "Vardas         Pavarde        ";
+    for (int i = 1; i <= m; i++){
+        fout << "ND" << i << tarpai("ND" + to_string(i), 5);
+    }
+    fout << "Egz." << endl;
     for (int i = 0; i < n; i++){
-        fout << "Vardas" << i << tarpai("Vardas" + to_string(i))
-        << "Pavarde" << i << tarpai("Pavarde" + to_string(i)) << endl;
+        fout << "Vardas" << i << tarpai("Vardas" + to_string(i), 15)
+        << "Pavarde" << i << tarpai("Pavarde" + to_string(i), 15);
+        for (int j = 0; j < m; j++){
+            int a = rand() % 10 + 1;
+            fout << a;
+            if (a == 10){
+                fout << "   ";
+            }else{
+                fout << "    ";
+            }
+        }
+        fout << rand() % 10 + 1 << endl;
     }
     fout.close();
 }
