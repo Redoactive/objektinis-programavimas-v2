@@ -12,6 +12,9 @@ duration<double> printTime;
 duration<double> typeTime;
 duration<double> allTime;
 
+random_device rd;
+mt19937 mt(rd());
+uniform_int_distribution<int> distribution (1, 10);
 
 double medianosApsk(vector<int> a, int egzaminas){
     
@@ -132,18 +135,16 @@ void antrasPasirinkimas(){
             terminate();
         }
         
-
         //namu darbu irasai
         cout << "Iveskite kiek norite namu darbu balu\n";
         int n;
         cin >> n;
-        srand(time(NULL));
         for (int i = 0; i < n; i++){
-            int temp = (rand() - (rand() % 10)) % 10 + 1;
+            int temp = distribution(mt);
             dabartinisStudentas.balai.push_back(temp);
         }
 
-        dabartinisStudentas.egzaminas = (rand() - (rand() % 10)) % 10 + 1;
+        dabartinisStudentas.egzaminas = distribution(mt);
         
         dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
@@ -176,13 +177,12 @@ void treciasPasirinkimas(){
     cout << "Iveskite kiek norite namu darbu balu\n";
     int n;
     cin >> n;
-    srand(time(NULL));
     for (int i = 0; i < m; i++){
         
         int temp;
-        temp = (rand() - (rand() % 10)) % 10 + 1;
+        temp = distribution(mt);
         dabartinisStudentas.vardas = bVardas[temp];
-        temp = (rand() - (rand() % 10)) % 10 + 1;
+        temp = distribution(mt);
         dabartinisStudentas.pavarde = bPavarde[temp];
         
         //namu darbu irasai
@@ -192,11 +192,11 @@ void treciasPasirinkimas(){
         // cout << dabartinisStudentas.balai.size() << " ";
         // cout << dabartinisStudentas.balai.capacity() << endl;
         for (int i = 0; i < n; i++){
-            int temp = (rand() - (rand() % 10)) % 10 + 1;
+            int temp = distribution(mt);
             dabartinisStudentas.balai.push_back(temp);
         }
 
-        dabartinisStudentas.egzaminas = (rand() - (rand() % 10)) % 10 + 1;
+        dabartinisStudentas.egzaminas = distribution(mt);
 
         dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
@@ -498,8 +498,6 @@ void failoGeneracija(){
     string name;
     cin >> name;
     name += ".txt";
-    //random
-    srand(time(NULL));
 
     auto createTimeS = high_resolution_clock::now();
 
@@ -517,7 +515,7 @@ void failoGeneracija(){
         fout << "Vardas" << i << tarpai("Vardas" + to_string(i), 15)
         << "Pavarde" << i << tarpai("Pavarde" + to_string(i), 15);
         for (int j = 0; j < m; j++){// balu spausdinimas
-            int a = (rand() - (rand() % 10)) % 10 + 1;
+            int a = distribution(mt);
             fout << a;
             if (a == 10){
                 fout << "   ";
@@ -525,7 +523,8 @@ void failoGeneracija(){
                 fout << "    ";
             }
         }
-        fout << (rand() - (rand() % 10)) % 10 + 1 << endl;
+        int b = distribution(mt);
+        fout << b << endl;
     }
     fout.close();
     auto createTimeE = high_resolution_clock::now();
@@ -576,8 +575,8 @@ void skirstymas(){
 void laikoSpausdinimas(){
         cout << "Failu kurimas - " << createTime.count() << " s.\n";
         cout << "Duomenu nuskaitymas is failo - " << readTime.count() << " s.\n";
-        cout << "Skirstymas i dvi grupes uztruko - " << typeTime.count() << " s.\n";
-        cout << "Studentu rusiavimas i dvi grupes/kategorijas - " << sortTime.count() << " s.\n";
+        cout << "Rusiavimas uztruko - " << sortTime.count() << " s.\n";
+        cout << "Studentu skirstymas i dvi grupes/kategorijas - " << typeTime.count() << " s.\n";
         cout << "Surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << " s.\n";
         allTime = createTime + readTime + typeTime + sortTime + printTime;
         cout << "Visos programos veikimo laikas - " << allTime.count() << " s.\n";

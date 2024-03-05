@@ -4,3 +4,5 @@ run:
 	program.exe
 clean:
 	del *.o program.exe
+deleteTxt:
+	del *.txt
