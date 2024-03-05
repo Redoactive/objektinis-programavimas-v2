@@ -554,8 +554,9 @@ void failoGeneracija(){
 void skirstymas(){
     cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
     char pasirinkimas;
+    cin >> pasirinkimas;
+    auto typeTimeS = high_resolution_clock::now();
     try{
-        cin >> pasirinkimas;
         if (pasirinkimas == 'v'){
             for (int i = 0; i < duomenys.size(); i++){
                 if (duomenys[i].vidurkis < 5){
@@ -587,13 +588,15 @@ void skirstymas(){
         cerr << msg;
         terminate();
     }
-
+    auto typeTimeE = high_resolution_clock::now();
+    typeTime = typeTimeE - typeTimeS;
 }
 
 void laikoSpausdinimas(){
         cout << "Failu kurimas - " << createTime.count() << endl;
-        // cout << "duomenu nuskaitymas is failo - " << readTime.count() << endl;
-        // cout << "studentu rusiavimas i dvi grupes/kategorijas - " << sortTime.count() << endl;
-        // cout << "surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << endl;
-        // cout << "visos programos veikimo laikas - " << allTime.count() << endl;
+        cout << "duomenu nuskaitymas is failo - " << readTime.count() << endl;
+        cout << "Skirstymas i dvi grupes uztruko - " << readTime.count() << endl;
+        cout << "studentu rusiavimas i dvi grupes/kategorijas - " << sortTime.count() << endl;
+        cout << "surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << endl;
+        cout << "visos programos veikimo laikas - " << allTime.count() << endl;
     }
