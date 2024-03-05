@@ -30,8 +30,9 @@ int main(){
             treciasPasirinkimas();
             break;
         case 4:
-            cout << "Iveskite failo pavadinima\n";
+            cout << "Iveskite failo pavadinima (be .txt)\n";
             cin >> failoPav;
+            failoPav += ".txt";
             NuskaitymasFailo(failoPav);
             break;
         case 5:
@@ -53,8 +54,9 @@ int main(){
         }
     }
     //klausiama kaip vartotojas nori isrusiuoti outputa
+    // siose funkcijoje tikrinama ar yra duomenu ir ar reikia daryti rusiavima 
     rusiavimoMenu();
-    
+    rusiavimoMenuSkirstymas();
      //klausiama ar vartotojas spausdinti ekrane ar faile
     while(true){
         try {
@@ -63,10 +65,12 @@ int main(){
             cin >> pasirinkimas;
             if (pasirinkimas == "t"){
                 spausdinimasTerminale();
+                spausdinimasTerminaleSkirstymas();
                 break;
             } 
             else if(pasirinkimas == "f"){
                 spausdinimasFaile();
+                spausdinimasFaileSkirstymas();
                 break;
             }
             else{

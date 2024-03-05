@@ -14,6 +14,7 @@ bool rusiavimasMediana(const studentai &a, const studentai &b);
 
 void rusiavimoMenu();
 
+
 //pagrindines funkcijos
 void pirmasPasirinkimas();
 void antrasPasirinkimas();
@@ -28,3 +29,7 @@ void NuskaitymasFailo(string fileName);
 void skirstymas();
 //failu generacija 
 void failoGeneracija();
+//0.4 versija funkciju kopijos
+void rusiavimoMenuSkirstymas();
+void spausdinimasFaileSkirstymas();
+void spausdinimasTerminaleSkirstymas();
