@@ -5,14 +5,16 @@
 double vidurkioApsk(vector<int> a, int egzaminas);
 double medianosApsk(vector<int> a, int egzaminas);
 //tarpu skaiciavimas spausdinimui
-string tarpai(string a);
+string tarpai(string a, int tarpuDydis);
 //rusiavimo funkcijos
 bool rusiavimasVardas(const studentai &a, const studentai &b);
 bool rusiavimasPavarde(const studentai &a, const studentai &b);
 bool rusiavimasVidurkis(const studentai &a, const studentai &b);
 bool rusiavimasMediana(const studentai &a, const studentai &b);
-
 void rusiavimoMenu();
+
+//laikas
+void laikoSpausdinimas();
 
 //pagrindines funkcijos
 void pirmasPasirinkimas();
@@ -25,3 +27,10 @@ void spausdinimasTerminale();
 
 //nuskaitymas is failo
 void NuskaitymasFailo(string fileName);
+void skirstymas();
+//failu generacija 
+void failoGeneracija();
+//0.4 versija funkciju kopijos
+void rusiavimoMenuSkirstymas();
+void spausdinimasFaileSkirstymas();
+void spausdinimasTerminaleSkirstymas();

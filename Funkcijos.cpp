@@ -1,5 +1,21 @@
 #include "includes.h"
+#include "FunkcijuBaze.h"
 vector<studentai> duomenys;
+vector<studentai> geriStudentai;
+vector<studentai> blogiStudentai;
+
+//globalus laikai
+duration<double> createTime;
+duration<double> readTime;
+duration<double> sortTime;
+duration<double> printTime;
+duration<double> typeTime;
+duration<double> allTime;
+
+random_device rd;
+mt19937 mt(rd());
+uniform_int_distribution<int> distribution (1, 10);
+
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -19,9 +35,9 @@ double vidurkioApsk(vector<int> a, int egzaminas){
     return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
 }
 //funckija spausdinti tarpus
-string tarpai(string a){
+string tarpai(string a, int tarpuDydis){
     string kiekis;
-    int m = 15 - a.length();
+    int m = tarpuDydis - a.length();
     for (int i = 0; i < m; i++){
         kiekis += " ";
     }
@@ -119,18 +135,16 @@ void antrasPasirinkimas(){
             terminate();
         }
         
-
         //namu darbu irasai
         cout << "Iveskite kiek norite namu darbu balu\n";
         int n;
         cin >> n;
-        srand(time(NULL));
         for (int i = 0; i < n; i++){
-            int temp = rand() % 10 + 1;
+            int temp = distribution(mt);
             dabartinisStudentas.balai.push_back(temp);
         }
 
-        dabartinisStudentas.egzaminas = rand() % 10 + 1;
+        dabartinisStudentas.egzaminas = distribution(mt);
         
         dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
@@ -163,13 +177,12 @@ void treciasPasirinkimas(){
     cout << "Iveskite kiek norite namu darbu balu\n";
     int n;
     cin >> n;
-    srand(time(NULL));
     for (int i = 0; i < m; i++){
         
         int temp;
-        temp = rand() % 10 + 1;
+        temp = distribution(mt);
         dabartinisStudentas.vardas = bVardas[temp];
-        temp = rand() % 10 + 1;
+        temp = distribution(mt);
         dabartinisStudentas.pavarde = bPavarde[temp];
         
         //namu darbu irasai
@@ -179,11 +192,11 @@ void treciasPasirinkimas(){
         // cout << dabartinisStudentas.balai.size() << " ";
         // cout << dabartinisStudentas.balai.capacity() << endl;
         for (int i = 0; i < n; i++){
-            int temp = rand() % 10 + 1;
+            int temp = distribution(mt);
             dabartinisStudentas.balai.push_back(temp);
         }
 
-        dabartinisStudentas.egzaminas = rand() % 10 + 1;
+        dabartinisStudentas.egzaminas = distribution(mt);
 
         dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
@@ -196,9 +209,7 @@ void treciasPasirinkimas(){
 void NuskaitymasFailo(string fileName){
     ifstream fin;
     
-    double startTime;
-    startTime = clock();
-    
+    auto readTimeS = high_resolution_clock::now();
     fin.open(fileName);
     try{
         if(!fin){
@@ -240,16 +251,20 @@ void NuskaitymasFailo(string fileName){
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         duomenys.push_back(dabartinisStudentas);
     }
-    cout << "failo skaitymo laikas yra - " <<  (clock() - startTime) / 1000 << " sekundes\n";
+    auto readTimeE = high_resolution_clock::now();
+    readTime = readTimeE - readTimeS;
     fin.close();
 }
 
 //Spausdinimo funkcijos
 void spausdinimasFaile(){
-    cout << "Kaip norite pavadinti savo faila?\n";
+    if (duomenys.empty()){
+        return;
+    }
+    cout << "Kaip norite pavadinti savo faila? (be .txt)\n";
     string pavadinimas;
     cin >> pavadinimas;
-
+    pavadinimas += ".txt";
     ofstream fout;
     fout.open(pavadinimas);
 
@@ -258,22 +273,99 @@ void spausdinimasFaile(){
 
     for (int i = 0; i < duomenys.size(); i++){
 
-        fout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
-        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+        fout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde, 15)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas, 15);
         fout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
         
     }
     fout.close();
 }
 void spausdinimasTerminale(){
+    if (duomenys.empty()){
+        return;
+    }
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "-------------------------------------------------------------------\n";
 
     for (int i = 0; i < duomenys.size(); i++){
 
-        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde)
-        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas);
+        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde, 15)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas, 15);
         cout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
+        
+    }
+}
+
+void spausdinimasFaileSkirstymas(){
+    if (geriStudentai.empty()){
+        return;
+    }
+    string pavadinimas;
+
+    cout << "Kaip norite pavadinti savo faila geriems studentams? (be .txt)\n";
+    cin >> pavadinimas;
+    pavadinimas += ".txt";
+    ofstream foutG;
+    foutG.open(pavadinimas);
+
+    cout << "Kaip norite pavadinti savo faila blogiems studentams? (be .txt)\n";
+    cin >> pavadinimas;
+    pavadinimas += ".txt";
+    ofstream foutB;
+    auto printTimeS = high_resolution_clock::now();
+    foutB.open(pavadinimas);
+
+
+
+    foutG << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    foutG << "-------------------------------------------------------------------\n";
+
+    for (int i = 0; i < geriStudentai.size(); i++){
+
+        foutG << setprecision(2) << fixed << geriStudentai[i].pavarde << tarpai(geriStudentai[i].pavarde, 15)
+        << geriStudentai[i].vardas <<  tarpai(geriStudentai[i].vardas, 15);
+        foutG << geriStudentai[i].vidurkis << "             " << geriStudentai[i].mediana << endl;
+        
+    }
+    foutG.close();
+
+
+    foutB << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    foutB << "-------------------------------------------------------------------\n";
+
+    for (int i = 0; i < blogiStudentai.size(); i++){
+
+        foutB << setprecision(2) << fixed << blogiStudentai[i].pavarde << tarpai(blogiStudentai[i].pavarde, 15)
+        << blogiStudentai[i].vardas <<  tarpai(blogiStudentai[i].vardas, 15);
+        foutB << blogiStudentai[i].vidurkis << "             " << blogiStudentai[i].mediana << endl;
+        
+    }
+    foutB.close();
+    auto printTimeE = high_resolution_clock::now();
+    printTime = printTimeE - printTimeS;
+}
+void spausdinimasTerminaleSkirstymas(){
+    if (geriStudentai.empty()){
+        return;
+    }
+    cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    cout << "------------------------------Geri studentai-------------------------------------\n";
+
+    for (int i = 0; i < geriStudentai.size(); i++){
+
+        cout << setprecision(2) << fixed << geriStudentai[i].pavarde << tarpai(geriStudentai[i].pavarde, 15)
+        << geriStudentai[i].vardas <<  tarpai(geriStudentai[i].vardas, 15);
+        cout << geriStudentai[i].vidurkis << "             " << geriStudentai[i].mediana << endl;
+        
+    }
+    cout << "\nPavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    cout << "------------------------------Blogi studentai-------------------------------------\n";
+
+    for (int i = 0; i < blogiStudentai.size(); i++){
+
+        cout << setprecision(2) << fixed << blogiStudentai[i].pavarde << tarpai(blogiStudentai[i].pavarde, 15)
+        << blogiStudentai[i].vardas <<  tarpai(blogiStudentai[i].vardas, 15);
+        cout << blogiStudentai[i].vidurkis << "             " << blogiStudentai[i].mediana << endl;
         
     }
 }
@@ -295,6 +387,9 @@ bool rusiavimasVidurkis(const studentai &a, const studentai &b){
 }
 
 void rusiavimoMenu(){
+    if (duomenys.empty()){
+        return;
+    }
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         cout << "Kaip norite rusiuoti output?\n"
@@ -305,37 +400,184 @@ void rusiavimoMenu(){
         
         int pasirinkimas = 0;
         cin >> pasirinkimas;
-        double startTime;
+        auto sortTimeS = high_resolution_clock::now();
         switch (pasirinkimas)
         {
         case 1:
-            startTime = clock();
             sort(duomenys.begin(), duomenys.end(), rusiavimasVardas);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
             break;
         case 2:
-            startTime = clock();
             sort(duomenys.begin(), duomenys.end(), rusiavimasPavarde);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
             break;
         case 3:
-            startTime = clock();
             sort(duomenys.begin(), duomenys.end(), rusiavimasVidurkis);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
             break;
         case 4:
-            startTime = clock();
             sort(duomenys.begin(), duomenys.end(), rusiavimasMediana);
             darbasBaigtas = true;
-            cout << "rusiavimas vyko - " << (clock() - startTime) / 1000 << " sekundes\n";
             break;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
             terminate();
             break;
         }
+        auto sortTimeE = high_resolution_clock::now();
+        sortTime = sortTimeE - sortTimeS;
     }
+    
 }
+
+void rusiavimoMenuSkirstymas(){
+    if (geriStudentai.empty()){
+        return;
+    }
+    bool darbasBaigtas = false;
+    while (darbasBaigtas == false){
+        cout << "Kaip norite rusiuoti output?\n"
+        << "( 1 ) - Pagal varda\n"
+        << "( 2 ) - Pagal pavarde\n"
+        << "( 3 ) - Pagal vidurkis\n"
+        << "( 4 ) - Pagal mediana\n";
+        
+        int pasirinkimas = 0;
+        cin >> pasirinkimas;
+        auto sortTimeS = high_resolution_clock::now();
+        switch (pasirinkimas)
+        {
+        case 1:
+            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVardas);
+            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardas);
+            darbasBaigtas = true;
+            break;
+        case 2:
+            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasPavarde);
+            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasPavarde);
+            darbasBaigtas = true;
+            break;
+        case 3:
+            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVidurkis);
+            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVidurkis);
+            darbasBaigtas = true;
+            break;
+        case 4:
+            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasMediana);
+            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasMediana);
+            darbasBaigtas = true;
+            break;
+        default:
+            cout << "Blogai ivedete duomenys, bandykite dar karta\n";
+            terminate();
+            break;
+        }
+        auto sortTimeE = high_resolution_clock::now();
+        sortTime = sortTimeE - sortTimeS;
+    }
+    
+}
+string extraSpace (string a, int b){
+    
+    string space;
+    for (int i = 0; i < b; i++){
+        space += " ";
+    }
+    return space;
+}
+
+void failoGeneracija(){
+    
+    cout << "Parasykite, kokio dydzio norite naujo failo\n";
+    int n;
+    cin >> n;
+    cout << "Parasykite, koks bus kiekis studentu balu\n";
+    int m;
+    cin >> m;
+    cout << "Parasykite failo pavadinima (be .txt)\n";
+    string name;
+    cin >> name;
+    name += ".txt";
+
+    auto createTimeS = high_resolution_clock::now();
+
+    //spausdinimas
+    ofstream fout;
+    fout.open(name);
+    //pirma eilute
+    fout << "Vardas         Pavarde        ";
+    for (int i = 1; i <= m; i++){
+        fout << "ND" << i << tarpai("ND" + to_string(i), 5);
+    }
+    fout << "Egz." << endl;
+    //kitos eilutes
+    for (int i = 0; i < n; i++){
+        fout << "Vardas" << i << tarpai("Vardas" + to_string(i), 15)
+        << "Pavarde" << i << tarpai("Pavarde" + to_string(i), 15);
+        for (int j = 0; j < m; j++){// balu spausdinimas
+            int a = distribution(mt);
+            fout << a;
+            if (a == 10){
+                fout << "   ";
+            }else{
+                fout << "    ";
+            }
+        }
+        int b = distribution(mt);
+        fout << b << endl;
+    }
+    fout.close();
+    auto createTimeE = high_resolution_clock::now();
+    createTime = createTimeE - createTimeS;
+}
+
+void skirstymas(){
+    cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
+    char pasirinkimas;
+    cin >> pasirinkimas;
+    auto typeTimeS = high_resolution_clock::now();
+    try{
+        if (pasirinkimas == 'v'){
+            for (int i = 0; i < duomenys.size(); i++){
+                if (duomenys[i].vidurkis < 5){
+                    blogiStudentai.push_back(duomenys[i]);
+                }
+                else{
+                    geriStudentai.push_back(duomenys[i]);
+                }
+            }
+            
+        }
+        else if(pasirinkimas == 'm'){
+            for (int i = 0; i < duomenys.size(); i++){
+                if (duomenys[i].mediana < 5){
+                    blogiStudentai.push_back(duomenys[i]);
+                }
+                else{
+                    geriStudentai.push_back(duomenys[i]);
+                }
+            }
+        }
+
+        else{
+            throw "Blogai ivesta";
+        }
+        duomenys.clear();
+    }
+    catch (const char* msg){
+        cerr << msg;
+        terminate();
+    }
+    auto typeTimeE = high_resolution_clock::now();
+    typeTime = typeTimeE - typeTimeS;
+}
+
+void laikoSpausdinimas(){
+        cout << "Failu kurimas - " << createTime.count() << " s.\n";
+        cout << "Duomenu nuskaitymas is failo - " << readTime.count() << " s.\n";
+        cout << "Rusiavimas uztruko - " << sortTime.count() << " s.\n";
+        cout << "Studentu skirstymas i dvi grupes/kategorijas - " << typeTime.count() << " s.\n";
+        cout << "Surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << " s.\n";
+        allTime = createTime + readTime + typeTime + sortTime + printTime;
+        cout << "Visos programos veikimo laikas - " << allTime.count() << " s.\n";
+    }

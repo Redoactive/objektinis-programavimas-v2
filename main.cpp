@@ -2,8 +2,12 @@
 #include "includes.h"
 
 int main(){
-    bool darbasBaigtas = false;
+    
 
+
+
+
+    bool darbasBaigtas = false;
     //pasirinkimu menu
     while (darbasBaigtas == false)
     {
@@ -12,8 +16,9 @@ int main(){
         << "( 2 ) - Generuoti pazymius atsitiktinai\n"
         << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
         << "( 4 ) - Nuskaityti is failo\n"
-        << "( 5 ) - Testuoti automatiskai faila - studentai1000000\n"
-        << "( 6 ) - Baigti darba\n";
+        << "( 5 ) - Generuoti faila\n"
+        << "( 6 ) - Suskirstyti i gerus mokinius ir i nereikalingus civilizacijai mokinius ir baigti\n"
+        << "( 7 ) - Baigti darba\n";
         int pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
@@ -29,16 +34,23 @@ int main(){
             treciasPasirinkimas();
             break;
         case 4:
-            cout << "Iveskite failo pavadinima\n";
+            cout << "Iveskite failo pavadinima (be .txt)\n";
             cin >> failoPav;
+            failoPav += ".txt";
             NuskaitymasFailo(failoPav);
             break;
         case 5:
-            NuskaitymasFailo("studentai1000000.txt");
+            failoGeneracija();
             break;
         case 6:
             darbasBaigtas = true;
+            skirstymas();
             break;
+        case 7:
+            darbasBaigtas = true;
+            break;
+        case 8:
+            terminate();
         default:
             
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
@@ -46,8 +58,9 @@ int main(){
         }
     }
     //klausiama kaip vartotojas nori isrusiuoti outputa
+    // siose funkcijoje tikrinama ar yra duomenu ir ar reikia daryti rusiavima 
     rusiavimoMenu();
-    
+    rusiavimoMenuSkirstymas();
      //klausiama ar vartotojas spausdinti ekrane ar faile
     while(true){
         try {
@@ -56,10 +69,12 @@ int main(){
             cin >> pasirinkimas;
             if (pasirinkimas == "t"){
                 spausdinimasTerminale();
+                spausdinimasTerminaleSkirstymas();
                 break;
             } 
             else if(pasirinkimas == "f"){
                 spausdinimasFaile();
+                spausdinimasFaileSkirstymas();
                 break;
             }
             else{
@@ -70,4 +85,5 @@ int main(){
             cerr << msg << endl;
         }
     }
+    laikoSpausdinimas();
 }

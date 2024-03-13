@@ -6,10 +6,11 @@
 #include <algorithm>
 #include <ctime>
 #include <fstream>
-
+#include <chrono>
+#include <random>
 
 using namespace std;
-
+using namespace std::chrono;
 struct studentai{
     string vardas;
     string pavarde;
