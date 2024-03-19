@@ -18,49 +18,55 @@ int main(){
         << "( 4 ) - Nuskaityti is failo\n"
         << "( 5 ) - Generuoti faila\n"
         << "( 6 ) - Suskirstyti i gerus mokinius ir i nereikalingus civilizacijai mokinius ir baigti\n"
-        << "( 7 ) - Baigti darba\n";
-        int pasirinkimas;
+        << "( 7 ) - Baigti darba be skirstymo\n";
+        char pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
         switch (pasirinkimas)
         {
-        case 1:
+        case '1':
             pirmasPasirinkimas();
             break;
-        case 2:
+        case '2':
             antrasPasirinkimas();
             break;
-        case 3:
+        case '3':
             treciasPasirinkimas();
             break;
-        case 4:
+        case '4':
             cout << "Iveskite failo pavadinima (be .txt)\n";
             cin >> failoPav;
             failoPav += ".txt";
             NuskaitymasFailo(failoPav);
             break;
-        case 5:
+        case '5':
             failoGeneracija();
             break;
-        case 6:
+        case '6':
             darbasBaigtas = true;
             skirstymas();
             break;
-        case 7:
+        case '7':
             darbasBaigtas = true;
             break;
-        case 8:
+        case '8':
             terminate();
         default:
-            
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
             break;
         }
     }
+
+
+
     //klausiama kaip vartotojas nori isrusiuoti outputa
     // siose funkcijoje tikrinama ar yra duomenu ir ar reikia daryti rusiavima 
     rusiavimoMenu();
     rusiavimoMenuSkirstymas();
+
+
+
+
      //klausiama ar vartotojas spausdinti ekrane ar faile
     while(true){
         try {
@@ -85,5 +91,9 @@ int main(){
             cerr << msg << endl;
         }
     }
+
+
+
+    
     laikoSpausdinimas();
 }

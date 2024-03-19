@@ -1,5 +1,5 @@
 main:
-	g++ -o program .\main.cpp .\funkcijos.cpp
+	g++ -o program .\main.cpp .\funkcijosVektoriai.cpp
 run:
 	program.exe
 clean:

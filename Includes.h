@@ -8,6 +8,7 @@
 #include <fstream>
 #include <chrono>
 #include <random>
+#include <sstream>
 
 using namespace std;
 using namespace std::chrono;
