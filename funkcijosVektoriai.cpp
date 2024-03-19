@@ -1,5 +1,10 @@
 #include "includes.h"
-#include "FunkcijuBaze.h"
+// #include "FunkcijuBaze.h"
+
+
+
+
+
 vector<studentai> duomenys;
 vector<studentai> geriStudentai;
 vector<studentai> blogiStudentai;
@@ -15,7 +20,6 @@ duration<double> allTime;
 random_device rd;
 mt19937 mt(rd());
 uniform_int_distribution<int> distribution (1, 10);
-uniform_int_distribution<int> testdistribution (0, 9);
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -170,10 +174,10 @@ void antrasPasirinkimas(){
 
 void treciasPasirinkimas(){
     //Vardu baze || vardai gali nesutapti su ne mergiotinem pavardem
-    vector<string> bVardas = {"Povilas", "Andrius", "Marius", "Ignas", "Petras",
-    "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante"};
-    vector<string> bPavarde = {"Petrauskas", "Pavardenis", "Maliauka", "Ablamas",
-    "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis"};
+    vector<string> bVardas = {"", "Andrius", "Marius", "Ignas", "Petras",
+    "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante", "Povilas"};
+    vector<string> bPavarde = {"", "Pavardenis", "Maliauka", "Ablamas",
+    "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis", "Petrauskas"};
         
     //pagrindinis ciklas
     studentai dabartinisStudentas;
@@ -183,12 +187,12 @@ void treciasPasirinkimas(){
     cout << "Iveskite kiek norite namu darbu balu\n";
     int n;
     cin >> n;
-    
+
     for (int i = 0; i < m; i++){
         int temp; 
-        temp = testdistribution(mt);
+        temp = distribution(mt);
         dabartinisStudentas.vardas = bVardas[temp];
-        temp = testdistribution(mt);
+        temp = distribution(mt);
         dabartinisStudentas.pavarde = bPavarde[temp];
         
         //namu darbu irasai

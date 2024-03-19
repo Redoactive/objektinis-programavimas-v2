@@ -2,11 +2,37 @@
 #include "includes.h"
 
 int main(){
-    
+
+    int kintamujuTipas;
 
 
-
-
+    //klausiama su kuriais kintamaisiais vartotojas nori dirbti.
+    while(true){
+        try {
+            cout << "Kokius jus naudosite kintamuosius?\n"
+            << "( v ) - Vektoriai, ( d ) - Dekai, ( l ) - listai\n";
+            char pasirinkimas;
+            cin >> pasirinkimas;
+            if (pasirinkimas == 'v' || pasirinkimas == 'V'){
+                kintamujuTipas = 1;
+                break;
+            } 
+            else if(pasirinkimas == 'd' || pasirinkimas == 'D'){
+                kintamujuTipas = 2;
+                break;
+            }
+            else if(pasirinkimas == 'l' || pasirinkimas == 'L'){
+                kintamujuTipas = 3;
+                break;
+            }
+            else{
+                throw string("Blogai ivesta raide, bandykite dar karta");
+            }
+        }
+        catch(string& msg){
+            cerr << msg << endl;
+        }
+    }
     bool darbasBaigtas = false;
     //pasirinkimu menu
     while (darbasBaigtas == false)
