@@ -1,9 +1,10 @@
 #include "includes.h"
 #include "FunkcijuBaze.h"
-vector<studentai> duomenys;
-vector<studentai> geriStudentai;
-vector<studentai> blogiStudentai;
+#include <deque>
 
+deque<studentaiDekas> duomenys;
+deque<studentaiDekas> geriStudentai;
+deque<studentaiDekas> blogiStudentai;
 //globalus laikai
 duration<double> createTime;
 duration<double> readTime;
@@ -15,7 +16,8 @@ duration<double> allTime;
 random_device rd;
 mt19937 mt(rd());
 uniform_int_distribution<int> distribution (1, 10);
-double medianosApsk(vector<int> a, int egzaminas){
+
+double medianosApsk(deque<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
     int n = a.size() / 2;
@@ -26,26 +28,18 @@ double medianosApsk(vector<int> a, int egzaminas){
         return (a[n] + a[n++]) / 2 * 0.4 + egzaminas * 0.6;
     }
 }
-double vidurkioApsk(vector<int> a, int egzaminas){
+double vidurkioApsk(deque<int> a, int egzaminas){
     double vidurkis = 0;
     for (int i : a){
         vidurkis += i;
     }
     return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
 }
-//funckija spausdinti tarpus
-string tarpai(string a, int tarpuDydis){
-    string kiekis;
-    int m = tarpuDydis - a.length();
-    for (int i = 0; i < m; i++){
-        kiekis += " ";
-    }
-    return kiekis;
-}
+
 //pagrindines funkcijos
 void pirmasPasirinkimas(){
     //pagrindinis ciklas
-    studentai dabartinisStudentas;
+    studentaiDekas dabartinisStudentas;
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         try{
@@ -120,7 +114,7 @@ void pirmasPasirinkimas(){
 
 void antrasPasirinkimas(){
     //pagrindinis ciklas
-    studentai dabartinisStudentas;
+    studentaiDekas dabartinisStudentas;
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         try{
@@ -169,13 +163,13 @@ void antrasPasirinkimas(){
 
 void treciasPasirinkimas(){
     //Vardu baze || vardai gali nesutapti su ne mergiotinem pavardem
-    vector<string> bVardas = {"", "Andrius", "Marius", "Ignas", "Petras",
+    deque<string> bVardas = {"", "Andrius", "Marius", "Ignas", "Petras",
     "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante", "Povilas"};
-    vector<string> bPavarde = {"", "Pavardenis", "Maliauka", "Ablamas",
+    deque<string> bPavarde = {"", "Pavardenis", "Maliauka", "Ablamas",
     "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis", "Petrauskas"};
         
     //pagrindinis ciklas
-    studentai dabartinisStudentas;
+    studentaiDekas dabartinisStudentas;
     int m;
     cout << "Pasirinkite kiek studentu bus automatiskai sugeneruota\n";
     cin >> m;
@@ -225,7 +219,7 @@ void NuskaitymasFailo(string fileName){
         return;
     }
     
-    studentai dabartinisStudentas;
+    studentaiDekas dabartinisStudentas;
 
     //patikrinti kiek namu darbu yra faile
     string temp;
@@ -481,14 +475,7 @@ void rusiavimoMenuSkirstymas(){
     }
     
 }
-string extraSpace (string a, int b){
-    
-    string space;
-    for (int i = 0; i < b; i++){
-        space += " ";
-    }
-    return space;
-}
+
 
 void failoGeneracija(){
     

@@ -6,9 +6,9 @@ void darbasSuVektoriais();
 void darbasSuDekais();
 void darbasSuListais();
 
-//apskaiciavimo funkcijos
-double vidurkioApsk(vector<int> a, int egzaminas);
-double medianosApsk(vector<int> a, int egzaminas);
+//apskaiciavimo funkcijos //ka cia daryti?? 
+// double vidurkioApsk(vector<int> a, int egzaminas);
+// double medianosApsk(vector<int> a, int egzaminas);
 //tarpu skaiciavimas spausdinimui
 string tarpai(string a, int tarpuDydis);
 //rusiavimo funkcijos

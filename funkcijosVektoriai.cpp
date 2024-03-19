@@ -1,5 +1,9 @@
 #include "includes.h"
 #include "FunkcijuBaze.h"
+#include <vector>
+
+
+
 vector<studentai> duomenys;
 vector<studentai> geriStudentai;
 vector<studentai> blogiStudentai;
