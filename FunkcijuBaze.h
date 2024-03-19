@@ -1,6 +1,11 @@
 #pragma once
 #include "includes.h"
 
+//konteineriu skirtumo funkcijos main pasirinkimai
+void darbasSuVektoriais();
+void darbasSuDekais();
+void darbasSuListais();
+
 //apskaiciavimo funkcijos
 double vidurkioApsk(vector<int> a, int egzaminas);
 double medianosApsk(vector<int> a, int egzaminas);
