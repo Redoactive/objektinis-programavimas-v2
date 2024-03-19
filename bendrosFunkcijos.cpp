@@ -275,3 +275,24 @@ bool darbasBaigtas = false;
     
     laikoSpausdinimas();
 }
+
+//bendros funkcijos
+
+//funckija spausdinti tarpus
+string tarpai(string a, int tarpuDydis){
+    string kiekis;
+    int m = tarpuDydis - a.length();
+    for (int i = 0; i < m; i++){
+        kiekis += " ";
+    }
+    return kiekis;
+}
+
+string extraSpace (string a, int b){
+    
+    string space;
+    for (int i = 0; i < b; i++){
+        space += " ";
+    }
+    return space;
+}

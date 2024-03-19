@@ -1,10 +1,5 @@
 #include "includes.h"
-// #include "FunkcijuBaze.h"
-
-
-
-
-
+#include "FunkcijuBaze.h"
 vector<studentai> duomenys;
 vector<studentai> geriStudentai;
 vector<studentai> blogiStudentai;
@@ -20,6 +15,7 @@ duration<double> allTime;
 random_device rd;
 mt19937 mt(rd());
 uniform_int_distribution<int> distribution (1, 10);
+
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -38,15 +34,7 @@ double vidurkioApsk(vector<int> a, int egzaminas){
     }
     return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
 }
-//funckija spausdinti tarpus
-string tarpai(string a, int tarpuDydis){
-    string kiekis;
-    int m = tarpuDydis - a.length();
-    for (int i = 0; i < m; i++){
-        kiekis += " ";
-    }
-    return kiekis;
-}
+
 //pagrindines funkcijos
 void pirmasPasirinkimas(){
     //pagrindinis ciklas
@@ -486,14 +474,7 @@ void rusiavimoMenuSkirstymas(){
     }
     
 }
-string extraSpace (string a, int b){
-    
-    string space;
-    for (int i = 0; i < b; i++){
-        space += " ";
-    }
-    return space;
-}
+
 
 void failoGeneracija(){
     
