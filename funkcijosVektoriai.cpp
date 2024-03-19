@@ -15,7 +15,7 @@ duration<double> allTime;
 random_device rd;
 mt19937 mt(rd());
 uniform_int_distribution<int> distribution (1, 10);
-
+uniform_int_distribution<int> testdistribution (0, 9);
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -119,18 +119,11 @@ void pirmasPasirinkimas(){
 }
 
 
-
-
-
-
-
-
 void antrasPasirinkimas(){
     //pagrindinis ciklas
     studentai dabartinisStudentas;
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
-        double vidurkis = 0, mediana;
         try{
             cout << "Iveskite pavarde\n";
             cin >> dabartinisStudentas.pavarde; 
@@ -145,7 +138,7 @@ void antrasPasirinkimas(){
         }
         catch(char const *msg){
             cerr << msg << endl;
-            terminate();
+            continue;
         }
         
         //namu darbu irasai
@@ -181,7 +174,7 @@ void treciasPasirinkimas(){
     "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante"};
     vector<string> bPavarde = {"Petrauskas", "Pavardenis", "Maliauka", "Ablamas",
     "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis"};
-
+        
     //pagrindinis ciklas
     studentai dabartinisStudentas;
     int m;
@@ -190,34 +183,33 @@ void treciasPasirinkimas(){
     cout << "Iveskite kiek norite namu darbu balu\n";
     int n;
     cin >> n;
+    
     for (int i = 0; i < m; i++){
-        
-        int temp;
-        temp = distribution(mt);
+        int temp; 
+        temp = testdistribution(mt);
         dabartinisStudentas.vardas = bVardas[temp];
-        temp = distribution(mt);
+        temp = testdistribution(mt);
         dabartinisStudentas.pavarde = bPavarde[temp];
         
         //namu darbu irasai
-
-        // potenciali klaida
-        // dabartinisStudentas.balai.clear();
-        // cout << dabartinisStudentas.balai.size() << " ";
-        // cout << dabartinisStudentas.balai.capacity() << endl;
         for (int i = 0; i < n; i++){
             int temp = distribution(mt);
+            
             dabartinisStudentas.balai.push_back(temp);
         }
-
+        
+        
         dabartinisStudentas.egzaminas = distribution(mt);
 
         dabartinisStudentas.vidurkis = vidurkioApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         dabartinisStudentas.mediana = medianosApsk(dabartinisStudentas.balai, dabartinisStudentas.egzaminas);
         //issaugomi duomenys
-        duomenys.push_back(dabartinisStudentas);        
-
+        duomenys.push_back(dabartinisStudentas);      
     }
 }
+
+
+
 //Nuskaitymas is failo
 void NuskaitymasFailo(string fileName){
     ifstream fin;
