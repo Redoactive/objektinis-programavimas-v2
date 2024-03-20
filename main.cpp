@@ -1,6 +1,4 @@
 #include "funkcijuBaze.h"
-#include "includes.h"
-
 int main(){
 
     //klausiama su kuriais kintamaisiais vartotojas nori dirbti.
@@ -14,14 +12,14 @@ int main(){
                 darbasSuVektoriais();
                 break;
             } 
-            else if(pasirinkimas == 'd' || pasirinkimas == 'D'){
-                darbasSuDekais();
-                break;
-            }
-            else if(pasirinkimas == 'l' || pasirinkimas == 'L'){
-                darbasSuListais();
-                break;
-            }
+            // else if(pasirinkimas == 'd' || pasirinkimas == 'D'){
+            //     darbasSuDekais();
+            //     break;
+            // }
+            // else if(pasirinkimas == 'l' || pasirinkimas == 'L'){
+            //     darbasSuListais();
+            //     break;
+            // }
             else{
                 throw string("Blogai ivesta raide, bandykite dar karta");
             }
@@ -30,5 +28,4 @@ int main(){
             cerr << msg << endl;
         }
     }
-
 }

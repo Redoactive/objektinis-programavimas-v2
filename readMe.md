@@ -1,10 +1,33 @@
-# V0.4 Versija
-1. Galima automatiskai sukurti norimo dydzio failus
-2. Galima rinktis kad duomenys butu surusiuoti i dvi grupes ir jas isspausdintu
-3. Prideta laiko analize
-4. Sukurtas makefile
+## V1.0 Versija
+# Ka si programa sugeba padaryti
+1. Programa apdoroja duomenys ir isspausdina studentu rezultatus surusiavus ir apskaiciavus galutini bala.
+2. Vartotojas gali ivesti duomenys pats arba pasirinkti, kad duomenys butu automatiskai sugeneruoti.
+3. Duomenys galima sugeneruoti i faila, nuskaityti is failo ir irasyti i faila.
+4. Studentu duomenys galima suskirstyti i dvi skirtingas grupes, gerus studentus ir blogus studentus.
+# Kas nauja 1.0 versjoje
+1. Sukurti papildomi failai, kurie realizuoja programos veikima su skirtingais konteineriais.
+2. Gauti nauji testavimo laikai.
+3. Sutaisyta keleta klaidu ir istrintos nereikalingos kodo vietos.
+4. Labiau optimizuotas kodas.
 
-Skaiciavimui kurtas buvo panasaus dydzio failas, kaip duoti testavimui, o kiti laikai yra gauti dirbant su duotais txt failais
+
+
+Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
+
+## 1000 dydzio failas
+# Vektorius
+|Darbas                          |Laikas      |
+|--------------------------------|------------|
+|Duomenu nuskaitymas is failo    |0.0365163 s.|
+|Rusiavimas uztruko              |0.0063748 s.|
+|Studentu skirstymas i dvi grupes|0.0037312 s.|
+|Visos programos veikimo laikas  |0.1755581 s.|
+
+
+
+
+
+
 # studentai10000.txt
 |Darbas                          |Laikas      |
 |--------------------------------|------------|

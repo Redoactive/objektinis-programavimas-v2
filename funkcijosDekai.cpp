@@ -1,5 +1,5 @@
-#include "includes.h"
-#include "FunkcijuBaze.h"
+// #include "includes.h"
+#include "funckijuBazeDekai.h"
 
 deque<studentaiDekas> duomenys;
 deque<studentaiDekas> geriStudentai;
@@ -15,6 +15,101 @@ duration<double> allTime;
 random_device rd;
 mt19937 mt(rd());
 uniform_int_distribution<int> distribution (1, 10);
+
+
+void darbasSuDekais(){
+bool darbasBaigtas = false;
+    //pasirinkimu menu
+    while (darbasBaigtas == false)
+    {
+        cout << "Pasirinkite, ka norite daryti\n"
+        << "( 1 ) - Ivesti duomenys ranka\n"
+        << "( 2 ) - Generuoti pazymius atsitiktinai\n"
+        << "( 3 ) - Generuoti ir pazymius ir studentu vardus, pavardes\n"
+        << "( 4 ) - Nuskaityti is failo\n"
+        << "( 5 ) - Generuoti faila\n"
+        << "( 6 ) - Suskirstyti i gerus mokinius ir i nereikalingus civilizacijai mokinius ir baigti\n"
+        << "( 7 ) - Baigti darba be skirstymo\n";
+        char pasirinkimas;
+        cin >> pasirinkimas;
+        string failoPav;
+        switch (pasirinkimas)
+        {
+        case '1':
+            pirmasPasirinkimasDekai();
+            break;
+        case '2':
+            antrasPasirinkimasDekai();
+            break;
+        case '3':
+            treciasPasirinkimasDekai();
+            break;
+        case '4':
+            cout << "Iveskite failo pavadinima (be .txt)\n";
+            cin >> failoPav;
+            failoPav += ".txt";
+            NuskaitymasFailoDekai(failoPav);
+            break;
+        case '5':
+            failoGeneracija();
+            break;
+        case '6':
+            darbasBaigtas = true;
+            skirstymas();
+            break;
+        case '7':
+            darbasBaigtas = true;
+            break;
+        case '8':
+            terminate();
+        default:
+            cout << "Blogai ivedete duomenys, bandykite dar karta\n";
+            break;
+        }
+    }
+
+
+
+    //klausiama kaip vartotojas nori isrusiuoti outputa
+    // siose funkcijoje tikrinama ar yra duomenu ir ar reikia daryti rusiavima 
+    rusiavimoMenu();
+    rusiavimoMenuSkirstymas();
+
+
+
+
+     //klausiama ar vartotojas spausdinti ekrane ar faile
+    while(true){
+        try {
+            cout << "Norite spausdini terminale ( t ) ar faile ( f )?\n";
+            string pasirinkimas;
+            cin >> pasirinkimas;
+            if (pasirinkimas == "t"){
+                spausdinimasTerminale();
+                spausdinimasTerminaleSkirstymas();
+                break;
+            } 
+            else if(pasirinkimas == "f"){
+                spausdinimasFaile();
+                spausdinimasFaileSkirstymas();
+                break;
+            }
+            else{
+                throw "Blogai ivesta raide, bandykite dar karta\n";
+            }
+        }
+        catch(char const* msg){
+            cerr << msg << endl;
+        }
+    }
+
+
+
+    
+    laikoSpausdinimas();
+}
+
+
 
 double medianosApsk(deque<int> a, int egzaminas){
     
@@ -36,7 +131,7 @@ double vidurkioApsk(deque<int> a, int egzaminas){
 }
 
 //pagrindines funkcijos
-void pirmasPasirinkimas(){
+void pirmasPasirinkimasDekai(){
     //pagrindinis ciklas
     studentaiDekas dabartinisStudentas;
     bool darbasBaigtas = false;
@@ -111,8 +206,9 @@ void pirmasPasirinkimas(){
 }
 
 
-void antrasPasirinkimas(){
+void antrasPasirinkimasDekai(){
     //pagrindinis ciklas
+    cout << "hello";
     studentaiDekas dabartinisStudentas;
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
@@ -160,7 +256,7 @@ void antrasPasirinkimas(){
     }
 }
 
-void treciasPasirinkimas(){
+void treciasPasirinkimasDekai(){
     //Vardu baze || vardai gali nesutapti su ne mergiotinem pavardem
     deque<string> bVardas = {"", "Andrius", "Marius", "Ignas", "Petras",
     "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante", "Povilas"};
@@ -203,7 +299,7 @@ void treciasPasirinkimas(){
 
 
 //Nuskaitymas is failo
-void NuskaitymasFailo(string fileName){
+void NuskaitymasFailoDekai(string fileName){
     ifstream fin;
     
     auto readTimeS = high_resolution_clock::now();
@@ -475,51 +571,6 @@ void rusiavimoMenuSkirstymas(){
     
 }
 
-
-void failoGeneracija(){
-    
-    cout << "Parasykite, kokio dydzio norite naujo failo\n";
-    int n;
-    cin >> n;
-    cout << "Parasykite, koks bus kiekis studentu balu\n";
-    int m;
-    cin >> m;
-    cout << "Parasykite failo pavadinima (be .txt)\n";
-    string name;
-    cin >> name;
-    name += ".txt";
-
-    auto createTimeS = high_resolution_clock::now();
-
-    //spausdinimas
-    ofstream fout;
-    fout.open(name);
-    //pirma eilute
-    fout << "Vardas         Pavarde        ";
-    for (int i = 1; i <= m; i++){
-        fout << "ND" << i << tarpai("ND" + to_string(i), 5);
-    }
-    fout << "Egz." << endl;
-    //kitos eilutes
-    for (int i = 0; i < n; i++){
-        fout << "Vardas" << i << tarpai("Vardas" + to_string(i), 15)
-        << "Pavarde" << i << tarpai("Pavarde" + to_string(i), 15);
-        for (int j = 0; j < m; j++){// balu spausdinimas
-            int a = distribution(mt);
-            fout << a;
-            if (a == 10){
-                fout << "   ";
-            }else{
-                fout << "    ";
-            }
-        }
-        int b = distribution(mt);
-        fout << b << endl;
-    }
-    fout.close();
-    auto createTimeE = high_resolution_clock::now();
-    createTime = createTimeE - createTimeS;
-}
 
 void skirstymas(){
     cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
