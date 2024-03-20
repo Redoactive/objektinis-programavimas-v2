@@ -1,8 +1,8 @@
 #include "includes.h"
 #include "FunkcijuBaze.h"
-vector<studentai> duomenys;
-vector<studentai> geriStudentai;
-vector<studentai> blogiStudentai;
+list<studentaiListai> duomenys;
+list<studentaiListai> geriStudentai;
+list<studentaiListai> blogiStudentai;
 
 //globalus laikai
 duration<double> createTime;
@@ -15,18 +15,22 @@ duration<double> allTime;
 random_device rd;
 mt19937 mt(rd());
 uniform_int_distribution<int> distribution (1, 10);
-double medianosApsk(vector<int> a, int egzaminas){
-    
-    sort(a.begin(), a.end());
+double medianosApsk(list<int> a, int egzaminas){
+    a.sort();
+    list<int>::iterator itr = a.begin();
+    // sort(a.begin(), a.end());
     int n = a.size() / 2;
+    advance(itr, n);
     if(n % 2 == 0){
-        return a[n] * 0.4 + egzaminas * 0.6;
+        return *itr * 0.4 + egzaminas * 0.6;
     }
     else {
-        return (a[n] + a[n++]) / 2 * 0.4 + egzaminas * 0.6;
+        list<int>::iterator itr1 = itr;
+        itr++;
+        return (*itr + *itr1) / 2 * 0.4 + egzaminas * 0.6;
     }
 }
-double vidurkioApsk(vector<int> a, int egzaminas){
+double vidurkioApsk(list<int> a, int egzaminas){
     double vidurkis = 0;
     for (int i : a){
         vidurkis += i;
@@ -45,7 +49,7 @@ string tarpai(string a, int tarpuDydis){
 //pagrindines funkcijos
 void pirmasPasirinkimas(){
     //pagrindinis ciklas
-    studentai dabartinisStudentas;
+    studentaiListai dabartinisStudentas;
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         try{
@@ -120,7 +124,7 @@ void pirmasPasirinkimas(){
 
 void antrasPasirinkimas(){
     //pagrindinis ciklas
-    studentai dabartinisStudentas;
+    studentaiListai dabartinisStudentas;
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         try{
@@ -175,7 +179,7 @@ void treciasPasirinkimas(){
     "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis", "Petrauskas"};
         
     //pagrindinis ciklas
-    studentai dabartinisStudentas;
+    studentaiListai dabartinisStudentas;
     int m;
     cout << "Pasirinkite kiek studentu bus automatiskai sugeneruota\n";
     cin >> m;
@@ -225,7 +229,7 @@ void NuskaitymasFailo(string fileName){
         return;
     }
     
-    studentai dabartinisStudentas;
+    studentaiListai dabartinisStudentas;
 
     //patikrinti kiek namu darbu yra faile
     string temp;
@@ -274,13 +278,13 @@ void spausdinimasFaile(){
 
     fout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     fout << "-------------------------------------------------------------------\n";
-
+    list<studentaiListai>::iterator itr = duomenys.begin();
     for (int i = 0; i < duomenys.size(); i++){
 
-        fout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde, 15)
-        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas, 15);
-        fout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
-        
+        fout << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+        << itr->vardas << tarpai(itr->vardas, 15);
+        fout << itr->vidurkis << "             " << itr->mediana << endl;
+        itr++;
     }
     fout.close();
 }
@@ -290,13 +294,13 @@ void spausdinimasTerminale(){
     }
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "-------------------------------------------------------------------\n";
-
+    list<studentaiListai>::iterator itr = duomenys.begin();
     for (int i = 0; i < duomenys.size(); i++){
 
-        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde, 15)
-        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas, 15);
-        cout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
-        
+        cout << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+        << itr->vardas << tarpai(itr->vardas, 15);
+        cout << itr->vidurkis << "             " << itr->mediana << endl;
+        itr++;
     }
 }
 
@@ -323,12 +327,13 @@ void spausdinimasFaileSkirstymas(){
 
     foutG << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     foutG << "-------------------------------------------------------------------\n";
-
+    list<studentaiListai>::iterator itr = duomenys.begin();
     for (int i = 0; i < geriStudentai.size(); i++){
 
-        foutG << setprecision(2) << fixed << geriStudentai[i].pavarde << tarpai(geriStudentai[i].pavarde, 15)
-        << geriStudentai[i].vardas <<  tarpai(geriStudentai[i].vardas, 15);
-        foutG << geriStudentai[i].vidurkis << "             " << geriStudentai[i].mediana << endl;
+        foutG << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+        << itr->vardas << tarpai(itr->vardas, 15);
+        foutG << itr->vidurkis << "             " << itr->mediana << endl;
+        itr++;
         
     }
     foutG.close();
@@ -336,12 +341,13 @@ void spausdinimasFaileSkirstymas(){
 
     foutB << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     foutB << "-------------------------------------------------------------------\n";
-
+    itr = duomenys.begin();
     for (int i = 0; i < blogiStudentai.size(); i++){
 
-        foutB << setprecision(2) << fixed << blogiStudentai[i].pavarde << tarpai(blogiStudentai[i].pavarde, 15)
-        << blogiStudentai[i].vardas <<  tarpai(blogiStudentai[i].vardas, 15);
-        foutB << blogiStudentai[i].vidurkis << "             " << blogiStudentai[i].mediana << endl;
+        foutB << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+        << itr->vardas << tarpai(itr->vardas, 15);
+        foutB << itr->vidurkis << "             " << itr->mediana << endl;
+        itr++;
         
     }
     foutB.close();
@@ -354,22 +360,24 @@ void spausdinimasTerminaleSkirstymas(){
     }
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "------------------------------Geri studentai-------------------------------------\n";
-
+    list<studentaiListai>::iterator itr = duomenys.begin();
     for (int i = 0; i < geriStudentai.size(); i++){
 
-        cout << setprecision(2) << fixed << geriStudentai[i].pavarde << tarpai(geriStudentai[i].pavarde, 15)
-        << geriStudentai[i].vardas <<  tarpai(geriStudentai[i].vardas, 15);
-        cout << geriStudentai[i].vidurkis << "             " << geriStudentai[i].mediana << endl;
+        cout << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+        << itr->vardas << tarpai(itr->vardas, 15);
+        cout << itr->vidurkis << "             " << itr->mediana << endl;
+        itr++;
         
     }
     cout << "\nPavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "------------------------------Blogi studentai-------------------------------------\n";
-
+    itr = duomenys.begin();
     for (int i = 0; i < blogiStudentai.size(); i++){
 
-        cout << setprecision(2) << fixed << blogiStudentai[i].pavarde << tarpai(blogiStudentai[i].pavarde, 15)
-        << blogiStudentai[i].vardas <<  tarpai(blogiStudentai[i].vardas, 15);
-        cout << blogiStudentai[i].vidurkis << "             " << blogiStudentai[i].mediana << endl;
+        cout << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+        << itr->vardas << tarpai(itr->vardas, 15);
+        cout << itr->vidurkis << "             " << itr->mediana << endl;
+        itr++;
         
     }
 }
@@ -539,26 +547,27 @@ void skirstymas(){
     cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
     char pasirinkimas;
     cin >> pasirinkimas;
+    list<studentaiListai>::iterator itr = duomenys.begin();
     auto typeTimeS = high_resolution_clock::now();
     try{
         if (pasirinkimas == 'v'){
             for (int i = 0; i < duomenys.size(); i++){
-                if (duomenys[i].vidurkis < 5){
-                    blogiStudentai.push_back(duomenys[i]);
+                if (itr->vidurkis < 5){
+                    blogiStudentai.push_back(*itr);
                 }
                 else{
-                    geriStudentai.push_back(duomenys[i]);
+                    geriStudentai.push_back(*itr);
                 }
             }
             
         }
         else if(pasirinkimas == 'm'){
             for (int i = 0; i < duomenys.size(); i++){
-                if (duomenys[i].mediana < 5){
-                    blogiStudentai.push_back(duomenys[i]);
+                if (itr->mediana < 5){
+                    blogiStudentai.push_back(*itr);
                 }
                 else{
-                    geriStudentai.push_back(duomenys[i]);
+                    geriStudentai.push_back(*itr);
                 }
             }
         }
