@@ -16,6 +16,12 @@ bool rusiavimasVardas(const studentai &a, const studentai &b);
 bool rusiavimasPavarde(const studentai &a, const studentai &b);
 bool rusiavimasVidurkis(const studentai &a, const studentai &b);
 bool rusiavimasMediana(const studentai &a, const studentai &b);
+
+bool rusiavimasVardasDekas(const studentaiDekas &a, const studentaiDekas &b);
+bool rusiavimasPavardeDekas(const studentaiDekas &a, const studentaiDekas &b);
+bool rusiavimasVidurkisDekas(const studentaiDekas &a, const studentaiDekas &b);
+bool rusiavimasMedianaDekas(const studentaiDekas &a, const studentaiDekas &b);
+
 void rusiavimoMenu();
 
 //laikas

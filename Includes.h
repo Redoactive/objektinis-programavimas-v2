@@ -9,6 +9,7 @@
 #include <random>
 #include <sstream>
 #include <list>
+#include <deque>
 
 using namespace std;
 using namespace std::chrono;
@@ -20,6 +21,7 @@ struct studentai{
     double vidurkis;
     double mediana;
 };
+
 struct studentaiDekas{
     string vardas;
     string pavarde;

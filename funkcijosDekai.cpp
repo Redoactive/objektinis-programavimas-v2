@@ -1,6 +1,5 @@
 #include "includes.h"
 #include "FunkcijuBaze.h"
-#include <deque>
 
 deque<studentaiDekas> duomenys;
 deque<studentaiDekas> geriStudentai;
@@ -369,18 +368,18 @@ void spausdinimasTerminaleSkirstymas(){
 }
 
 //rusiavimas
-bool rusiavimasVardas(const studentai &a, const studentai &b){
+bool rusiavimasVardasDekas(const studentaiDekas &a, const studentaiDekas &b){
     return a.vardas < b.vardas;
 }
-bool rusiavimasPavarde(const studentai &a, const studentai &b){
+bool rusiavimasPavardeDekas(const studentaiDekas &a, const studentaiDekas &b){
     return a.pavarde < b.pavarde;
 }
 
-bool rusiavimasMediana(const studentai &a, const studentai &b){
+bool rusiavimasMedianaDekas(const studentaiDekas &a, const studentaiDekas &b){
     return a.mediana < b.mediana;
 }
 
-bool rusiavimasVidurkis(const studentai &a, const studentai &b){
+bool rusiavimasVidurkisDekas(const studentaiDekas &a, const studentaiDekas &b){
     return a.vidurkis < b.vidurkis;
 }
 
@@ -402,19 +401,19 @@ void rusiavimoMenu(){
         switch (pasirinkimas)
         {
         case 1:
-            sort(duomenys.begin(), duomenys.end(), rusiavimasVardas);
+            sort(duomenys.begin(), duomenys.end(), rusiavimasVardasDekas);
             darbasBaigtas = true;
             break;
         case 2:
-            sort(duomenys.begin(), duomenys.end(), rusiavimasPavarde);
+            sort(duomenys.begin(), duomenys.end(), rusiavimasPavardeDekas);
             darbasBaigtas = true;
             break;
         case 3:
-            sort(duomenys.begin(), duomenys.end(), rusiavimasVidurkis);
+            sort(duomenys.begin(), duomenys.end(), rusiavimasVidurkisDekas);
             darbasBaigtas = true;
             break;
         case 4:
-            sort(duomenys.begin(), duomenys.end(), rusiavimasMediana);
+            sort(duomenys.begin(), duomenys.end(), rusiavimasMedianaDekas);
             darbasBaigtas = true;
             break;
         default:
@@ -446,23 +445,23 @@ void rusiavimoMenuSkirstymas(){
         switch (pasirinkimas)
         {
         case 1:
-            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVardas);
-            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardas);
+            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVardasDekas);
+            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardasDekas);
             darbasBaigtas = true;
             break;
         case 2:
-            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasPavarde);
-            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasPavarde);
+            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasPavardeDekas);
+            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasPavardeDekas);
             darbasBaigtas = true;
             break;
         case 3:
-            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVidurkis);
-            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVidurkis);
+            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVidurkisDekas);
+            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVidurkisDekas);
             darbasBaigtas = true;
             break;
         case 4:
-            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasMediana);
-            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasMediana);
+            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasMedianaDekas);
+            sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasMedianaDekas);
             darbasBaigtas = true;
             break;
         default:
