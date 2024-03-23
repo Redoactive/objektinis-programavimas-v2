@@ -16,3 +16,4 @@ extern random_device rd;
 extern mt19937 mt;
 extern uniform_int_distribution<int> distribution;
 #endif
+// vidurkio ir medianos funkcijos visos tos pacios, gal reiks pakeisti

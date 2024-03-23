@@ -16,10 +16,10 @@ int main(){
                 darbasSuDekais();
                 break;
             }
-            // else if(pasirinkimas == 'l' || pasirinkimas == 'L'){
-            //     darbasSuListais();
-            //     break;
-            // }
+            else if(pasirinkimas == 'l' || pasirinkimas == 'L'){
+                darbasSuListais();
+                break;
+            }
             else{
                 throw string("Blogai ivesta raide, bandykite dar karta");
             }

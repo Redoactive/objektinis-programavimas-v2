@@ -10,10 +10,9 @@ struct studentai{
     double mediana;
 };
 
-bool rusiavimasVardas(const studentai &a, const studentai &b);
-bool rusiavimasPavarde(const studentai &a, const studentai &b);
-bool rusiavimasVidurkis(const studentai &a, const studentai &b);
-bool rusiavimasMediana(const studentai &a, const studentai &b);
+string tarpai(string a, int tarpuDydis);
+string extraSpace (string a, int b);
+
 
 
 //Vektorius
@@ -29,6 +28,11 @@ void skirstymas();
 void rusiavimoMenu();
 void rusiavimoMenuSkirstymas();
 
+bool rusiavimasVardas(const studentai &a, const studentai &b);
+bool rusiavimasPavarde(const studentai &a, const studentai &b);
+bool rusiavimasVidurkis(const studentai &a, const studentai &b);
+bool rusiavimasMediana(const studentai &a, const studentai &b);
+
 void spausdinimasFaile();
 void spausdinimasTerminale();
 void spausdinimasFaileSkirstymas();
@@ -36,6 +40,3 @@ void spausdinimasTerminaleSkirstymas();
 
 void laikoSpausdinimas(duration<double> readTime, duration<double> sortTime ,duration<double> typeTime);
 
-
-string tarpai(string a, int tarpuDydis);
-string extraSpace (string a, int b);

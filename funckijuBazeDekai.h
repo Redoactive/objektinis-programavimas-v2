@@ -12,14 +12,13 @@ struct studentaiDekas{
 string tarpai(string a, int tarpuDydis);
 string extraSpace (string a, int b);
 
-void darbasSuDekais();
-
 void pirmasPasirinkimasDekai();
 void antrasPasirinkimasDekai();
 void treciasPasirinkimasDekai();
 
 void NuskaitymasFailoDekai(string fileName);
 void failoGeneracija();
+
 void skirstymasDekai();
 
 void rusiavimoMenuSkirstymasDekai();

@@ -5,11 +5,10 @@ static deque<studentaiDekas> duomenys;
 static deque<studentaiDekas> geriStudentai;
 static deque<studentaiDekas> blogiStudentai;
 //globalus laikai
-// duration<double> createTime;
-duration<double> readTime;
-duration<double> sortTime;
-// duration<double> printTime;
-duration<double> typeTime;
+// duration<double> createTime;// duration<double> printTime;
+static duration<double> readTime;
+static duration<double> sortTime;
+static duration<double> typeTime;
 
 void darbasSuDekais(){
 bool darbasBaigtas = false;

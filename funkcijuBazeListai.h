@@ -11,24 +11,30 @@ struct studentaiListai{
     double mediana;
 };
 
-void darbasSuListais();
+string tarpai(string a, int tarpuDydis);
+string extraSpace (string a, int b);
+
+void pirmasPasirinkimasListai();
+void antrasPasirinkimasListai();
+void treciasPasirinkimasListai();
+
+void NuskaitymasFailoListai(string fileName);
+void failoGeneracija();
+
+void skirstymasListai();
+
+void rusiavimoMenuSkirstymasListai();
+void rusiavimoMenuListai();
+
 bool rusiavimasVardasListai(const studentaiListai &a, const studentaiListai &b);
 bool rusiavimasPavardeListai(const studentaiListai &a, const studentaiListai &b);
 bool rusiavimasVidurkisListai(const studentaiListai &a, const studentaiListai &b);
 bool rusiavimasMedianaListai(const studentaiListai &a, const studentaiListai &b);
-string tarpai(string a, int tarpuDydis);
-void laikoSpausdinimas();
-void pirmasPasirinkimas();
-void antrasPasirinkimas();
-void treciasPasirinkimas();
-void spausdinimasFaile();
-void spausdinimasTerminale();
-void failoGeneracija();
 
-//nuskaitymas is failo
-void NuskaitymasFailo(string fileName);
+void spausdinimasTerminaleListai();
+void spausdinimasTerminaleSkirstymasListai();
+void spausdinimasFaileListai();
+void spausdinimasFaileSkirstymasListai();
 
-void skirstymas();
-void rusiavimoMenuSkirstymas();
-void spausdinimasFaileSkirstymas();
-void spausdinimasTerminaleSkirstymas();
+
+void laikoSpausdinimas(duration<double> readTime, duration<double> sortTime ,duration<double> typeTime);
