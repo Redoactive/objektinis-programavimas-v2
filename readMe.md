@@ -50,16 +50,27 @@ Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
 |-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
 |Vector  1.000      |1                  |0.0045569 s.       |0.0003589 s.       |0.0005984 s.       |0.0055142 s.       |
 |Vector  1.000      |2                  |0.0031101 s.       |0.0122786 s.       |0.0006075 s.       |0.0159962 s        |
+|Vector  1.000      |3                  |0.0030423 s.       |0.0372382 s.       |0.0006048 s.       |0.0408853 s.       |
 |Vector  10.000     |1                  |0.0273343 s.       |0.0031984 s.       |0.006994 s.        |0.0375267 s.       |
 |Vector  10.000     |2                  |0.0261976 s.       |1.152175 s.        |0.0069206 s.       |1.185293 s.        |
+|Vector  10.000     |3                  |0.0263784 s.       |3.508781 s.        |0.0070896 s.       |3.54225 s.         |
 |Deque   1.000      |1                  |0.0038703 s.       |0.0011585 s.       |0.0013087 s.       |0.0063375 s.       |
-|Deque   1.000      |2                  |0.0038357 s.       |0.0007665 s.       |0.0012485 s.       |0.0058507 s.       |
+|Deque   1.000      |2                  |0.0038357 s.       |0.0007665 s.       |0.0012485 s.       |0.0058507 s.       | 
 |Deque   10.000     |1                  |0.0368431 s.       |0.0090515 s.       |0.0163642 s.       |0.0622588 s.       |
 |Deque   10.000     |2                  |0.0360235 s.       |0.0062931 s.       |0.0179278 s.       |0.0602444 s.       |
+|Deque   100.000    |1                  |0.345228 s.        |0.1054952 s.       |0.2280989 s.       |0.6788221 s.       |
+|Deque   100.000    |2                  |0.3458539 s.       |0.0751531 s.       |0.2508826 s.       |0.6718896 s.       |
 |List    1.000      |1                  |0.0072829 s.       |0.0016077 s.       |0.0002648 s.       |0.0091554 s.       |
 |List    1.000      |2                  |0.007141 s.        |0.0015582 s.       |0.0002447 s.       |0.0089439 s.       |
 |List    10.000     |1                  |0.0662241 s.       |0.0160479 s.       |0.0028182 s.       |0.0850902 s.       |
 |List    10.000     |2                  |0.0674492 s.       |0.0142536 s.       |0.0030572 s.       |0.08476 s.         |
+|List    100.000    |1                  |0.6588872 s.       |0.169634 s.        |0.0427512 s.       |0.8712724 s.       |
+|List    100.000    |2                  |0.6805967 s.       |0.1401541 s.       |0.0427727 s.       |0.8635235 s.       |
+
+Analize
+* Nors saugojimas i atskirus konteinerius uzima daugiau vietos, tai dazniausiai lemia geresnius laikus
+* 1 ir 2 strategijoje dekas ir listas panasiai uzima laiko
+* Vektorius dideliam duomenu kiekiui ilgiausiai uztrunka. Tai gali buti del didelio duomenu trinimo kiekio
 
 # Instaliacijos ir naudojimosi instrukcija (windows)
 ## 1. Instaliuoti Chocolatey 
@@ -84,3 +95,5 @@ Tai galima padaryti su cd komanda
 3. Paleiskite programa rasydami `make run`
 
 Testavimo rezulatu pavizdys ![Tekstas](/images/image.png)
+
+3 Strategija su vektoriais ir naudojama potimizacija -o3 ![Tekstas](/images/3strat-o3.png)

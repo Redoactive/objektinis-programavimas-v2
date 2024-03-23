@@ -576,42 +576,40 @@ void rusiavimoMenuSkirstymas(){
     }
     
 }
-
+bool Less(studentai a){
+    return a.vidurkis > 5;
+}
+bool LessM(studentai a){
+    return a.mediana > 5;
+}
 void skirstymas(){
     cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
     char pasirinkimas;
     cin >> pasirinkimas;
     int a = 0;
     int b =duomenys.size();
-    vector<studentai>::iterator itr = duomenys.begin();
+    vector<studentai>::iterator itr;
     auto typeTimeS = high_resolution_clock::now();
     try{
         if (pasirinkimas == 'v'){
             for (int i = 0; i < b; i++){
-                if (duomenys[a].vidurkis < 5){
-                    blogiStudentai.push_back(duomenys[a]);
-                    duomenys.erase(itr);
-                    
+                itr = find_if(duomenys.begin(),duomenys.end(), Less);
+                if(itr->vidurkis < 5){
+                    break;
                 }
-                else{
-                    itr++;
-                    a++;
-                }
-
+                blogiStudentai.push_back(*itr);
+                duomenys.erase(itr);
             }
             
         }
         else if(pasirinkimas == 'm'){
             for (int i = 0; i < b; i++){
-                if (duomenys[a].mediana < 5){
-                    blogiStudentai.push_back(duomenys[a]);
-                    duomenys.erase(itr);
-                    
+                itr = find_if(duomenys.begin(),duomenys.end(), LessM);
+                if(itr->mediana < 5){
+                    break;
                 }
-                else{
-                    itr++;
-                    a++;
-                }
+                blogiStudentai.push_back(*itr);
+                duomenys.erase(itr);
             }
         }
 
@@ -622,7 +620,6 @@ void skirstymas(){
     }
     catch (const char* msg){
         cerr << msg;
-        terminate();
     }
     auto typeTimeE = high_resolution_clock::now();
     typeTime = typeTimeE - typeTimeS;
