@@ -73,8 +73,8 @@ void laikoSpausdinimas(duration<double> readTime, duration<double> sortTime ,dur
     cout << setprecision(7);
     // cout << "Failu kurimas - " << createTime.count() << " s.\n";
     cout << "Duomenu nuskaitymas is failo - " << readTime.count() << " s.\n";
-    cout << "Rusiavimas uztruko - " << sortTime.count() << " s.\n";
     cout << "Studentu skirstymas i dvi grupes/kategorijas - " << typeTime.count() << " s.\n";
+    cout << "Rusiavimas uztruko - " << sortTime.count() << " s.\n";
     // cout << "Surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << " s.\n";
     // allTime = createTime + readTime + typeTime + sortTime + printTime;
     duration<double> allTime;

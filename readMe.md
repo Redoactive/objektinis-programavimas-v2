@@ -11,9 +11,12 @@
 4. Labiau optimizuotas kodas.
 
 
+# Kompiuterio specifikacijos
+* procesor - AMD Ryzen 5 3600X 6-Core 3.80 GHz
+* RAM - 16.0 GB
+* SSD - Samsung SSD 970 EVO Plus 250GB
 
 Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
-
 # 1000 dydzio failas
 ## Vektorius
 |Kontaineris        |Failo dydis        |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
@@ -41,28 +44,22 @@ Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
 
 
 
-# studentai10000.txt
-|Darbas                          |Laikas      |
-|--------------------------------|------------|
-|Failu kurimas                   |0.0694658 s.|
-|Duomenu nuskaitymas is failo    |0.0365163 s.|
-|Rusiavimas uztruko              |0.0063748 s.|
-|Studentu skirstymas i dvi grupes|0.0037312 s.|
-|Surusiuotu studentu isvedimas   |0.0594699 s.|
-|Visos programos veikimo laikas  |0.1755581 s.|
-
-
-
-# studentai1000000.txt
-|Darbas                          |Laikas      |
-|--------------------------------|------------|
-|Failu kurimas                   |4.5448 s.   |
-|Duomenu nuskaitymas is failo    |1.93674 s.  |
-|Rusiavimas uztruko              |1.10117 s.  |
-|Studentu skirstymas i dvi grupes|0.347281 s. |
-|Surusiuotu studentu isvedimas   |5.10791 s.  |
-|Visos programos veikimo laikas  |13.0379 s.  |
-
-![Nuotrauka testo su 1000000.txt failo rezultatu](image.png)
-
-![Nuotrauka kurioje buvo kurta 9999999 x 10 (balu kiekio) failo dydis rezultatai](image-1.png)
+# Instaliacijos ir naudojimosi instrukcija (windows)
+## 1. Instaliuoti Chocolatey 
+Chocolatey yra paketu tvarkykle, skirta Windows, kuri supaprastina programines irangos diegimo procesa.
+1. Atidarykite komandine eilute kaip administratorius
+2. Nukopijuokite ir iklijuokite sia komanda:
+`Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))`
+3. Patikrinkite instaliacija parasydami i konsole choco
+Daugiau informacijos galite rasti [cia](https://chocolatey.org/install)
+## 2. Instaliuoti make
+1. Tame paciame komandu eilutes lange (kaip administratorius) iveskite:
+`choco install make`
+2. Galite patikrinti ar pavyko rasydami tai:
+`make -v`
+Daugiau informacijos galite rasti [cia](https://community.chocolatey.org/packages/make)
+## 3. Kompiliuoti ir paleisti programa
+1. Nueikite i projekto direktyva konsoleje.
+Tai galima padaryti su cd komanda
+2. Sukompiliuokite programa rasydami `make`
+3. Paleiskite programa rasydami `make run`
