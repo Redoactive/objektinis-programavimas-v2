@@ -2,7 +2,7 @@
 #include "funckijuBazeDekai.h"
 
 static deque<studentaiDekas> duomenys;
-static deque<studentaiDekas> geriStudentai;
+// static deque<studentaiDekas> geriStudentai;
 static deque<studentaiDekas> blogiStudentai;
 //globalus laikai
 // duration<double> createTime;// duration<double> printTime;
@@ -11,6 +11,7 @@ static duration<double> sortTime;
 static duration<double> typeTime;
 
 void darbasSuDekais(){
+bool arSkirstymasVyksta = false;
 bool darbasBaigtas = false;
     //pasirinkimu menu
     while (darbasBaigtas == false)
@@ -48,6 +49,7 @@ bool darbasBaigtas = false;
             break;
         case '6':
             darbasBaigtas = true;
+            arSkirstymasVyksta = true;
             skirstymasDekai();
             break;
         case '7':
@@ -65,9 +67,13 @@ bool darbasBaigtas = false;
 
     //klausiama kaip vartotojas nori isrusiuoti outputa
     // siose funkcijoje tikrinama ar yra duomenu ir ar reikia daryti rusiavima 
-    rusiavimoMenuDekai();
-    rusiavimoMenuSkirstymasDekai();
-
+    
+    
+    if (arSkirstymasVyksta == true){
+        rusiavimoMenuSkirstymasDekai();
+    }else{
+        rusiavimoMenuDekai();
+    }
 
 
 
@@ -78,13 +84,19 @@ bool darbasBaigtas = false;
             string pasirinkimas;
             cin >> pasirinkimas;
             if (pasirinkimas == "t"){
-                spausdinimasTerminaleDekai();
-                spausdinimasTerminaleSkirstymasDekai();
+                if (arSkirstymasVyksta == true){
+                    spausdinimasTerminaleSkirstymasDekai();
+                }else{
+                    spausdinimasTerminaleDekai();
+                }
                 break;
             } 
             else if(pasirinkimas == "f"){
-                spausdinimasFaileDekai();
-                spausdinimasFaileSkirstymasDekai();
+                if (arSkirstymasVyksta == true){
+                    spausdinimasFaileSkirstymasDekai();
+                }else{
+                    spausdinimasFaileDekai();
+                }
                 break;
             }
             else{
@@ -344,9 +356,7 @@ void NuskaitymasFailoDekai(string fileName){
 
 //Spausdinimo funkcijos
 void spausdinimasFaileDekai(){
-    if (duomenys.empty()){
-        return;
-    }
+
     cout << "Kaip norite pavadinti savo faila? (be .txt)\n";
     string pavadinimas;
     cin >> pavadinimas;
@@ -367,9 +377,7 @@ void spausdinimasFaileDekai(){
     fout.close();
 }
 void spausdinimasTerminaleDekai(){
-    if (duomenys.empty()){
-        return;
-    }
+
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "-------------------------------------------------------------------\n";
 
@@ -383,9 +391,7 @@ void spausdinimasTerminaleDekai(){
 }
 
 void spausdinimasFaileSkirstymasDekai(){
-    if (geriStudentai.empty()){
-        return;
-    }
+
     string pavadinimas;
 
     cout << "Kaip norite pavadinti savo faila geriems studentams? (be .txt)\n";
@@ -406,11 +412,11 @@ void spausdinimasFaileSkirstymasDekai(){
     foutG << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     foutG << "-------------------------------------------------------------------\n";
 
-    for (int i = 0; i < geriStudentai.size(); i++){
+    for (int i = 0; i < duomenys.size(); i++){
 
-        foutG << setprecision(2) << fixed << geriStudentai[i].pavarde << tarpai(geriStudentai[i].pavarde, 15)
-        << geriStudentai[i].vardas <<  tarpai(geriStudentai[i].vardas, 15);
-        foutG << geriStudentai[i].vidurkis << "             " << geriStudentai[i].mediana << endl;
+        foutG << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde, 15)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas, 15);
+        foutG << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
         
     }
     foutG.close();
@@ -431,17 +437,15 @@ void spausdinimasFaileSkirstymasDekai(){
     // printTime = printTimeE - printTimeS;
 }
 void spausdinimasTerminaleSkirstymasDekai(){
-    if (geriStudentai.empty()){
-        return;
-    }
+
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "------------------------------Geri studentai-------------------------------------\n";
 
-    for (int i = 0; i < geriStudentai.size(); i++){
+    for (int i = 0; i < duomenys.size(); i++){
 
-        cout << setprecision(2) << fixed << geriStudentai[i].pavarde << tarpai(geriStudentai[i].pavarde, 15)
-        << geriStudentai[i].vardas <<  tarpai(geriStudentai[i].vardas, 15);
-        cout << geriStudentai[i].vidurkis << "             " << geriStudentai[i].mediana << endl;
+        cout << setprecision(2) << fixed << duomenys[i].pavarde << tarpai(duomenys[i].pavarde, 15)
+        << duomenys[i].vardas <<  tarpai(duomenys[i].vardas, 15);
+        cout << duomenys[i].vidurkis << "             " << duomenys[i].mediana << endl;
         
     }
     cout << "\nPavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
@@ -517,9 +521,7 @@ void rusiavimoMenuDekai(){
 }
 
 void rusiavimoMenuSkirstymasDekai(){
-    if (geriStudentai.empty()){
-        return;
-    }
+
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         cout << "Kaip norite rusiuoti output?\n"
@@ -534,22 +536,22 @@ void rusiavimoMenuSkirstymasDekai(){
         switch (pasirinkimas)
         {
         case 1:
-            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVardasDekas);
+            sort(duomenys.begin(), duomenys.end(), rusiavimasVardasDekas);
             sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardasDekas);
             darbasBaigtas = true;
             break;
         case 2:
-            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasPavardeDekas);
+            sort(duomenys.begin(), duomenys.end(), rusiavimasPavardeDekas);
             sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasPavardeDekas);
             darbasBaigtas = true;
             break;
         case 3:
-            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVidurkisDekas);
+            sort(duomenys.begin(), duomenys.end(), rusiavimasVidurkisDekas);
             sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVidurkisDekas);
             darbasBaigtas = true;
             break;
         case 4:
-            sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasMedianaDekas);
+            sort(duomenys.begin(), duomenys.end(), rusiavimasMedianaDekas);
             sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasMedianaDekas);
             darbasBaigtas = true;
             break;
@@ -569,26 +571,36 @@ void skirstymasDekai(){
     cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
     char pasirinkimas;
     cin >> pasirinkimas;
+    int a = 0;
+    int b =duomenys.size();
+
+
     auto typeTimeS = high_resolution_clock::now();
     try{
         if (pasirinkimas == 'v'){
-            for (int i = 0; i < duomenys.size(); i++){
-                if (duomenys[i].vidurkis < 5){
-                    blogiStudentai.push_back(duomenys[i]);
+            for (int i = 0; i < b; i++){
+                if (duomenys[a].vidurkis < 5){
+                    blogiStudentai.push_back(duomenys[a]);
+                    duomenys.pop_front();
                 }
                 else{
-                    geriStudentai.push_back(duomenys[i]);
+                    duomenys.push_back(duomenys[a]);
+                    duomenys.pop_front();
+                    a++;
                 }
             }
             
         }
         else if(pasirinkimas == 'm'){
-            for (int i = 0; i < duomenys.size(); i++){
-                if (duomenys[i].mediana < 5){
-                    blogiStudentai.push_back(duomenys[i]);
+            for (int i = 0; i < b; i++){
+                if (duomenys[a].mediana < 5){
+                    blogiStudentai.push_back(duomenys[a]);
+                    duomenys.pop_front();
                 }
                 else{
-                    geriStudentai.push_back(duomenys[i]);
+                    duomenys.push_back(duomenys[a]);
+                    duomenys.pop_front();
+                    a++;
                 }
             }
         }
@@ -596,7 +608,6 @@ void skirstymasDekai(){
         else{
             throw "Blogai ivesta";
         }
-        duomenys.clear();
     }
     catch (const char* msg){
         cerr << msg;

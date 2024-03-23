@@ -596,22 +596,20 @@ void skirstymas(){
                 else{
                     itr++;
                     a++;
-                    // geriStudentai.push_back(duomenys[i]);
                 }
             }
             
         }
         else if(pasirinkimas == 'm'){
-            for (int i = 0; i < duomenys.size(); i++){
-                
-                if (duomenys[i].mediana < 5){
-                    blogiStudentai.push_back(duomenys[i]);
+            for (int i = 0; i < b; i++){
+                if (duomenys[a].mediana < 5){
+                    blogiStudentai.push_back(duomenys[a]);
                     duomenys.erase(itr);
-                    itr++;
+                    
                 }
                 else{
                     itr++;
-                    // geriStudentai.push_back(duomenys[i]);
+                    a++;
                 }
             }
         }
@@ -625,7 +623,6 @@ void skirstymas(){
         cerr << msg;
         terminate();
     }
-    
     auto typeTimeE = high_resolution_clock::now();
     typeTime = typeTimeE - typeTimeS;
 }
