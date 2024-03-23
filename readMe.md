@@ -40,9 +40,10 @@ Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
 |List   -O3 comp    |10000000.txt       |64.97077 s.        |18.25886 s.        |12.50814 s.        |95.73778 s.        |
 
 # Testavimai su optimizacijos metodais
+## Testavimui bus naudojamas 1.000.000 failo dydis
 |Kontaineris        |Strategija         |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
 |-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
-|Vector             |1                  |0.0045569 s.       |0.0003589 s.       |0.0005984 s.       |0.0055142 s.       |
+|Vector             |1                  |2.428541 s.        |0.3317479 s.       |1.190585 s.        |3.950874 s.        |
 |Vector             |2                  |0.0029968 s.       |0.0003394 s.       |0.0005833 s.       |0.0039195 s.       |
 |Vector             |3                  |0.0273343 s.       |0.0031984 s.       |0.006994 s.        |0.0375267 s.       |
 |Deque              |1                  |0.244252 s.        |0.0324432 s.       |0.0954053 s.       |0.3721005 s.       |
@@ -59,6 +60,7 @@ Chocolatey yra paketu tvarkykle, skirta Windows, kuri supaprastina programines i
 2. Nukopijuokite ir iklijuokite sia komanda:
 
 `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))`
+
 3. Patikrinkite instaliacija parasydami i konsole choco
 Daugiau informacijos galite rasti [cia](https://chocolatey.org/install)
 ## 2. Instaliuoti make
@@ -72,3 +74,5 @@ Daugiau informacijos galite rasti [cia](https://community.chocolatey.org/package
 Tai galima padaryti su cd komanda
 2. Sukompiliuokite programa rasydami `make`
 3. Paleiskite programa rasydami `make run`
+
+Testavimo rezulatu pavizdys ![Tekstas](Objektinis-programavimas\images\image.png)
