@@ -17,12 +17,10 @@
 * SSD - Samsung SSD 970 EVO Plus 250GB
 
 Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
-# 1000 dydzio failas
-## Vektorius
+# Testavimai
 |Kontaineris        |Failo dydis        |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
 |-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
 |Vector             |1000.txt           |0.0045569 s.       |0.0003589 s.       |0.0005984 s.       |0.0055142 s.       |
-|Vector  -o3 comp   |1000.txt           |0.0029968 s.       |0.0003394 s.       |0.0005833 s.       |0.0039195 s.       |
 |Vector             |10000.txt          |0.0273343 s.       |0.0031984 s.       |0.006994 s.        |0.0375267 s.       |
 |Vector             |100000.txt         |0.244252 s.        |0.0324432 s.       |0.0954053 s.       |0.3721005 s.       |
 |Vector             |1000000.txt        |2.440562 s.        |0.3336525 s.       |1.194114 s.        |3.968329 s.        |
@@ -41,14 +39,25 @@ Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
 |List               |10000000.txt       |66.34136 s.        |19.00224 s.        |12.86155 s.        |98.20515 s.        |
 |List   -O3 comp    |10000000.txt       |64.97077 s.        |18.25886 s.        |12.50814 s.        |95.73778 s.        |
 
-
-
+# Testavimai su optimizacijos metodais
+|Kontaineris        |Strategija         |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
+|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
+|Vector             |1                  |0.0045569 s.       |0.0003589 s.       |0.0005984 s.       |0.0055142 s.       |
+|Vector             |2                  |0.0029968 s.       |0.0003394 s.       |0.0005833 s.       |0.0039195 s.       |
+|Vector             |3                  |0.0273343 s.       |0.0031984 s.       |0.006994 s.        |0.0375267 s.       |
+|Deque              |1                  |0.244252 s.        |0.0324432 s.       |0.0954053 s.       |0.3721005 s.       |
+|Deque              |2                  |2.440562 s.        |0.3336525 s.       |1.194114 s.        |3.968329 s.        |
+|Deque              |3                  |25.04966 s.        |3.242979 s.        |14.93185 s.        |43.22449 s.        |
+|List               |1                  |0.6588872 s.       |0.169634 s.        |0.0427512 s.       |0.8712724 s.       |
+|List               |2                  |6.528909 s.        |1.718614 s.        |0.797603 s.        |9.045125 s.        |
+|List               |3                  |66.34136 s.        |19.00224 s.        |12.86155 s.        |98.20515 s.        |
 
 # Instaliacijos ir naudojimosi instrukcija (windows)
 ## 1. Instaliuoti Chocolatey 
 Chocolatey yra paketu tvarkykle, skirta Windows, kuri supaprastina programines irangos diegimo procesa.
 1. Atidarykite komandine eilute kaip administratorius
 2. Nukopijuokite ir iklijuokite sia komanda:
+
 `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))`
 3. Patikrinkite instaliacija parasydami i konsole choco
 Daugiau informacijos galite rasti [cia](https://chocolatey.org/install)
