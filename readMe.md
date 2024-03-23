@@ -39,6 +39,11 @@ Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
 |List               |10000000.txt       |66.34136 s.        |19.00224 s.        |12.86155 s.        |98.20515 s.        |
 |List   -O3 comp    |10000000.txt       |64.97077 s.        |18.25886 s.        |12.50814 s.        |95.73778 s.        |
 
+## Is siu rezultatu galime sakyti
+* Vektorius yra vienas is greitesniu konteineriu
+* Listai ir dekai turi papildomu funkciju negu vektorius bet yra letesni
+* Visi kontaineriai saugo duomenys skirtingai ir tai turi savu privalumu ir minusu
+
 # Testavimai su optimizacijos metodais
 ## Testavimui bus naudojamas 1.000.000 failo dydis
 |Kontaineris        |Strategija         |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
@@ -46,12 +51,10 @@ Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
 |Vector             |1                  |2.428541 s.        |0.3317479 s.       |1.190585 s.        |3.950874 s.        |
 |Vector             |2                  |0.0029968 s.       |0.0003394 s.       |0.0005833 s.       |0.0039195 s.       |
 |Vector             |3                  |0.0273343 s.       |0.0031984 s.       |0.006994 s.        |0.0375267 s.       |
-|Deque              |1                  |0.244252 s.        |0.0324432 s.       |0.0954053 s.       |0.3721005 s.       |
+|Deque              |1                  |3.464586 s.        |1.015197 s.        |3.11766 s.         |7.597444 s.        |
 |Deque              |2                  |2.440562 s.        |0.3336525 s.       |1.194114 s.        |3.968329 s.        |
-|Deque              |3                  |25.04966 s.        |3.242979 s.        |14.93185 s.        |43.22449 s.        |
-|List               |1                  |0.6588872 s.       |0.169634 s.        |0.0427512 s.       |0.8712724 s.       |
-|List               |2                  |6.528909 s.        |1.718614 s.        |0.797603 s.        |9.045125 s.        |
-|List               |3                  |66.34136 s.        |19.00224 s.        |12.86155 s.        |98.20515 s.        |
+|List               |1                  |6.514126 s.        |1.69377 s.         |0.8091763 s.       |9.017073 s.        |
+|List               |2                  |6.528909 s.        |1.718614 s.        |       |.        |
 
 # Instaliacijos ir naudojimosi instrukcija (windows)
 ## 1. Instaliuoti Chocolatey 
@@ -75,4 +78,4 @@ Tai galima padaryti su cd komanda
 2. Sukompiliuokite programa rasydami `make`
 3. Paleiskite programa rasydami `make run`
 
-Testavimo rezulatu pavizdys ![Tekstas](Objektinis-programavimas\images\image.png)
+Testavimo rezulatu pavizdys ![Tekstas](/images/image.png)
