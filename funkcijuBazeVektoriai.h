@@ -20,16 +20,21 @@ bool rusiavimasMediana(const studentai &a, const studentai &b);
 void pirmasPasirinkimas();
 void antrasPasirinkimas();
 void treciasPasirinkimas();
+
 void NuskaitymasFailo(string fileName);
 void failoGeneracija();
+
 void skirstymas();
+
 void rusiavimoMenu();
 void rusiavimoMenuSkirstymas();
+
 void spausdinimasFaile();
 void spausdinimasTerminale();
 void spausdinimasFaileSkirstymas();
 void spausdinimasTerminaleSkirstymas();
-void laikoSpausdinimas();
+
+void laikoSpausdinimas(duration<double> readTime, duration<double> sortTime ,duration<double> typeTime);
 
 
 string tarpai(string a, int tarpuDydis);

@@ -1,21 +1,15 @@
 // #include "includes.h"
 #include "funckijuBazeDekai.h"
 
-deque<studentaiDekas> duomenys;
-deque<studentaiDekas> geriStudentai;
-deque<studentaiDekas> blogiStudentai;
+static deque<studentaiDekas> duomenys;
+static deque<studentaiDekas> geriStudentai;
+static deque<studentaiDekas> blogiStudentai;
 //globalus laikai
-duration<double> createTime;
+// duration<double> createTime;
 duration<double> readTime;
 duration<double> sortTime;
-duration<double> printTime;
+// duration<double> printTime;
 duration<double> typeTime;
-duration<double> allTime;
-
-random_device rd;
-mt19937 mt(rd());
-uniform_int_distribution<int> distribution (1, 10);
-
 
 void darbasSuDekais(){
 bool darbasBaigtas = false;
@@ -55,7 +49,7 @@ bool darbasBaigtas = false;
             break;
         case '6':
             darbasBaigtas = true;
-            skirstymas();
+            skirstymasDekai();
             break;
         case '7':
             darbasBaigtas = true;
@@ -72,8 +66,8 @@ bool darbasBaigtas = false;
 
     //klausiama kaip vartotojas nori isrusiuoti outputa
     // siose funkcijoje tikrinama ar yra duomenu ir ar reikia daryti rusiavima 
-    rusiavimoMenu();
-    rusiavimoMenuSkirstymas();
+    rusiavimoMenuDekai();
+    rusiavimoMenuSkirstymasDekai();
 
 
 
@@ -85,13 +79,13 @@ bool darbasBaigtas = false;
             string pasirinkimas;
             cin >> pasirinkimas;
             if (pasirinkimas == "t"){
-                spausdinimasTerminale();
-                spausdinimasTerminaleSkirstymas();
+                spausdinimasTerminaleDekai();
+                spausdinimasTerminaleSkirstymasDekai();
                 break;
             } 
             else if(pasirinkimas == "f"){
-                spausdinimasFaile();
-                spausdinimasFaileSkirstymas();
+                spausdinimasFaileDekai();
+                spausdinimasFaileSkirstymasDekai();
                 break;
             }
             else{
@@ -106,7 +100,7 @@ bool darbasBaigtas = false;
 
 
     
-    laikoSpausdinimas();
+    laikoSpausdinimas(readTime, sortTime, typeTime);
 }
 
 
@@ -350,7 +344,7 @@ void NuskaitymasFailoDekai(string fileName){
 }
 
 //Spausdinimo funkcijos
-void spausdinimasFaile(){
+void spausdinimasFaileDekai(){
     if (duomenys.empty()){
         return;
     }
@@ -373,7 +367,7 @@ void spausdinimasFaile(){
     }
     fout.close();
 }
-void spausdinimasTerminale(){
+void spausdinimasTerminaleDekai(){
     if (duomenys.empty()){
         return;
     }
@@ -389,7 +383,7 @@ void spausdinimasTerminale(){
     }
 }
 
-void spausdinimasFaileSkirstymas(){
+void spausdinimasFaileSkirstymasDekai(){
     if (geriStudentai.empty()){
         return;
     }
@@ -405,7 +399,7 @@ void spausdinimasFaileSkirstymas(){
     cin >> pavadinimas;
     pavadinimas += ".txt";
     ofstream foutB;
-    auto printTimeS = high_resolution_clock::now();
+    // auto printTimeS = high_resolution_clock::now();
     foutB.open(pavadinimas);
 
 
@@ -434,10 +428,10 @@ void spausdinimasFaileSkirstymas(){
         
     }
     foutB.close();
-    auto printTimeE = high_resolution_clock::now();
-    printTime = printTimeE - printTimeS;
+    // auto printTimeE = high_resolution_clock::now();
+    // printTime = printTimeE - printTimeS;
 }
-void spausdinimasTerminaleSkirstymas(){
+void spausdinimasTerminaleSkirstymasDekai(){
     if (geriStudentai.empty()){
         return;
     }
@@ -479,7 +473,7 @@ bool rusiavimasVidurkisDekas(const studentaiDekas &a, const studentaiDekas &b){
     return a.vidurkis < b.vidurkis;
 }
 
-void rusiavimoMenu(){
+void rusiavimoMenuDekai(){
     if (duomenys.empty()){
         return;
     }
@@ -523,7 +517,7 @@ void rusiavimoMenu(){
     
 }
 
-void rusiavimoMenuSkirstymas(){
+void rusiavimoMenuSkirstymasDekai(){
     if (geriStudentai.empty()){
         return;
     }
@@ -572,7 +566,7 @@ void rusiavimoMenuSkirstymas(){
 }
 
 
-void skirstymas(){
+void skirstymasDekai(){
     cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
     char pasirinkimas;
     cin >> pasirinkimas;
@@ -612,14 +606,3 @@ void skirstymas(){
     auto typeTimeE = high_resolution_clock::now();
     typeTime = typeTimeE - typeTimeS;
 }
-
-void laikoSpausdinimas(){
-        // cout << "Failu kurimas - " << createTime.count() << " s.\n";
-        cout << "Duomenu nuskaitymas is failo - " << readTime.count() << " s.\n";
-        cout << "Rusiavimas uztruko - " << sortTime.count() << " s.\n";
-        cout << "Studentu skirstymas i dvi grupes/kategorijas - " << typeTime.count() << " s.\n";
-        // cout << "Surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << " s.\n";
-        // allTime = createTime + readTime + typeTime + sortTime + printTime;
-        allTime = readTime + typeTime + sortTime;
-        cout << "Visos programos veikimo laikas - " << allTime.count() << " s.\n";
-    }

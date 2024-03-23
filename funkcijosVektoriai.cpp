@@ -1,18 +1,15 @@
 #include "funkcijuBazeVektoriai.h"
-
-
-
-vector<studentai> duomenys;
-vector<studentai> geriStudentai;
-vector<studentai> blogiStudentai;
+static vector<studentai> duomenys;
+static vector<studentai> geriStudentai;
+static vector<studentai> blogiStudentai;
 
 //globalus laikai
-duration<double> createTime;
-duration<double> readTime;
-duration<double> sortTime;
-duration<double> printTime;
-duration<double> typeTime;
-duration<double> allTime;
+// static duration<double> createTime;
+static duration<double> readTime;
+static duration<double> sortTime;
+// static duration<double> printTime;
+static duration<double> typeTime;
+
 
 
 
@@ -106,7 +103,7 @@ bool darbasBaigtas = false;
 
 
     
-    laikoSpausdinimas();
+    laikoSpausdinimas(readTime, sortTime, typeTime);
 }
 
 
@@ -405,7 +402,7 @@ void spausdinimasFaileSkirstymas(){
     cin >> pavadinimas;
     pavadinimas += ".txt";
     ofstream foutB;
-    auto printTimeS = high_resolution_clock::now();
+    // auto printTimeS = high_resolution_clock::now();
     foutB.open(pavadinimas);
 
 
@@ -434,8 +431,8 @@ void spausdinimasFaileSkirstymas(){
         
     }
     foutB.close();
-    auto printTimeE = high_resolution_clock::now();
-    printTime = printTimeE - printTimeS;
+    // auto printTimeE = high_resolution_clock::now();
+    // printTime = printTimeE - printTimeS;
 }
 void spausdinimasTerminaleSkirstymas(){
     if (geriStudentai.empty()){
@@ -612,14 +609,3 @@ void skirstymas(){
     typeTime = typeTimeE - typeTimeS;
 }
 
-void laikoSpausdinimas(){
-        cout << setprecision(7);
-        // cout << "Failu kurimas - " << createTime.count() << " s.\n";
-        cout << "Duomenu nuskaitymas is failo - " << readTime.count() << " s.\n";
-        cout << "Rusiavimas uztruko - " << sortTime.count() << " s.\n";
-        cout << "Studentu skirstymas i dvi grupes/kategorijas - " << typeTime.count() << " s.\n";
-        // cout << "Surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << " s.\n";
-        // allTime = createTime + readTime + typeTime + sortTime + printTime;
-        allTime = readTime + typeTime + sortTime;
-        cout << "Visos programos veikimo laikas - " << allTime.count() << " s.\n";
-    }

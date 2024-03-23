@@ -66,3 +66,18 @@ void failoGeneracija(){
     // auto createTimeE = high_resolution_clock::now();
     // createTime = createTimeE - createTimeS;
 }
+
+
+
+void laikoSpausdinimas(duration<double> readTime, duration<double> sortTime ,duration<double> typeTime){
+    cout << setprecision(7);
+    // cout << "Failu kurimas - " << createTime.count() << " s.\n";
+    cout << "Duomenu nuskaitymas is failo - " << readTime.count() << " s.\n";
+    cout << "Rusiavimas uztruko - " << sortTime.count() << " s.\n";
+    cout << "Studentu skirstymas i dvi grupes/kategorijas - " << typeTime.count() << " s.\n";
+    // cout << "Surusiuotu studentu isvedimas i du naujus failus - " << printTime.count() << " s.\n";
+    // allTime = createTime + readTime + typeTime + sortTime + printTime;
+    duration<double> allTime;
+    allTime = readTime + typeTime + sortTime;
+    cout << "Visos programos veikimo laikas - " << allTime.count() << " s.\n";
+}

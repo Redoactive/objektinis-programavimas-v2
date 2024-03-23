@@ -9,15 +9,31 @@ struct studentaiDekas{
     double vidurkis;
     double mediana;
 };
-void failoGeneracija();
+string tarpai(string a, int tarpuDydis);
+string extraSpace (string a, int b);
 
 void darbasSuDekais();
-string tarpai(string a, int tarpuDydis);
+
+void pirmasPasirinkimasDekai();
+void antrasPasirinkimasDekai();
+void treciasPasirinkimasDekai();
+
+void NuskaitymasFailoDekai(string fileName);
+void failoGeneracija();
+void skirstymasDekai();
+
+void rusiavimoMenuSkirstymasDekai();
+void rusiavimoMenuDekai();
+
 bool rusiavimasVardasDekas(const studentaiDekas &a, const studentaiDekas &b);
 bool rusiavimasPavardeDekas(const studentaiDekas &a, const studentaiDekas &b);
 bool rusiavimasVidurkisDekas(const studentaiDekas &a, const studentaiDekas &b);
 bool rusiavimasMedianaDekas(const studentaiDekas &a, const studentaiDekas &b);
-void pirmasPasirinkimasDekai();
-void antrasPasirinkimasDekai();
-void treciasPasirinkimasDekai();
-void NuskaitymasFailoDekai(string fileName);
+
+void spausdinimasTerminaleDekai();
+void spausdinimasTerminaleSkirstymasDekai();
+void spausdinimasFaileDekai();
+void spausdinimasFaileSkirstymasDekai();
+
+
+void laikoSpausdinimas(duration<double> readTime, duration<double> sortTime ,duration<double> typeTime);

@@ -12,10 +12,10 @@ int main(){
                 darbasSuVektoriais();
                 break;
             } 
-            // else if(pasirinkimas == 'd' || pasirinkimas == 'D'){
-            //     darbasSuDekais();
-            //     break;
-            // }
+            else if(pasirinkimas == 'd' || pasirinkimas == 'D'){
+                darbasSuDekais();
+                break;
+            }
             // else if(pasirinkimas == 'l' || pasirinkimas == 'L'){
             //     darbasSuListais();
             //     break;

@@ -2,8 +2,6 @@
 #include "includes.h"
 
 
-
-
 //funkcijos main.cpp
 void darbasSuVektoriais();
 void darbasSuDekais();
@@ -13,6 +11,7 @@ void darbasSuListais();
 string tarpai(string a, int tarpuDydis);
 string extraSpace (string a, int b);
 
+void failoGeneracija();
 
 
 
@@ -20,21 +19,17 @@ string extraSpace (string a, int b);
 
 
 
-
-void pirmasPasirinkimasDekai();
-void antrasPasirinkimasDekai();
-void treciasPasirinkimasDekai();
-void NuskaitymasFailoDekai(string fileName);
-
-
-//spausdinimo funkcijos
-
-//nuskaitymas is failo
+// void pirmasPasirinkimasDekai();
+// void antrasPasirinkimasDekai();
+// void treciasPasirinkimasDekai();
+// void NuskaitymasFailoDekai(string fileName);
 
 
+// //spausdinimo funkcijos
 
-void skirstymasDekai();
-//failu generacija 
+// //nuskaitymas is failo
 
-//0.4 versija funkciju kopijos
+
+
+// void skirstymasDekai();
 
