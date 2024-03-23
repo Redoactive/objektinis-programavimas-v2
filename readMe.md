@@ -45,16 +45,21 @@ Visi testavimai yra atlikti su failais, kuriuose namu darbu balu kiekis yra 10.
 * Visi kontaineriai saugo duomenys skirtingai ir tai turi savu privalumu ir minusu
 
 # Testavimai su optimizacijos metodais
-## Testavimui bus naudojamas 1.000.000 failo dydis
+## Testavimui bus naudojamas 1.000 failo dydis
 |Kontaineris        |Strategija         |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
 |-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
-|Vector             |1                  |2.428541 s.        |0.3317479 s.       |1.190585 s.        |3.950874 s.        |
-|Vector             |2                  |0.0029968 s.       |0.0003394 s.       |0.0005833 s.       |0.0039195 s.       |
-|Vector             |3                  |0.0273343 s.       |0.0031984 s.       |0.006994 s.        |0.0375267 s.       |
-|Deque              |1                  |3.464586 s.        |1.015197 s.        |3.11766 s.         |7.597444 s.        |
-|Deque              |2                  |2.440562 s.        |0.3336525 s.       |1.194114 s.        |3.968329 s.        |
-|List               |1                  |6.514126 s.        |1.69377 s.         |0.8091763 s.       |9.017073 s.        |
-|List               |2                  |6.528909 s.        |1.718614 s.        |       |.        |
+|Vector  1.000      |1                  |0.0045569 s.       |0.0003589 s.       |0.0005984 s.       |0.0055142 s.       |
+|Vector  1.000      |2                  |0.0031101 s.       |0.0122786 s.       |0.0006075 s.       |0.0159962 s        |
+|Vector  10.000     |1                  |0.0273343 s.       |0.0031984 s.       |0.006994 s.        |0.0375267 s.       |
+|Vector  10.000     |2                  |0.0261976 s.       |1.152175 s.        |0.0069206 s.       |1.185293 s.        |
+|Deque   1.000      |1                  |0.0038703 s.       |0.0011585 s.       |0.0013087 s.       |0.0063375 s.       |
+|Deque   1.000      |2                  |0.0038357 s.       |0.0007665 s.       |0.0012485 s.       |0.0058507 s.       |
+|Deque   10.000     |1                  |0.0368431 s.       |0.0090515 s.       |0.0163642 s.       |0.0622588 s.       |
+|Deque   10.000     |2                  |0.0360235 s.       |0.0062931 s.       |0.0179278 s.       |0.0602444 s.       |
+|List    1.000      |1                  |0.0072829 s.       |0.0016077 s.       |0.0002648 s.       |0.0091554 s.       |
+|List    1.000      |2                  |0.007141 s.        |0.0015582 s.       |0.0002447 s.       |0.0089439 s.       |
+|List    10.000     |1                  |0.0662241 s.       |0.0160479 s.       |0.0028182 s.       |0.0850902 s.       |
+|List    10.000     |2                  |0.0674492 s.       |0.0142536 s.       |0.0030572 s.       |0.08476 s.         |
 
 # Instaliacijos ir naudojimosi instrukcija (windows)
 ## 1. Instaliuoti Chocolatey 

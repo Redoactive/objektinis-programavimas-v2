@@ -1,6 +1,6 @@
 #include "funkcijuBazeListai.h"
 static list<studentaiListai> duomenys;
-static list<studentaiListai> geriStudentai;
+// static list<studentaiListai> geriStudentai;
 static list<studentaiListai> blogiStudentai;
 
 //globalus laikai
@@ -11,6 +11,7 @@ static duration<double> typeTime;
 
 
 void darbasSuListais(){
+bool arSkirstymasVyksta = false;
 bool darbasBaigtas = false;
     //pasirinkimu menu
     while (darbasBaigtas == false)
@@ -48,6 +49,7 @@ bool darbasBaigtas = false;
             break;
         case '6':
             darbasBaigtas = true;
+            arSkirstymasVyksta = true;
             skirstymasListai();
             break;
         case '7':
@@ -65,9 +67,13 @@ bool darbasBaigtas = false;
 
     //klausiama kaip vartotojas nori isrusiuoti outputa
     // siose funkcijoje tikrinama ar yra duomenu ir ar reikia daryti rusiavima 
-    rusiavimoMenuListai();
-    rusiavimoMenuSkirstymasListai();
-
+    
+    
+    if (arSkirstymasVyksta == true){
+        rusiavimoMenuSkirstymasListai();
+    }else{
+        rusiavimoMenuListai();
+    }
 
 
 
@@ -78,13 +84,23 @@ bool darbasBaigtas = false;
             string pasirinkimas;
             cin >> pasirinkimas;
             if (pasirinkimas == "t"){
-                spausdinimasTerminaleListai();
-                spausdinimasTerminaleSkirstymasListai();
+                if (arSkirstymasVyksta == true){
+                    spausdinimasTerminaleSkirstymasListai();
+                }else{
+                    spausdinimasTerminaleListai();
+                }
+                
+                
                 break;
             } 
             else if(pasirinkimas == "f"){
-                spausdinimasFaileListai();
-                spausdinimasFaileSkirstymasListai();
+                if (arSkirstymasVyksta == true){
+                    spausdinimasFaileSkirstymasListai();
+                }else{
+                    spausdinimasFaileListai();
+                }
+                
+                
                 break;
             }
             else{
@@ -348,9 +364,6 @@ void NuskaitymasFailoListai(string fileName){
 
 //Spausdinimo funkcijos
 void spausdinimasFaileListai(){
-    if (duomenys.empty()){
-        return;
-    }
     cout << "Kaip norite pavadinti savo faila? (be .txt)\n";
     string pavadinimas;
     cin >> pavadinimas;
@@ -371,9 +384,6 @@ void spausdinimasFaileListai(){
     fout.close();
 }
 void spausdinimasTerminaleListai(){
-    if (duomenys.empty()){
-        return;
-    }
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "-------------------------------------------------------------------\n";
     list<studentaiListai>::iterator itr = duomenys.begin();
@@ -387,9 +397,6 @@ void spausdinimasTerminaleListai(){
 }
 
 void spausdinimasFaileSkirstymasListai(){
-    if (geriStudentai.empty()){
-        return;
-    }
     string pavadinimas;
 
     cout << "Kaip norite pavadinti savo faila geriems studentams? (be .txt)\n";
@@ -409,8 +416,8 @@ void spausdinimasFaileSkirstymasListai(){
 
     foutG << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     foutG << "-------------------------------------------------------------------\n";
-    list<studentaiListai>::iterator itr = geriStudentai.begin();
-    for (int i = 0; i < geriStudentai.size(); i++){
+    list<studentaiListai>::iterator itr = duomenys.begin();
+    for (int i = 0; i < duomenys.size(); i++){
 
         foutG << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
         << itr->vardas << tarpai(itr->vardas, 15);
@@ -437,13 +444,10 @@ void spausdinimasFaileSkirstymasListai(){
     // printTime = printTimeE - printTimeS;
 }
 void spausdinimasTerminaleSkirstymasListai(){
-    if (geriStudentai.empty()){
-        return;
-    }
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "------------------------------Geri studentai-------------------------------------\n";
-    list<studentaiListai>::iterator itr = geriStudentai.begin();
-    for (int i = 0; i < geriStudentai.size(); i++){
+    list<studentaiListai>::iterator itr = duomenys.begin();
+    for (int i = 0; i < duomenys.size(); i++){
 
         cout << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
         << itr->vardas << tarpai(itr->vardas, 15);
@@ -528,9 +532,6 @@ void rusiavimoMenuListai(){
 }
 
 void rusiavimoMenuSkirstymasListai(){
-    if (geriStudentai.empty()){
-        return;
-    }
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         cout << "Kaip norite rusiuoti output?\n"
@@ -545,28 +546,28 @@ void rusiavimoMenuSkirstymasListai(){
         switch (pasirinkimas)
         {
         case 1:
-            geriStudentai.sort(rusiavimasVardasListai);
+            duomenys.sort(rusiavimasVardasListai);
             blogiStudentai.sort(rusiavimasVardasListai);
             // sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVardasListai);
             // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardasListai);
             darbasBaigtas = true;
             break;
         case 2:
-            geriStudentai.sort(rusiavimasPavardeListai);
+            duomenys.sort(rusiavimasPavardeListai);
             blogiStudentai.sort(rusiavimasPavardeListai);
             // sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasPavardeListai);
             // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasPavardeListai);
             darbasBaigtas = true;
             break;
         case 3:
-            geriStudentai.sort(rusiavimasVidurkisListai);
+            duomenys.sort(rusiavimasVidurkisListai);
             blogiStudentai.sort(rusiavimasVidurkisListai);
             // sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVidurkisListai);
             // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVidurkisListai);
             darbasBaigtas = true;
             break;
         case 4:
-            geriStudentai.sort(rusiavimasMedianaListai);
+            duomenys.sort(rusiavimasMedianaListai);
             blogiStudentai.sort(rusiavimasMedianaListai);
             // sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasMedianaListai);
             // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasMedianaListai);
@@ -588,41 +589,50 @@ void skirstymasListai(){
     cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
     char pasirinkimas;
     cin >> pasirinkimas;
+    int b = duomenys.size();
     list<studentaiListai>::iterator itr = duomenys.begin();
+
     auto typeTimeS = high_resolution_clock::now();
     try{
         if (pasirinkimas == 'v'){
-            for (int i = 0; i < duomenys.size(); i++){
+            for (int i = 0; i < b; i++){
                 if (itr->vidurkis < 5){
                     blogiStudentai.push_back(*itr);
+                    itr++;
+                    duomenys.pop_front();
                 }
                 else{
-                    geriStudentai.push_back(*itr);
+                    duomenys.push_back(*itr);
+                    itr++;
+                    duomenys.pop_front();
                 }
-                itr++;
+                
             }
-            
+
         }
+        
         else if(pasirinkimas == 'm'){
-            for (int i = 0; i < duomenys.size(); i++){
+            for (int i = 0; i < b; i++){
                 if (itr->mediana < 5){
                     blogiStudentai.push_back(*itr);
+                    itr++;
+                    duomenys.pop_front();
                 }
                 else{
-                    geriStudentai.push_back(*itr);
+                    duomenys.push_back(*itr);
+                    itr++;
+                    duomenys.pop_front();
                 }
-                itr++;
+                
             }
         }
 
         else{
             throw "Blogai ivesta";
         }
-        duomenys.clear();
     }
     catch (const char* msg){
         cerr << msg;
-        terminate();
     }
     auto typeTimeE = high_resolution_clock::now();
     typeTime = typeTimeE - typeTimeS;

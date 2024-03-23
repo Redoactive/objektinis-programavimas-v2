@@ -597,6 +597,7 @@ void skirstymas(){
                     itr++;
                     a++;
                 }
+
             }
             
         }
