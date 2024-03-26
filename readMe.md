@@ -3,12 +3,8 @@
 2. Vartotojas gali ivesti duomenys pats arba pasirinkti, kad duomenys butu automatiskai sugeneruoti.
 3. Duomenys galima sugeneruoti i faila, nuskaityti is failo ir irasyti i faila.
 4. Studentu duomenys galima suskirstyti i dvi skirtingas grupes, gerus studentus ir blogus studentus.
-## Kas nauja 1.0 versjoje
-1. Sukurti papildomi failai, kurie realizuoja programos veikima su skirtingais konteineriais.
-2. Gauti nauji testavimo laikai.
-3. Sutaisyta keleta klaidu ir istrintos nereikalingos kodo vietos.
-4. Labiau optimizuotas kodas.
-
+## Kas nauja 1.1 versjoje
+1. 
 
 # Kompiuterio specifikacijos
 * procesor - AMD Ryzen 5 3600X 6-Core 3.80 GHz
