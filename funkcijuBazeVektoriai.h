@@ -10,6 +10,21 @@ struct studentai{
     double mediana;
 };
 
+class studentai_class{
+    private:
+        string vardas_;
+        string pavarde_;
+        vector<int> balai_;
+        int egzaminas_;
+        double vidurkis_;
+        double mediana_;
+    public:
+        studentai_class();
+        void setVardas(string);
+        string getVardas();
+};
+
+
 string tarpai(string a, int tarpuDydis);
 string extraSpace (string a, int b);
 

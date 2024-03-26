@@ -11,9 +11,13 @@ static duration<double> sortTime;
 static duration<double> typeTime;
 
 
-
+vector<studentai_class> a;
 
 void darbasSuVektoriais(){
+    
+    a[0].setVardas("pijui labai patinka klases");
+    cout << a[0].getVardas() << endl;
+
 bool arSkirstymasVyksta = false;
 bool darbasBaigtas = false;
     //pasirinkimu menu
