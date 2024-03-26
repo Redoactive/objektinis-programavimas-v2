@@ -1,4 +1,3 @@
-# V1.0 Versija
 ## Ka si programa sugeba padaryti
 1. Programa apdoroja duomenys ir isspausdina studentu rezultatus surusiavus ir apskaiciavus galutini bala.
 2. Vartotojas gali ivesti duomenys pats arba pasirinkti, kad duomenys butu automatiskai sugeneruoti.
