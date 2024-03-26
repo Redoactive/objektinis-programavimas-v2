@@ -574,45 +574,46 @@ void rusiavimoMenuSkirstymas(){
 void skirstymas(){
     cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
     char pasirinkimas;
-    cin >> pasirinkimas;
-    int b =duomenys.size();
-    auto typeTimeS = high_resolution_clock::now();
-    try{
-        if (pasirinkimas == 'v'){
-            for (int i = 0; i < b; i++){
-                if(duomenys[i].vidurkis < 5){
-                    blogiStudentai.push_back(duomenys[i]);
-                    break;
+    while(1){
+        cin >> pasirinkimas;
+        auto typeTimeS = high_resolution_clock::now();
+        try{
+            if (pasirinkimas == 'v'){
+                for (int i = 0; i < duomenys.size(); i++){
+                    if(duomenys[i].vidurkis < 5){
+                        blogiStudentai.push_back(duomenys[i]);
+                    }
+                    else{
+                        geriStudentai.push_back(duomenys[i]);
+                    }
                 }
-                else{
-                    geriStudentai.push_back(duomenys[i]);
+                
+            }
+            else if(pasirinkimas == 'm'){
+                for (int i = 0; i < duomenys.size(); i++){
+                    if(duomenys[i].mediana < 5){
+                        blogiStudentai.push_back(duomenys[i]);
+                    }
+                    else{
+                        geriStudentai.push_back(duomenys[i]);
+                    }
                 }
             }
-            
-        }
-        else if(pasirinkimas == 'm'){
-            for (int i = 0; i < b; i++){
-                if(duomenys[i].mediana < 5){
-                    blogiStudentai.push_back(duomenys[i]);
-                    break;
-                }
-                else{
-                    geriStudentai.push_back(duomenys[i]);
-                }
-            }
-        }
 
-        else{
-            throw "Blogai ivesta";
+            else{
+                throw "Blogai ivesta";
+            }
+            // nepamirsk ---------------
+            duomenys.clear();
+            // ------------------
         }
-        // nepamirsk ---------------
-        // duomenys.clear();
-        // ------------------
+        catch (const char* msg){
+            cerr << msg;
+            continue;
+        }
+        break;
+        auto typeTimeE = high_resolution_clock::now();
+        typeTime = typeTimeE - typeTimeS;
     }
-    catch (const char* msg){
-        cerr << msg;
-    }
-    auto typeTimeE = high_resolution_clock::now();
-    typeTime = typeTimeE - typeTimeS;
 }
 
