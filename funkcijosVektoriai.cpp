@@ -713,6 +713,7 @@ void skirstymas(){
     }
     else if (pasirinkimas == 'm'){
         if (strategija == '1'){
+            arSkirtingiVektoriai = true;
             for (int i = 0; i < duomenys.size(); i++){
                 if (duomenys[i].getMediana() < 5){
                     blogiStudentai.push_back(duomenys[i]);
