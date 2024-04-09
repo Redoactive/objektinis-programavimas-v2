@@ -1,14 +1,14 @@
 #pragma once
 #include "includes.h"
 
-struct studentai{
-    string vardas;
-    string pavarde;
-    vector<int> balai;
-    int egzaminas;
-    double vidurkis;
-    double mediana;
-};
+// struct studentai{
+//     string vardas;
+//     string pavarde;
+//     vector<int> balai;
+//     int egzaminas;
+//     double vidurkis;
+//     double mediana;
+// };
 
 class studentai_class{
     private:
@@ -57,10 +57,10 @@ void skirstymas();
 void rusiavimoMenu();
 void rusiavimoMenuSkirstymas();
 
-bool rusiavimasVardas(const studentai &a, const studentai &b);
-bool rusiavimasPavarde(const studentai &a, const studentai &b);
-bool rusiavimasVidurkis(const studentai &a, const studentai &b);
-bool rusiavimasMediana(const studentai &a, const studentai &b);
+bool rusiavimasVardas(studentai_class &a, studentai_class &b);
+bool rusiavimasPavarde(studentai_class &a, studentai_class &b);
+bool rusiavimasVidurkis(studentai_class &a, studentai_class &b);
+bool rusiavimasMediana(studentai_class &a, studentai_class &b);
 
 void spausdinimasFaile();
 void spausdinimasTerminale();
