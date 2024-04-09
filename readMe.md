@@ -1,17 +1,31 @@
-# V1.0 Versija
-## Ka si programa sugeba padaryti
-1. Programa apdoroja duomenys ir isspausdina studentu rezultatus surusiavus ir apskaiciavus galutini bala.
-2. Vartotojas gali ivesti duomenys pats arba pasirinkti, kad duomenys butu automatiskai sugeneruoti.
-3. Duomenys galima sugeneruoti i faila, nuskaityti is failo ir irasyti i faila.
-4. Studentu duomenys galima suskirstyti i dvi skirtingas grupes, gerus studentus ir blogus studentus.
-## Kas nauja 1.0 versjoje
-1. Sukurti papildomi failai, kurie realizuoja programos veikima su skirtingais konteineriais.
-2. Gauti nauji testavimo laikai.
-3. Sutaisyta keleta klaidu ir istrintos nereikalingos kodo vietos.
-4. Labiau optimizuotas kodas.
+# V1.1 Versija
+## Kas nauja 1.1 versjoje
+1. Sukurta antra repozitorija su push --all
+2. Vektoriai, dekai ir listai paversti is strukturu i klases
+3. Apskaiciuoti veikimo laikai su naujom klasem bei daugiau skaiciavimu su optimizacija
 
+## Laiko testavimai
+### Naudojama 1 Strategija su konteineriu vektoriumi
+|                   |Failo dydis        |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
+|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
+|Klase              |100000.txt         |0.2596285 s.       |0.0274521 s.       |0.1455486 s.       |0.4326292 s.       |
+|Klase              |1000000.txt        |2.523105 s.        |0.3239932 s.       |1.869514 s.        |4.716611 s.        |
+|Struktura          |100000.txt         |0.244252 s.        |0.0324432 s.       |0.0954053 s.       |0.3721005 s.       |
+|Struktura          |1000000.txt        |2.440562 s.        |0.3336525 s.       |1.194114 s.        |3.968329 s.        |
+* Klase uztruka truputi ilgiau
+* Galima sakyti, kad struktura rusiuoti yra greiciau, o skirstyti klase yra greiciau
 
-# Kompiuterio specifikacijos
+## Testavimas su optimizacija
+|optimizacija       |Failo dydis        |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
+|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
+|-o1                |100000.txt         |0.2596285 s.       |0.0274521 s.       |0.1455486 s.       |0.4326292 s.       |
+|-o1                |1000000.txt        |0.2596285 s.       |0.0274521 s.       |0.1455486 s.       |0.4326292 s.       |
+|-o2                |100000.txt         |0.2596285 s.       |0.0274521 s.       |0.1455486 s.       |0.4326292 s.       |
+|-o2                |1000000.txt        |0.2596285 s.       |0.0274521 s.       |0.1455486 s.       |0.4326292 s.       |
+|-o3                |100000.txt         |0.2596285 s.       |0.0274521 s.       |0.1455486 s.       |0.4326292 s.       |
+|-o3                |1000000.txt        |0.2596285 s.       |0.0274521 s.       |0.1455486 s.       |0.4326292 s.       |
+# 1.0 versijos duomenys
+## Kompiuterio specifikacijos
 * procesor - AMD Ryzen 5 3600X 6-Core 3.80 GHz
 * RAM - 16.0 GB
 * SSD - Samsung SSD 970 EVO Plus 250GB
