@@ -121,10 +121,6 @@ bool darbasBaigtas = false;
     
     laikoSpausdinimas(readTime, sortTime, typeTime);
 }
-
-
-
-
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -227,7 +223,6 @@ void pirmasPasirinkimas(){
         }
     }
 }
-
 
 void antrasPasirinkimas(){
     string a;
