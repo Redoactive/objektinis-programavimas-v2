@@ -19,7 +19,7 @@ class studentai_class{
         double vidurkis_;
         double mediana_;
     public:
-        studentai_class();
+        studentai_class() : vardas_(""), pavarde_(""), balai_(0), egzaminas_(0), vidurkis_(0), mediana_(0){};
         studentai_class(string vardas, string pavarde, vector<int> balai, int egzaminas, double vidurkis, double mediana) : 
         vardas_(vardas), pavarde_(pavarde), balai_(balai), egzaminas_(egzaminas), vidurkis_(vidurkis), mediana_(mediana){};
         ~studentai_class(){};
@@ -27,15 +27,15 @@ class studentai_class{
         void setPavarde(string a){pavarde_ = a;};
         void setBalai(vector<int> a){balai_ = a;};
         void setEgzaminas(int a){egzaminas_ = a;};
-        void setVidurkis(int a){vidurkis_ = a;};
-        void setMediana(int a){mediana_ = a;};
+        void setVidurkis(double a){vidurkis_ = a;};
+        void setMediana(double a){mediana_ = a;};
 
         string getVardas(){return vardas_;};
         string getPavarde(){return pavarde_;};
         vector<int> getBalai(){return balai_;};
         int getEgzaminas(){return egzaminas_;};
-        int getVidurkis(){return vidurkis_;};
-        int getMediana(){return mediana_;};
+        double getVidurkis(){return vidurkis_;};
+        double getMediana(){return mediana_;};
 };
 
 

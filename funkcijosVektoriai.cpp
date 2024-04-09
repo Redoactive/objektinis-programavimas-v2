@@ -2,16 +2,18 @@
 static vector<studentai_class> duomenys;
 static vector<studentai_class> geriStudentai;
 static vector<studentai_class> blogiStudentai;
-
 //globalus laikai
 // static duration<double> createTime;
+// static duration<double> printTime;
 static duration<double> readTime;
 static duration<double> sortTime;
-// static duration<double> printTime;
 static duration<double> typeTime;
+
+static bool arSkirtingiVektoriai = false;
 
 
 void darbasSuVektoriais(){
+
 bool arSkirstymasVyksta = false;
 bool darbasBaigtas = false;
     //pasirinkimu menu
@@ -437,9 +439,9 @@ void spausdinimasFaileSkirstymas(){
     
     for (int i = 0; i < geriStudentai.size(); i++){
 
-        foutG << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
-        << duomenys[i].getVardas() <<  tarpai(duomenys[i].getVardas(), 15);
-        foutG << duomenys[i].getVidurkis() << "             " << duomenys[i].getMediana() << endl;
+        foutG << setprecision(2) << fixed << geriStudentai[i].getPavarde() << tarpai(geriStudentai[i].getPavarde(), 15)
+        << geriStudentai[i].getVardas() <<  tarpai(geriStudentai[i].getVardas(), 15);
+        foutG << geriStudentai[i].getVidurkis() << "             " << geriStudentai[i].getMediana() << endl;
         
     }
     
@@ -449,7 +451,7 @@ void spausdinimasFaileSkirstymas(){
     foutB << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     foutB << "-------------------------------------------------------------------\n";
 
-    if (!duomenys.empty()){
+    if (!arSkirtingiVektoriai){
         for (int i = 0; i < duomenys.size(); i++){
 
             foutB << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
@@ -461,9 +463,9 @@ void spausdinimasFaileSkirstymas(){
     else{
         for (int i = 0; i < blogiStudentai.size(); i++){
 
-            foutB << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
-            << duomenys[i].getVardas() <<  tarpai(duomenys[i].getVardas(), 15);
-            foutB << duomenys[i].getVidurkis() << "             " << duomenys[i].getMediana() << endl;
+            foutB << setprecision(2) << fixed << blogiStudentai[i].getPavarde() << tarpai(blogiStudentai[i].getPavarde(), 15)
+            << blogiStudentai[i].getVardas() <<  tarpai(blogiStudentai[i].getVardas(), 15);
+            foutB << blogiStudentai[i].getVidurkis() << "             " << blogiStudentai[i].getMediana() << endl;
             
         }
     }
@@ -478,9 +480,9 @@ void spausdinimasTerminaleSkirstymas(){
 
     for (int i = 0; i < geriStudentai.size(); i++){
 
-        cout << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
-        << duomenys[i].getVardas() <<  tarpai(duomenys[i].getVardas(), 15);
-        cout << duomenys[i].getVidurkis() << "             " << duomenys[i].getMediana() << endl;
+        cout << setprecision(2) << fixed << geriStudentai[i].getPavarde() << tarpai(geriStudentai[i].getPavarde(), 15)
+        << geriStudentai[i].getVardas() <<  tarpai(geriStudentai[i].getVardas(), 15);
+        cout << geriStudentai[i].getVidurkis() << "             " << geriStudentai[i].getMediana() << endl;
         
     }
     
@@ -489,7 +491,7 @@ void spausdinimasTerminaleSkirstymas(){
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "-------------------------------------------------------------------\n";
 
-    if (!duomenys.empty()){
+    if (!arSkirtingiVektoriai){
         for (int i = 0; i < duomenys.size(); i++){
 
             cout << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
@@ -501,9 +503,9 @@ void spausdinimasTerminaleSkirstymas(){
     else{
         for (int i = 0; i < blogiStudentai.size(); i++){
 
-            cout << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
-            << duomenys[i].getVardas() <<  tarpai(duomenys[i].getVardas(), 15);
-            cout << duomenys[i].getVidurkis() << "             " << duomenys[i].getMediana() << endl;
+            cout << setprecision(2) << fixed << blogiStudentai[i].getPavarde() << tarpai(blogiStudentai[i].getPavarde(), 15)
+            << blogiStudentai[i].getVardas() <<  tarpai(blogiStudentai[i].getVardas(), 15);
+            cout << blogiStudentai[i].getVidurkis() << "             " << blogiStudentai[i].getMediana() << endl;
             
         }
     }
@@ -582,7 +584,7 @@ void rusiavimoMenuSkirstymas(){
         switch (pasirinkimas)
         {
         case 1:
-            if (duomenys.empty()){
+            if (arSkirtingiVektoriai){
                 sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardas);
             }
             else{
@@ -592,7 +594,7 @@ void rusiavimoMenuSkirstymas(){
             darbasBaigtas = true;
             break;
         case 2:
-            if (duomenys.empty()){
+            if (arSkirtingiVektoriai){
                 sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasPavarde);
             }
             else{
@@ -602,7 +604,7 @@ void rusiavimoMenuSkirstymas(){
             darbasBaigtas = true;
             break;
         case 3:
-            if (duomenys.empty()){
+            if (arSkirtingiVektoriai){
                 sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVidurkis);
             }
             else{
@@ -612,7 +614,7 @@ void rusiavimoMenuSkirstymas(){
             darbasBaigtas = true;
             break;
         case 4:
-            if (duomenys.empty()){
+            if (arSkirtingiVektoriai){
                 sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasMediana);
             }
             else{
@@ -661,6 +663,8 @@ void skirstymas(){
     auto typeTimeS = high_resolution_clock::now();
     if (pasirinkimas == 'v'){
         if (strategija == '1'){
+            arSkirtingiVektoriai = true;
+
             for (int i = 0; i < duomenys.size(); i++){
                 if (duomenys[i].getVidurkis() < 5){
                     blogiStudentai.push_back(duomenys[i]);
