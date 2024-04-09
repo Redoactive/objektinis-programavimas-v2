@@ -4,6 +4,7 @@
 2. Vektoriai, dekai ir listai paversti is strukturu i klases
 3. Apskaiciuoti veikimo laikai su naujom klasem bei daugiau skaiciavimu su optimizacija
 
+
 ## Laiko testavimai
 ### Naudojama 1 Strategija su konteineriu vektoriumi
 |                   |Failo dydis        |Duomenu nuskaitymas|Studentu skirstymas|Rusiavimas uztruko |Visas darbo laikas |
