@@ -1,6 +1,6 @@
 #include "funkcijuBazeListai.h"
 static list<studentaiListai> duomenys;
-// static list<studentaiListai> geriStudentai;
+static list<studentaiListai> geriStudentai;
 static list<studentaiListai> blogiStudentai;
 
 //globalus laikai
@@ -395,8 +395,10 @@ void spausdinimasTerminaleListai(){
         itr++;
     }
 }
+    
 
 void spausdinimasFaileSkirstymasListai(){
+
     string pavadinimas;
 
     cout << "Kaip norite pavadinti savo faila geriems studentams? (be .txt)\n";
@@ -416,28 +418,41 @@ void spausdinimasFaileSkirstymasListai(){
 
     foutG << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     foutG << "-------------------------------------------------------------------\n";
-    list<studentaiListai>::iterator itr = duomenys.begin();
-    for (int i = 0; i < duomenys.size(); i++){
+    list<studentaiListai>::iterator itr = geriStudentai.begin();
+    for (int i = 0; i < geriStudentai.size(); i++){
 
         foutG << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
-        << itr->vardas << tarpai(itr->vardas, 15);
+        << itr->vardas <<  tarpai(itr->vardas, 15);
         foutG << itr->vidurkis << "             " << itr->mediana << endl;
         itr++;
         
     }
+    
     foutG.close();
 
 
     foutB << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     foutB << "-------------------------------------------------------------------\n";
-    itr = blogiStudentai.begin();
-    for (int i = 0; i < blogiStudentai.size(); i++){
+    if (!duomenys.empty()){
+        itr = duomenys.begin();
+        for (int i = 0; i < duomenys.size(); i++){
 
-        foutB << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
-        << itr->vardas << tarpai(itr->vardas, 15);
-        foutB << itr->vidurkis << "             " << itr->mediana << endl;
-        itr++;
-        
+            foutB << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+            << itr->vardas <<  tarpai(itr->vardas, 15);
+            foutB << itr->vidurkis << "             " << itr->mediana << endl;
+            itr++;
+
+        }
+    }
+    else{
+        itr = blogiStudentai.begin();
+        for (int i = 0; i < blogiStudentai.size(); i++){
+
+            foutB << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+            << itr->vardas <<  tarpai(itr->vardas, 15);
+            foutB << itr->vidurkis << "             " << itr->mediana << endl;
+            itr++;
+        }
     }
     foutB.close();
     // auto printTimeE = high_resolution_clock::now();
@@ -446,25 +461,40 @@ void spausdinimasFaileSkirstymasListai(){
 void spausdinimasTerminaleSkirstymasListai(){
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "------------------------------Geri studentai-------------------------------------\n";
-    list<studentaiListai>::iterator itr = duomenys.begin();
-    for (int i = 0; i < duomenys.size(); i++){
+    list<studentaiListai>::iterator itr = geriStudentai.begin();
+    for (int i = 0; i < geriStudentai.size(); i++){
 
         cout << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
-        << itr->vardas << tarpai(itr->vardas, 15);
+        << itr->vardas <<  tarpai(itr->vardas, 15);
         cout << itr->vidurkis << "             " << itr->mediana << endl;
         itr++;
-        
     }
-    cout << "\nPavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
-    cout << "------------------------------Blogi studentai-------------------------------------\n";
-    itr = blogiStudentai.begin();
-    for (int i = 0; i < blogiStudentai.size(); i++){
+    
+
+
+    cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
+    cout << "-------------------------------------------------------------------\n";
+
+    if (!duomenys.empty()){
+        itr = duomenys.begin();
+        for (int i = 0; i < duomenys.size(); i++){
 
         cout << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
-        << itr->vardas << tarpai(itr->vardas, 15);
+        << itr->vardas <<  tarpai(itr->vardas, 15);
         cout << itr->vidurkis << "             " << itr->mediana << endl;
         itr++;
-        
+        }
+    }
+    else{
+        itr = blogiStudentai.begin();
+
+        for (int i = 0; i < blogiStudentai.size(); i++){
+
+        cout << setprecision(2) << fixed << itr->pavarde << tarpai(itr->pavarde, 15)
+        << itr->vardas <<  tarpai(itr->vardas, 15);
+        cout << itr->vidurkis << "             " << itr->mediana << endl;
+        itr++;
+        }
     }
 }
 
@@ -472,6 +502,7 @@ void spausdinimasTerminaleSkirstymasListai(){
 bool rusiavimasVardasListai(const studentaiListai &a, const studentaiListai &b){
     return a.vardas < b.vardas;
 }
+
 bool rusiavimasPavardeListai(const studentaiListai &a, const studentaiListai &b){
     return a.pavarde < b.pavarde;
 }
@@ -483,6 +514,15 @@ bool rusiavimasMedianaListai(const studentaiListai &a, const studentaiListai &b)
 bool rusiavimasVidurkisListai(const studentaiListai &a, const studentaiListai &b){
     return a.vidurkis < b.vidurkis;
 }
+
+
+bool rusiavimasVidurkisListaiS(const studentaiListai &a, const studentaiListai &b){
+    return a.vidurkis >= b.vidurkis;
+}
+bool rusiavimasMedianaListaiS(const studentaiListai &a, const studentaiListai &b){
+    return a.mediana >= b.mediana;
+}
+
 
 void rusiavimoMenuListai(){
     if (duomenys.empty()){
@@ -532,6 +572,7 @@ void rusiavimoMenuListai(){
 }
 
 void rusiavimoMenuSkirstymasListai(){
+
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         cout << "Kaip norite rusiuoti output?\n"
@@ -546,36 +587,50 @@ void rusiavimoMenuSkirstymasListai(){
         switch (pasirinkimas)
         {
         case 1:
-            duomenys.sort(rusiavimasVardasListai);
-            blogiStudentai.sort(rusiavimasVardasListai);
+            if (duomenys.empty()){
+                // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardasListai);
+                blogiStudentai.sort(rusiavimasVardasListai);
+            }
+            else{
+                duomenys.sort(rusiavimasVardasListai);
+                // sort(duomenys.begin(), duomenys.end(), rusiavimasVardasListai);
+            }
+            geriStudentai.sort(rusiavimasVardasListai);
             // sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVardasListai);
-            // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVardasListai);
             darbasBaigtas = true;
             break;
         case 2:
-            duomenys.sort(rusiavimasPavardeListai);
-            blogiStudentai.sort(rusiavimasPavardeListai);
-            // sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasPavardeListai);
-            // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasPavardeListai);
+            if (duomenys.empty()){
+                blogiStudentai.sort(rusiavimasPavardeListai);
+            }
+            else{
+                duomenys.sort(rusiavimasPavardeListai);
+            }
+            geriStudentai.sort(rusiavimasPavardeListai);
             darbasBaigtas = true;
             break;
         case 3:
-            duomenys.sort(rusiavimasVidurkisListai);
-            blogiStudentai.sort(rusiavimasVidurkisListai);
-            // sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasVidurkisListai);
-            // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasVidurkisListai);
+            if (duomenys.empty()){
+                blogiStudentai.sort(rusiavimasVidurkisListai);
+            }
+            else{
+                duomenys.sort(rusiavimasVidurkisListai);
+            }
+            geriStudentai.sort(rusiavimasVidurkisListai);
             darbasBaigtas = true;
             break;
         case 4:
-            duomenys.sort(rusiavimasMedianaListai);
-            blogiStudentai.sort(rusiavimasMedianaListai);
-            // sort(geriStudentai.begin(), geriStudentai.end(), rusiavimasMedianaListai);
-            // sort(blogiStudentai.begin(), blogiStudentai.end(), rusiavimasMedianaListai);
+            if (duomenys.empty()){
+                blogiStudentai.sort(rusiavimasMedianaListai);
+            }
+            else{
+                duomenys.sort(rusiavimasMedianaListai);
+            }
+            geriStudentai.sort(rusiavimasMedianaListai);
             darbasBaigtas = true;
             break;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
-            terminate();
             break;
         }
         auto sortTimeE = high_resolution_clock::now();
@@ -583,57 +638,149 @@ void rusiavimoMenuSkirstymasListai(){
     }
     
 }
-
-
+bool Less(studentaiListai a){
+    return a.vidurkis >= 5;
+}
+bool LessM(studentaiListai a){
+    return a.mediana >= 5;
+}
 void skirstymasListai(){
-    cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
+    
     char pasirinkimas;
-    cin >> pasirinkimas;
-    int b = duomenys.size();
-    list<studentaiListai>::iterator itr = duomenys.begin();
+    char strategija;
+    int b =duomenys.size();
+    while(true){
+        try{
+            cout << "Pagal ka norite skirstyti vaikus? (v - vidurkis; m - mediana)\n";
+            cin >> pasirinkimas;
+            if (pasirinkimas == 'v' || pasirinkimas == 'm'){} 
+            else{ throw string("Blogai ivesta raide"); }
 
+            cout << "Iveskite kokia strategija norite naudoti ( 1 ; 2 ; 3 )\n";
+            cin >> strategija;
+            if (strategija == '1' || strategija == '2' || strategija == '3'){}
+            else{ throw string("Blogai ivesta raide"); }
+            break;
+        }
+        catch(string msg){
+            cout << msg << endl;
+        }
+    }
     auto typeTimeS = high_resolution_clock::now();
-    try{
-        if (pasirinkimas == 'v'){
-            for (int i = 0; i < b; i++){
+    if (pasirinkimas == 'v'){
+        if (strategija == '1'){
+            list<studentaiListai>::iterator itr = duomenys.begin();
+            for (int i = 0; i < duomenys.size(); i++){
                 if (itr->vidurkis < 5){
                     blogiStudentai.push_back(*itr);
+                }
+                else{
+                    geriStudentai.push_back(*itr);
+                }
+                itr++;
+            }
+            duomenys.clear();
+        }
+        if (strategija == '2'){
+            duomenys.sort(rusiavimasVidurkisListaiS);
+            list<studentaiListai>::iterator itr = duomenys.begin();
+            
+            for (int i = 0; i < b; i++){
+                
+                if(itr->vidurkis >= 5){
+                    geriStudentai.push_back(*itr);
+                    itr++;
+                    duomenys.pop_front();
+                    
+                }
+                else{
+                    
+                    break;
+                }
+            }
+        }
+        if (strategija == '3'){
+            // vector<studentai>::iterator itr;
+            // while (true){
+            //     itr = find_if(duomenys.begin(),duomenys.end(), Less);
+            //     if(itr->vidurkis < 5){
+            //         break;
+            //     }
+            //     geriStudentai.push_back(*itr);
+            //     duomenys.erase(itr);
+            // }
+            partition(duomenys.begin(), duomenys.end(), [](studentaiListai a){return a.vidurkis >= 5;});
+            list<studentaiListai>::iterator itr = duomenys.begin();
+            for (int i = 0; i < b; i--){
+                if(itr->vidurkis >= 5){
+                    geriStudentai.push_back(*itr);
                     itr++;
                     duomenys.pop_front();
                 }
                 else{
-                    duomenys.push_back(*itr);
-                    itr++;
-                    duomenys.pop_front();
+                    break;
                 }
-                
             }
-
         }
-        
-        else if(pasirinkimas == 'm'){
-            for (int i = 0; i < b; i++){
+    }
+    else if (pasirinkimas == 'm'){
+        if (strategija == '1'){
+            list<studentaiListai>::iterator itr = duomenys.begin();
+            for (int i = 0; i < duomenys.size(); i++){
                 if (itr->mediana < 5){
                     blogiStudentai.push_back(*itr);
+                }
+                else{
+                    geriStudentai.push_back(*itr);
+                }
+                itr++;
+            }
+            duomenys.clear();
+        }
+        if (strategija == '2'){
+            duomenys.sort(rusiavimasMedianaListaiS);
+            list<studentaiListai>::iterator itr = duomenys.begin();
+            
+            for (int i = 0; i < b; i++){
+                
+                if(itr->mediana >= 5){
+                    geriStudentai.push_back(*itr);
+                    itr++;
+                    duomenys.pop_front();
+                    
+                }
+                else{
+                    
+                    break;
+                }
+            }
+        }
+        if (strategija == '3'){
+            // vector<studentai>::iterator itr;
+            // while (true){
+            //     itr = find_if(duomenys.begin(),duomenys.end(), Less);
+            //     if(itr->vidurkis < 5){
+            //         break;
+            //     }
+            //     geriStudentai.push_back(*itr);
+            //     duomenys.erase(itr);
+            // }
+            partition(duomenys.begin(), duomenys.end(), [](studentaiListai a){return a.mediana >= 5;});
+            list<studentaiListai>::iterator itr = duomenys.begin();
+            for (int i = 0; i < b; i--){
+                if(itr->mediana >= 5){
+                    geriStudentai.push_back(*itr);
                     itr++;
                     duomenys.pop_front();
                 }
                 else{
-                    duomenys.push_back(*itr);
-                    itr++;
-                    duomenys.pop_front();
+                    break;
                 }
-                
             }
         }
+    }
+    
 
-        else{
-            throw "Blogai ivesta";
-        }
-    }
-    catch (const char* msg){
-        cerr << msg;
-    }
     auto typeTimeE = high_resolution_clock::now();
     typeTime = typeTimeE - typeTimeS;
 }
