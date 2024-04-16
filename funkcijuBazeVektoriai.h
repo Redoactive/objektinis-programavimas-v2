@@ -38,18 +38,58 @@ class studentai_class{
         int getEgzaminas(){return egzaminas_;};
         double getVidurkis(){return vidurkis_;};
         double getMediana(){return mediana_;};
-        friend ostream& operator<<(ostream& out, studentai_class a)
+        friend ostream& operator<<(ostream& out, studentai_class a) // output overloading
         {
             out << setprecision(2) << fixed << a.pavarde_ << tarpai(a.pavarde_, 15) << a.vardas_ <<
             tarpai(a.vardas_, 15) << a.vidurkis_ << "             " << a.mediana_ << endl;
             return out;
         };
-        friend ostream& operator>>(ostream& in, studentai_class a)
+        friend istream& operator>>(istream& in, studentai_class a) // input oveloading
         {
-            
+            in >> a.vardas_ >> a.pavarde_ >> a.egzaminas_ >> a.vidurkis_ >> a.mediana_;
             return in;
         };
-        
+
+        studentai_class(const studentai_class& a)  // kopiviavimo konstruktorius
+        : vardas_(a.vardas_), pavarde_(a.pavarde_), balai_(a.balai_), egzaminas_(a.egzaminas_), vidurkis_(a.vidurkis_), mediana_(a.mediana_) {
+            for (int i = 0; i < a.balai_.size(); i++){
+                balai_[i] = a.balai_[i];
+            }
+        }
+        studentai_class operator=(const studentai_class& a){ // kopiviavimo operatorius / priskirimas
+            if (&a == this){
+                return *this;
+            }
+            vardas_ = a.vardas_;
+            pavarde_ = pavarde_;
+            for (int i = 0; i < a.balai_.size(); i++){
+                balai_[i] = a.balai_[i];
+            }
+            egzaminas_ = a.egzaminas_;
+            vidurkis_ = a.vidurkis_;
+            mediana_ = a.mediana_;
+            return *this;
+        }
+        studentai_class (studentai_class&& a)
+        : vardas_(a.vardas_), pavarde_(a.pavarde_), balai_(a.balai_), egzaminas_(a.egzaminas_), vidurkis_(a.vidurkis_), mediana_(a.mediana_) {
+            for (int i = 0; i < a.balai_.size(); i++){
+                balai_[i] = a.balai_[i];
+            }
+        }
+        studentai_class operator=(studentai_class&& a){
+            if (&a == this){
+                return *this;
+            }
+            vardas_ = a.vardas_;
+            pavarde_ = pavarde_;
+            for (int i = 0; i < a.balai_.size(); i++){
+                balai_[i] = a.balai_[i];
+            }
+            egzaminas_ = a.egzaminas_;
+            vidurkis_ = a.vidurkis_;
+            mediana_ = a.mediana_;
+            return *this;
+        }
 };
 
 
