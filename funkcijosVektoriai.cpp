@@ -26,7 +26,8 @@ bool darbasBaigtas = false;
         << "( 4 ) - Nuskaityti is failo\n"
         << "( 5 ) - Generuoti faila\n"
         << "( 6 ) - Suskirstyti i gerus mokinius ir i nereikalingus civilizacijai mokinius ir baigti\n"
-        << "( 7 ) - Baigti darba be skirstymo\n";
+        << "( 7 ) - Baigti darba be skirstymo\n"
+        << "( 8 ) - Testuoti klases\n";
         char pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
@@ -59,7 +60,8 @@ bool darbasBaigtas = false;
             darbasBaigtas = true;
             break;
         case '8':
-            terminate();
+            klasiuTestavimas();
+            return;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
             break;
@@ -120,6 +122,23 @@ bool darbasBaigtas = false;
 
     
     laikoSpausdinimas(readTime, sortTime, typeTime);
+}
+void klasiuTestavimas(){
+    studentai_class a;
+
+    //testuoti cin
+    // cin >> a;
+    // cout << a.getPavarde();
+    //testuoti cout
+    // cout << a;
+    // studentai_class b{r, double a}
+    //testuoti Copy
+
+    //testuoti Copy operatoriu
+    //testuoti move
+    //testuoti move operatoriu
+    
+    //testuoti destruktorius
 }
 double medianosApsk(vector<int> a, int egzaminas){
     

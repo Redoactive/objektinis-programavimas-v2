@@ -10,6 +10,8 @@
 //     double mediana;
 // };
 string tarpai(string a, int tarpuDydis);// turi buti pirmiau uz klase del perdengto operatoriaus <<
+double vidurkioApsk(vector<int> a, int egzaminas);
+double medianosApsk(vector<int> a, int egzaminas);
 class studentai_class{
     private:
         string vardas_;
@@ -18,11 +20,15 @@ class studentai_class{
         int egzaminas_;
         double vidurkis_;
         double mediana_;
+        int* rodykle_ = nullptr;
     public:
         studentai_class() : vardas_(""), pavarde_(""), balai_(0), egzaminas_(0), vidurkis_(0), mediana_(0){};
         studentai_class(string vardas, string pavarde, vector<int> balai, int egzaminas, double vidurkis, double mediana) : 
         vardas_(vardas), pavarde_(pavarde), balai_(balai), egzaminas_(egzaminas), vidurkis_(vidurkis), mediana_(mediana){};
-        ~studentai_class(){};
+        //testavimui
+        studentai_class(int* rodykle, double vidurkis) : rodykle_(rodykle), vidurkis_(vidurkis){cout << "Konstruktorius suveike\n";};
+        // studentai_class(int* rodykle) : rodykle_(rodykle)
+        ~studentai_class(){if(rodykle_ != nullptr){delete[] rodykle_; cout << "Dekonstruktorius suveike\n";}};
 
 
         void setVardas(string a){vardas_ = a;};
@@ -44,10 +50,25 @@ class studentai_class{
             tarpai(a.vardas_, 15) << a.vidurkis_ << "             " << a.mediana_ << endl;
             return out;
         };
-        friend istream& operator>>(istream& in, studentai_class a) // input oveloading
+        friend istream& operator>>(istream& in, studentai_class a) // input overloading
         {
-            in >> a.vardas_ >> a.pavarde_ >> a.egzaminas_ >> a.vidurkis_ >> a.mediana_;
-            return in;
+            //no clue what to do here            // cout << "Iveskite varda ir pavarde\n";
+            // in >> a.vardas_ >> a.pavarde_;
+            // int i = 0, temp;
+            // cout << "Iveskite namu darbu balus, parasykite -1, jei norite sustoti\n";
+            // do{
+            //     in >> temp;
+            //     a.balai_.push_back(temp);
+            //     i++;
+            // }
+            // while(a.balai_[i - 1] != -1);
+            // a.balai_.pop_back();//panaikinamas -1
+            // cout << "Iveskite egzamino bala\n";
+            // in >> a.egzaminas_;
+            // a.vidurkis_ = vidurkioApsk(a.balai_, a.egzaminas_);
+            // a.mediana_ = medianosApsk(a.balai_, a.egzaminas_);
+
+            // return in;
         };
 
         studentai_class(const studentai_class& a)  // kopiviavimo konstruktorius
@@ -97,7 +118,7 @@ class studentai_class{
 string extraSpace (string a, int b);
 
 
-
+void klasiuTestavimas();
 //Vektorius
 void pirmasPasirinkimas();
 void antrasPasirinkimas();
