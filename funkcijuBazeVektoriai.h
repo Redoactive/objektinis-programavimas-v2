@@ -9,7 +9,7 @@
 //     double vidurkis;
 //     double mediana;
 // };
-
+string tarpai(string a, int tarpuDydis);// turi buti pirmiau uz klase del perdengto operatoriaus <<
 class studentai_class{
     private:
         string vardas_;
@@ -23,6 +23,8 @@ class studentai_class{
         studentai_class(string vardas, string pavarde, vector<int> balai, int egzaminas, double vidurkis, double mediana) : 
         vardas_(vardas), pavarde_(pavarde), balai_(balai), egzaminas_(egzaminas), vidurkis_(vidurkis), mediana_(mediana){};
         ~studentai_class(){};
+
+
         void setVardas(string a){vardas_ = a;};
         void setPavarde(string a){pavarde_ = a;};
         void setBalai(vector<int> a){balai_ = a;};
@@ -36,10 +38,22 @@ class studentai_class{
         int getEgzaminas(){return egzaminas_;};
         double getVidurkis(){return vidurkis_;};
         double getMediana(){return mediana_;};
+        friend ostream& operator<<(ostream& out, studentai_class a)
+        {
+            out << setprecision(2) << fixed << a.pavarde_ << tarpai(a.pavarde_, 15) << a.vardas_ <<
+            tarpai(a.vardas_, 15) << a.vidurkis_ << "             " << a.mediana_ << endl;
+            return out;
+        };
+        friend ostream& operator>>(ostream& in, studentai_class a)
+        {
+            
+            return in;
+        };
+        
 };
 
 
-string tarpai(string a, int tarpuDydis);
+
 string extraSpace (string a, int b);
 
 
