@@ -125,6 +125,7 @@ bool darbasBaigtas = false;
 }
 void klasiuTestavimas(){
     studentai_class a;
+    // studentai_base f;
     // testuoti cin
     cout << "\nIrasymo operatorius\n";
     cin >> a;
