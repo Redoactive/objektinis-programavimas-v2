@@ -176,7 +176,6 @@ void klasiuTestavimas(){
     c = std::move(d);
     cout << "Klasei c nustumta d klase su pakeistu skaicium \n"; c.testav();
     cout << "Likusios klases d rodykle\n"; d.testav();
-    //cia uzsidaro programos veikimas, del to automatiskai susiaktivuoja klasiu destruktoriai
 }
 double medianosApsk(vector<int> a, int egzaminas){
     

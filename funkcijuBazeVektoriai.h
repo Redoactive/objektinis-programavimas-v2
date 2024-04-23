@@ -34,9 +34,7 @@ class studentai_class{
                 rodykle_[i] = i;
             }
         };
-        ~studentai_class(){
-            delete[] rodykle_;
-        }
+        ~studentai_class(){delete[] rodykle_;};
 
 
         void testav(){
