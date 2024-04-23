@@ -47,7 +47,14 @@ istream& operator>>(istream& in, studentai_class &a)
     return in;
 };
 // kopiviavimo konstruktorius
-studentai_base::studentai_base(const studentai_base& a): vardas_(a.vardas_), pavarde_(a.pavarde_), balai_(a.balai_), egzaminas_(a.egzaminas_), vidurkis_(a.vidurkis_), mediana_(a.mediana_) {
+studentai_class::studentai_class(const studentai_class& a){
+    vardas_ = a.vardas_;
+    pavarde_ = a.pavarde_;
+    balai_ = a.balai_;
+    egzaminas_ = a.egzaminas_;
+    vidurkis_ = a.vidurkis_;
+    mediana_ = a.mediana_;
+
     for (int i = 0; i < a.balai_.size(); i++){
         balai_[i] = a.balai_[i];
     }
@@ -60,7 +67,7 @@ studentai_base::studentai_base(const studentai_base& a): vardas_(a.vardas_), pav
     }
 }
 
-studentai_base studentai_base::operator=(const studentai_base& a){ // kopiviavimo operatorius / priskirimas
+studentai_class studentai_class::operator=(const studentai_class& a){ // kopiviavimo operatorius / priskirimas
     if (&a == this){
         return *this;
     }
@@ -84,8 +91,13 @@ studentai_base studentai_base::operator=(const studentai_base& a){ // kopiviavim
     return *this;
 }
 
-studentai_base::studentai_base (studentai_base&& a) // move konstruktorius
-: vardas_(a.vardas_), pavarde_(a.pavarde_), balai_(a.balai_), egzaminas_(a.egzaminas_), vidurkis_(a.vidurkis_), mediana_(a.mediana_) {
+studentai_class::studentai_class (studentai_class&& a){ // move konstruktorius
+    vardas_ = a.vardas_;
+    pavarde_ = a.pavarde_;
+    balai_ = a.balai_;
+    egzaminas_ = a.egzaminas_;
+    vidurkis_ = a.vidurkis_;
+    mediana_ = a.mediana_;
     for (int i = 0; i < a.balai_.size(); i++){
         balai_[i] = a.balai_[i];
         a.balai_[i] = 0;
@@ -101,7 +113,7 @@ studentai_base::studentai_base (studentai_base&& a) // move konstruktorius
     a.rodykle_ = nullptr;
 }
 
-studentai_base studentai_base::operator=(studentai_base&& a){ // move operatorius
+studentai_class studentai_class::operator=(studentai_class&& a){ // move operatorius
     if (&a == this){
         return *this;
     }

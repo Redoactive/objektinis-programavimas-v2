@@ -25,31 +25,24 @@ class studentai_base{
         int* rodykle_;
         int dydis_;
     public:
-        studentai_base(){};
-        studentai_base(const studentai_base& a);  // kopiviavimo konstruktorius
-
-
-        studentai_base operator=(const studentai_base& a); // kopiviavimo operatorius / priskirimas
-
-        studentai_base (studentai_base&& a); // move konstruktorius
-
-        studentai_base operator=(studentai_base&& a); // move operatorius
+        void setMasyvas(int a, int b){rodykle_[a] = b;};
+        virtual void testav() = 0;
+        studentai_base(){};//default konstruktorius
 
 };
 
 
 
 
-class studentai_class : studentai_base{
+class studentai_class : public studentai_base{
     public:
         studentai_class();
         studentai_class(string vardas, string pavarde, vector<int> balai, int egzaminas, double vidurkis, double mediana);
         ~studentai_class(){delete[] rodykle_;}; 
         //testavimui
         studentai_class(int dydis);
-        void setMasyvas(int a, int b){rodykle_[a] = b;};
+        
         void testav();
-
         void setVardas(string a){vardas_ = a;};
         void setPavarde(string a){pavarde_ = a;};
         void setBalai(vector<int> a){balai_ = a;};
@@ -66,7 +59,10 @@ class studentai_class : studentai_base{
         friend ostream& operator<<(ostream& out, studentai_class a);//output overloading
         friend istream& operator>>(istream& in, studentai_class &a);//input
 
-
+        studentai_class(const studentai_class& a);  // kopiviavimo konstruktorius
+        studentai_class operator=(const studentai_class& a); // kopiviavimo operatorius / priskirimas
+        studentai_class (studentai_class&& a); // move konstruktorius
+        studentai_class operator=(studentai_class&& a); // move operatorius
 };
 string extraSpace (string a, int b);
 
