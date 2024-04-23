@@ -127,10 +127,12 @@ void klasiuTestavimas(){
     studentai_class a;
 
     // testuoti cin
-    // cin >> a;
+    cout << "\nIrasymo operatorius\n";
+    cin >> a;
 
     // testuoti cout
-    // cout << "Klase a\n" << a;
+    cout << "\nSpausdinimo operatoris\n";
+    cout << a;
 
     //testuoti Copy operatoriu
     cout << "\nKopijavimo konstruktorius\n";
@@ -174,7 +176,7 @@ void klasiuTestavimas(){
     c = std::move(d);
     cout << "Klasei c nustumta d klase su pakeistu skaicium \n"; c.testav();
     cout << "Likusios klases d rodykle\n"; d.testav();
-    //testuoti destruktorius
+    //cia uzsidaro programos veikimas, del to automatiskai susiaktivuoja klasiu destruktoriai
 }
 double medianosApsk(vector<int> a, int egzaminas){
     
@@ -537,6 +539,7 @@ bool rusiavimasVidurkis(studentai_class &a, studentai_class &b){
 }
 
 void rusiavimoMenu(){
+
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         cout << "Kaip norite rusiuoti output?\n"
@@ -571,6 +574,7 @@ void rusiavimoMenu(){
             terminate();
             break;
         }
+
         auto sortTimeE = high_resolution_clock::now();
         sortTime = sortTimeE - sortTimeS;
     }

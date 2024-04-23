@@ -21,7 +21,7 @@ class studentai_class{
         double vidurkis_;
         double mediana_;
         int* rodykle_ = nullptr;
-        int dydis_;
+        int dydis_ = 0;
     public:
         studentai_class() : vardas_(""), pavarde_(""), balai_(0), egzaminas_(0), vidurkis_(0), mediana_(0){};
         studentai_class(string vardas, string pavarde, vector<int> balai, int egzaminas, double vidurkis, double mediana) : 
@@ -34,6 +34,11 @@ class studentai_class{
                 rodykle_[i] = i;
             }
         };
+        ~studentai_class(){
+            delete[] rodykle_;
+        }
+
+
         void testav(){
             if (rodykle_==nullptr){
                 cout << "Rodykle tuscia\n";
@@ -92,6 +97,7 @@ class studentai_class{
             for (int i = 0; i < a.balai_.size(); i++){
                 balai_[i] = a.balai_[i];
             }
+            
             //testavimas 
             dydis_ = a.dydis_;
             rodykle_ = new int[a.dydis_];
@@ -104,7 +110,7 @@ class studentai_class{
                 return *this;
             }
             vardas_ = a.vardas_;
-            pavarde_ = pavarde_;
+            pavarde_ = a.pavarde_;
             for (int i = 0; i < a.balai_.size(); i++){
                 balai_[i] = a.balai_[i];
             }
@@ -143,7 +149,7 @@ class studentai_class{
                 return *this;
             }
             vardas_ = a.vardas_;
-            pavarde_ = pavarde_;
+            pavarde_ = a.pavarde_;
             for (int i = 0; i < a.balai_.size(); i++){
                 balai_[i] = a.balai_[i];
             }
