@@ -126,18 +126,54 @@ bool darbasBaigtas = false;
 void klasiuTestavimas(){
     studentai_class a;
 
-    //testuoti cin
+    // testuoti cin
     // cin >> a;
-    // cout << a.getPavarde();
-    //testuoti cout
-    // cout << a;
-    // studentai_class b{r, double a}
-    //testuoti Copy
+
+    // testuoti cout
+    // cout << "Klase a\n" << a;
 
     //testuoti Copy operatoriu
+    cout << "\nKopijavimo konstruktorius\n";
+    studentai_class b(5);
+    cout << "Klase b su rodykle ir masyvu\n";
+    b.testav(); //spausdinimo funkcija
+    b.setMasyvas(1, 100); // antras elementas pakeistas
+    cout << "antras elementas pakeistas i 100\n";
+    b.testav();
+    studentai_class c = b;
+    cout << "Klase c nukopijuotas b su pakeistu skaicium \n"; c.testav();
+
+    //testuoti Copy operatoriu
+    cout << "\nKopijavimo operatorius\n";
+    cout << "c masyvas\n";
+    c.testav();
+    cout << "b klases 4 elementas pakeistas i 65423\n";
+    b.setMasyvas(3, 65423);
+    b.testav();
+    c = b;
+    cout << "Klase c nukopijuotas b su pakeistu skaicium \n"; c.testav();
+
     //testuoti move
+    cout << "\nMove konstruktorius\n";
+    cout << "c masyvas\n";
+    c.testav();
+    cout << "c klases 1 elementas pakeistas i -555\n";
+    c.setMasyvas(1, -555);
+    c.testav();
+    studentai_class d = std::move(c);
+    cout << "Naujai klasei d nustumta c klase su pakeistu skaicium \n"; d.testav();
+    cout << "Likusios klases c rodykle\n"; c.testav();
+
     //testuoti move operatoriu
-    
+    cout << "\nMove operatorius\n";
+    cout << "d masyvas\n";
+    d.testav();
+    cout << "d klases trecia elementas pakeistas i 987\n";
+    d.setMasyvas(2, 987);
+    d.testav();
+    c = std::move(d);
+    cout << "Klasei c nustumta d klase su pakeistu skaicium \n"; c.testav();
+    cout << "Likusios klases d rodykle\n"; d.testav();
     //testuoti destruktorius
 }
 double medianosApsk(vector<int> a, int egzaminas){
