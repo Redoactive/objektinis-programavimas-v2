@@ -25,7 +25,7 @@ class studentai_base{
         int* rodykle_;
         int dydis_;
     public:
-        studentai_base();
+        studentai_base(){};
         studentai_base(const studentai_base& a);  // kopiviavimo konstruktorius
 
 
