@@ -1,4 +1,4 @@
-# V1.1 Versija
+# V1.2 Versija
 ## Kas nauja 1.2 versjoje
 1. Overloadinti operatoriai
 2. Sukurtas testavimas operatoriams
