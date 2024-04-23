@@ -26,7 +26,8 @@ bool darbasBaigtas = false;
         << "( 4 ) - Nuskaityti is failo\n"
         << "( 5 ) - Generuoti faila\n"
         << "( 6 ) - Suskirstyti i gerus mokinius ir i nereikalingus civilizacijai mokinius ir baigti\n"
-        << "( 7 ) - Baigti darba be skirstymo\n";
+        << "( 7 ) - Baigti darba be skirstymo\n"
+        << "( 8 ) - Testuoti klases\n";
         char pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
@@ -59,7 +60,8 @@ bool darbasBaigtas = false;
             darbasBaigtas = true;
             break;
         case '8':
-            terminate();
+            klasiuTestavimas();
+            return;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
             break;
@@ -121,6 +123,60 @@ bool darbasBaigtas = false;
     
     laikoSpausdinimas(readTime, sortTime, typeTime);
 }
+void klasiuTestavimas(){
+    studentai_class a;
+
+    // testuoti cin
+    cout << "\nIrasymo operatorius\n";
+    cin >> a;
+
+    // testuoti cout
+    cout << "\nSpausdinimo operatoris\n";
+    cout << a;
+
+    //testuoti Copy operatoriu
+    cout << "\nKopijavimo konstruktorius\n";
+    studentai_class b(5);
+    cout << "Klase b su rodykle ir masyvu\n";
+    b.testav(); //spausdinimo funkcija
+    b.setMasyvas(1, 100); // antras elementas pakeistas
+    cout << "antras elementas pakeistas i 100\n";
+    b.testav();
+    studentai_class c = b;
+    cout << "Klase c nukopijuotas b su pakeistu skaicium \n"; c.testav();
+
+    //testuoti Copy operatoriu
+    cout << "\nKopijavimo operatorius\n";
+    cout << "c masyvas\n";
+    c.testav();
+    cout << "b klases 4 elementas pakeistas i 65423\n";
+    b.setMasyvas(3, 65423);
+    b.testav();
+    c = b;
+    cout << "Klase c nukopijuotas b su pakeistu skaicium \n"; c.testav();
+
+    //testuoti move
+    cout << "\nMove konstruktorius\n";
+    cout << "c masyvas\n";
+    c.testav();
+    cout << "c klases 1 elementas pakeistas i -555\n";
+    c.setMasyvas(1, -555);
+    c.testav();
+    studentai_class d = std::move(c);
+    cout << "Naujai klasei d nustumta c klase su pakeistu skaicium \n"; d.testav();
+    cout << "Likusios klases c rodykle\n"; c.testav();
+
+    //testuoti move operatoriu
+    cout << "\nMove operatorius\n";
+    cout << "d masyvas\n";
+    d.testav();
+    cout << "d klases trecia elementas pakeistas i 987\n";
+    d.setMasyvas(2, 987);
+    d.testav();
+    c = std::move(d);
+    cout << "Klasei c nustumta d klase su pakeistu skaicium \n"; c.testav();
+    cout << "Likusios klases d rodykle\n"; d.testav();
+}
 double medianosApsk(vector<int> a, int egzaminas){
     
     sort(a.begin(), a.end());
@@ -139,7 +195,6 @@ double vidurkioApsk(vector<int> a, int egzaminas){
     }
     return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
 }
-
 //pagrindines funkcijos
 void pirmasPasirinkimas(){
     string a;
@@ -223,7 +278,6 @@ void pirmasPasirinkimas(){
         }
     }
 }
-
 void antrasPasirinkimas(){
     string a;
     vector<int> bal;
@@ -275,7 +329,6 @@ void antrasPasirinkimas(){
         }
     }
 }
-
 void treciasPasirinkimas(){
     vector<int> bal;
     //Vardu baze || vardai gali nesutapti su ne mergiotinem pavardem
@@ -316,9 +369,6 @@ void treciasPasirinkimas(){
         duomenys.push_back(dabartinisStudentas);      
     }
 }
-
-
-
 //Nuskaitymas is failo
 void NuskaitymasFailo(string fileName){
     ifstream fin;
@@ -354,6 +404,8 @@ void NuskaitymasFailo(string fileName){
 
 
 
+
+
     while (!fin.eof()){
         bal.clear();
         fin >> temp; dabartinisStudentas.setVardas(temp); 
@@ -373,7 +425,6 @@ void NuskaitymasFailo(string fileName){
     readTime = readTimeE - readTimeS;
     fin.close();
 }
-
 //Spausdinimo funkcijos
 void spausdinimasFaile(){
 
@@ -388,11 +439,7 @@ void spausdinimasFaile(){
     fout << "-------------------------------------------------------------------\n";
 
     for (int i = 0; i < duomenys.size(); i++){
-
-        fout << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
-        << duomenys[i].getVardas() <<  tarpai(duomenys[i].getVardas(), 15);
-        fout << duomenys[i].getVidurkis() << "             " << duomenys[i].getMediana() << endl;
-        
+        cout << duomenys[i];
     }
     fout.close();
 }
@@ -402,14 +449,9 @@ void spausdinimasTerminale(){
     cout << "-------------------------------------------------------------------\n";
 
     for (int i = 0; i < duomenys.size(); i++){
-
-        cout << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
-        << duomenys[i].getVardas() <<  tarpai(duomenys[i].getVardas(), 15);
-        cout << duomenys[i].getVidurkis() << "             " << duomenys[i].getMediana() << endl;
-        
+        cout << duomenys[i];    
     }
 }
-
 void spausdinimasFaileSkirstymas(){
 
     string pavadinimas;
@@ -424,7 +466,6 @@ void spausdinimasFaileSkirstymas(){
     cin >> pavadinimas;
     pavadinimas += ".txt";
     ofstream foutB;
-    // auto printTimeS = high_resolution_clock::now();
     foutB.open(pavadinimas);
 
 
@@ -433,79 +474,55 @@ void spausdinimasFaileSkirstymas(){
     foutG << "-------------------------------------------------------------------\n";
     
     for (int i = 0; i < geriStudentai.size(); i++){
-
-        foutG << setprecision(2) << fixed << geriStudentai[i].getPavarde() << tarpai(geriStudentai[i].getPavarde(), 15)
-        << geriStudentai[i].getVardas() <<  tarpai(geriStudentai[i].getVardas(), 15);
-        foutG << geriStudentai[i].getVidurkis() << "             " << geriStudentai[i].getMediana() << endl;
+        foutG << geriStudentai[i];
+        // foutG << setprecision(2) << fixed << geriStudentai[i].getPavarde() << tarpai(geriStudentai[i].getPavarde(), 15)
+        // << geriStudentai[i].getVardas() <<  tarpai(geriStudentai[i].getVardas(), 15);
+        // foutG << geriStudentai[i].getVidurkis() << "             " << geriStudentai[i].getMediana() << endl;
         
     }
     
     foutG.close();
-
 
     foutB << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     foutB << "-------------------------------------------------------------------\n";
 
     if (!arSkirtingiVektoriai){
         for (int i = 0; i < duomenys.size(); i++){
-
-            foutB << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
-            << duomenys[i].getVardas() <<  tarpai(duomenys[i].getVardas(), 15);
-            foutB << duomenys[i].getVidurkis() << "             " << duomenys[i].getMediana() << endl;
-            
+            foutB << duomenys[i];            
         }
     }
     else{
         for (int i = 0; i < blogiStudentai.size(); i++){
-
-            foutB << setprecision(2) << fixed << blogiStudentai[i].getPavarde() << tarpai(blogiStudentai[i].getPavarde(), 15)
-            << blogiStudentai[i].getVardas() <<  tarpai(blogiStudentai[i].getVardas(), 15);
-            foutB << blogiStudentai[i].getVidurkis() << "             " << blogiStudentai[i].getMediana() << endl;
-            
+            foutB << blogiStudentai[i];            
         }
     }
     foutB.close();
-    // auto printTimeE = high_resolution_clock::now();
-    // printTime = printTimeE - printTimeS;
 }
 void spausdinimasTerminaleSkirstymas(){
-
+// cout << setprecision(2) << fixed << geriStudentai[i].getPavarde() << tarpai(geriStudentai[i].getPavarde(), 15)
+// << geriStudentai[i].getVardas() <<  tarpai(geriStudentai[i].getVardas(), 15);
+// cout << geriStudentai[i].getVidurkis() << "             " << geriStudentai[i].getMediana() << endl;
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "------------------------------Geri studentai-------------------------------------\n";
 
     for (int i = 0; i < geriStudentai.size(); i++){
-
-        cout << setprecision(2) << fixed << geriStudentai[i].getPavarde() << tarpai(geriStudentai[i].getPavarde(), 15)
-        << geriStudentai[i].getVardas() <<  tarpai(geriStudentai[i].getVardas(), 15);
-        cout << geriStudentai[i].getVidurkis() << "             " << geriStudentai[i].getMediana() << endl;
-        
+        cout << geriStudentai[i];       
     }
     
-
-
     cout << "Pavarde        Vardas         Galutinis (Vid.) Galutinis (Med.)\n";
     cout << "-------------------------------------------------------------------\n";
 
     if (!arSkirtingiVektoriai){
         for (int i = 0; i < duomenys.size(); i++){
-
-            cout << setprecision(2) << fixed << duomenys[i].getPavarde() << tarpai(duomenys[i].getPavarde(), 15)
-            << duomenys[i].getVardas() <<  tarpai(duomenys[i].getVardas(), 15);
-            cout << duomenys[i].getVidurkis() << "             " << duomenys[i].getMediana() << endl;
-            
+            cout << duomenys[i];
         }
     }
     else{
         for (int i = 0; i < blogiStudentai.size(); i++){
-
-            cout << setprecision(2) << fixed << blogiStudentai[i].getPavarde() << tarpai(blogiStudentai[i].getPavarde(), 15)
-            << blogiStudentai[i].getVardas() <<  tarpai(blogiStudentai[i].getVardas(), 15);
-            cout << blogiStudentai[i].getVidurkis() << "             " << blogiStudentai[i].getMediana() << endl;
-            
+            cout << blogiStudentai[i];
         }
     }
 }
-
 //rusiavimas
 bool rusiavimasVardas(studentai_class &a, studentai_class &b){
     return a.getVardas() < b.getVardas();
@@ -513,16 +530,15 @@ bool rusiavimasVardas(studentai_class &a, studentai_class &b){
 bool rusiavimasPavarde(studentai_class &a, studentai_class &b){
     return a.getPavarde() < b.getPavarde();
 }
-
 bool rusiavimasMediana(studentai_class &a, studentai_class &b){
     return a.getMediana() < b.getMediana();
 }
-
 bool rusiavimasVidurkis(studentai_class &a, studentai_class &b){
     return a.getVidurkis() < b.getVidurkis();
 }
 
 void rusiavimoMenu(){
+
     bool darbasBaigtas = false;
     while (darbasBaigtas == false){
         cout << "Kaip norite rusiuoti output?\n"
@@ -557,6 +573,7 @@ void rusiavimoMenu(){
             terminate();
             break;
         }
+
         auto sortTimeE = high_resolution_clock::now();
         sortTime = sortTimeE - sortTimeS;
     }
