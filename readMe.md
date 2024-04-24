@@ -7,19 +7,16 @@
 ## Bazine klase
 ![](images/baze.png)
 
+Bazineje klaseje saugomi kintamieji, kurie yra protected, kad juos galetu panaudoti derrived klase ir kelios papildomos funkcijos iskaitant pure virtual function
 ## Derrived klase
 ![](images/derrived.png)
 
+Derrived klaseje yra laikomi get'eriai ir set'eriai, 
 ## Bazine klase yra abstrakti
 ![](images/funkcijaAbstrakti.png)
 
-Bazines klases negalima kurti, kadangi joje yra naudojama gryna virtuali funkcija
-
-## testavimas pries sutvarkant klases
-![](images/beVirtual.png)
-
-Matosi, kad neteisingai, kadangi po move komandos, rodykle nera nullptr. Tai parodo, kad funkcija naudoja default konstruktorius
-## testavimas po virtualiu funkciju
-![](images/suVirtual.png)
+Bazines klases negalima kurti, kadangi joje yra naudojama gryna virtuali funkcija, tai pavercia klase i abstrakcia
+## testavimas
+![](images/test.png)
 
 Tai parodo, kad derrived klase teisingai naudoja overloadintus konstruktorius ir operatorius

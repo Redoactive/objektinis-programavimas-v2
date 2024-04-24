@@ -25,10 +25,10 @@ class studentai_base{
         int* rodykle_;
         int dydis_;
     public:
-        void setMasyvas(int a, int b){rodykle_[a] = b;};
+        virtual void setMasyvas(int a, int b){rodykle_[a] = b;};
         virtual void testav() = 0;
         studentai_base(){};//default konstruktorius
-
+        virtual ~studentai_base(){};
 };
 
 
