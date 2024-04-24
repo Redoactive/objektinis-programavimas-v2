@@ -15,11 +15,11 @@
 
 Bazines klases negalima kurti, kadangi joje yra naudojama gryna virtuali funkcija
 
-## testavimas pries padarant virtualias funkcijas
+## testavimas pries sutvarkant klases
 ![](images/beVirtual.png)
 
-Matosi, kad neteisingai
+Matosi, kad neteisingai, kadangi po move komandos, rodykle nera nullptr. Tai parodo, kad funkcija naudoja default konstruktorius
 ## testavimas po virtualiu funkciju
 ![](images/suVirtual.png)
 
-Tai parodo
+Tai parodo, kad derrived klase teisingai naudoja overloadintus konstruktorius ir operatorius
