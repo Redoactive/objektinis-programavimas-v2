@@ -3,8 +3,8 @@
 
 //funkcijos main.cpp
 void darbasSuVektoriais();
-void darbasSuDekais();
-void darbasSuListais();
+// void darbasSuDekais();
+// void darbasSuListais();
 
 //papildomos funkcijos darbui
 string tarpai(string a, int tarpuDydis);

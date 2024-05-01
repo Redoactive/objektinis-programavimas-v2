@@ -27,7 +27,13 @@ class studentai_base{
     public:
         virtual void setMasyvas(int a, int b){rodykle_[a] = b;};
         virtual void testav() = 0;
-        studentai_base(){};//default konstruktorius
+        /// Brief description - Tai yra konstruktorius
+        /** Detailed description - Cia vyksta konstruktoriaus dalykai
+         *  Pvz jis sukuria kintamus
+         *  Tada executina tai kas tarp siu skliaustu {}
+         *  Po to konstruktorius uzsidaro
+         */
+        studentai_base(){};
         virtual ~studentai_base(){};
 };
 

@@ -1,0 +1,74 @@
+\doxysection{funkciju\+Baze\+Listai.\+h}
+\hypertarget{funkciju_baze_listai_8h_source}{}\label{funkciju_baze_listai_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}includes.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ struct\ studentaiListai\{}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ string\ vardas;}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ string\ pavarde;}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ \ \ \ list<int>\ balai;}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ int\ egzaminas;}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ \ \ \ double\ vidurkis;}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \ \ \ \ double\ mediana;}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ \};}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ vardas\_;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ pavarde\_;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ list<int>\ balai\_;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ egzaminas\_;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ vidurkis\_;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mediana\_;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}()\ :\ vardas\_(\textcolor{stringliteral}{"{}"{}}),\ pavarde\_(\textcolor{stringliteral}{"{}"{}}),\ balai\_(0),\ egzaminas\_(0),\ vidurkis\_(0),\ mediana\_(0)\{\};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}(\textcolor{keywordtype}{string}\ vardas,\ \textcolor{keywordtype}{string}\ pavarde,\ list<int>\ balai,\ \textcolor{keywordtype}{int}\ egzaminas,\ \textcolor{keywordtype}{double}\ vidurkis,\ \textcolor{keywordtype}{double}\ mediana)\ :\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ vardas\_(vardas),\ pavarde\_(pavarde),\ balai\_(balai),\ egzaminas\_(egzaminas),\ vidurkis\_(vidurkis),\ mediana\_(mediana)\{\};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstudentai__class_list}{\string~studentai\_classList}}()\{\};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setVardas(\textcolor{keywordtype}{string}\ a)\{vardas\_\ =\ a;\};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setPavarde(\textcolor{keywordtype}{string}\ a)\{pavarde\_\ =\ a;\};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setBalai(list<int>\ a)\{balai\_\ =\ a;\};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setEgzaminas(\textcolor{keywordtype}{int}\ a)\{egzaminas\_\ =\ a;\};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setVidurkis(\textcolor{keywordtype}{double}\ a)\{vidurkis\_\ =\ a;\};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setMediana(\textcolor{keywordtype}{double}\ a)\{mediana\_\ =\ a;\};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getVardas()\{\textcolor{keywordflow}{return}\ vardas\_;\};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getPavarde()\{\textcolor{keywordflow}{return}\ pavarde\_;\};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ list<int>\ getBalai()\{\textcolor{keywordflow}{return}\ balai\_;\};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getEgzaminas()\{\textcolor{keywordflow}{return}\ egzaminas\_;\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ getVidurkis()\{\textcolor{keywordflow}{return}\ vidurkis\_;\};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ getMediana()\{\textcolor{keywordflow}{return}\ mediana\_;\};}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{string}\ tarpai(\textcolor{keywordtype}{string}\ a,\ \textcolor{keywordtype}{int}\ tarpuDydis);}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{string}\ extraSpace\ (\textcolor{keywordtype}{string}\ a,\ \textcolor{keywordtype}{int}\ b);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ pirmasPasirinkimasListai();}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ antrasPasirinkimasListai();}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ treciasPasirinkimasListai();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ NuskaitymasFailoListai(\textcolor{keywordtype}{string}\ fileName);}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ failoGeneracija();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ skirstymasListai();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ rusiavimoMenuSkirstymasListai();}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ rusiavimoMenuListai();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{bool}\ rusiavimasVardasListai(\mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\ \&a,\ \mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\ \&b);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{bool}\ rusiavimasPavardeListai(\mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\ \&a,\ \mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\ \&b);}
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{bool}\ rusiavimasVidurkisListai(\mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\ \&a,\ \mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\ \&b);}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{bool}\ rusiavimasMedianaListai(\mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\ \&a,\ \mbox{\hyperlink{classstudentai__class_list}{studentai\_classList}}\ \&b);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ spausdinimasTerminaleListai();}
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ spausdinimasTerminaleSkirstymasListai();}
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ spausdinimasFaileListai();}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ spausdinimasFaileSkirstymasListai();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ laikoSpausdinimas(duration<double>\ readTime,\ duration<double>\ sortTime\ ,duration<double>\ typeTime);}
+
+\end{DoxyCode}
