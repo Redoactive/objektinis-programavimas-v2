@@ -1,35 +1,22 @@
-# V1.2 Versija
-## Kas nauja 1.2 versjoje
-1. Overloadinti operatoriai
-2. Sukurtas testavimas operatoriams
+# V1.5 Versija
+## Kas nauja 1.5 versjoje
+1. Klase atskirta i dvi
+2. sukurtas papildomas failas perkelt funkciju definitions
+3. Bazine klase padaryta abstrakcia
 
-## Testavimo rezultatai:
-![Tekstas](images/TestavimoRezultatai.png)
+## Bazine klase
+![](images/baze.png)
 
-## Testavimo funkcija
-![](images/TestavimoKodas.png)
+Bazineje klaseje saugomi kintamieji, kurie yra protected, kad juos galetu panaudoti derrived klase ir kelios papildomos funkcijos iskaitant pure virtual function
+## Derrived klase
+![](images/derrived.png)
 
-Testuojami skirtingi scenarijai paeiliui, move testavimui naudojamas std::move
+Derrived klaseje yra laikomi get'eriai ir set'eriai, 
+## Bazine klase yra abstrakti
+![](images/funkcijaAbstrakti.png)
 
-## Funkcijos naudojamos testavimui
-![Tekstas](images/FunkcijosMasyvuTestavimui.png)
+Bazines klases negalima kurti, kadangi joje yra naudojama gryna virtuali funkcija, tai pavercia klase i abstrakcia
+## testavimas
+![](images/test.png)
 
-Papildomos funkcijos kurios leidzia uzpildyti pointer nuorodos masyva ir keisti duomenys
-
-## iostream operatoriu perdengimas
-![Tekstas](images/iostreamOverload.png)
-
-Programoje yra naudojamas output overloadas
-
-## Kopijavimas
-![Tekstas](images/KopijavimoKonstr.png)
-
-Atskiram objektui priskiriami nauji kintamieji/rodykles
-## Judinimas
-![Tekstas](images/MoveKonstr.png)
-
-I atskira objekta perkeliami duomenys, seno objekto rodykle paverciama i nullptr
-
-## Dekonstruktorius
-Dekonstruktorius paprastas, istrina rodykles masyva
-`~studentai_class(){delete[] rodykle_;};`
+Tai parodo, kad derrived klase teisingai naudoja overloadintus konstruktorius ir operatorius

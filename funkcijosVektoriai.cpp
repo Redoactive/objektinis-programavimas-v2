@@ -125,7 +125,7 @@ bool darbasBaigtas = false;
 }
 void klasiuTestavimas(){
     studentai_class a;
-
+    // studentai_base f;
     // testuoti cin
     cout << "\nIrasymo operatorius\n";
     cin >> a;
@@ -149,6 +149,8 @@ void klasiuTestavimas(){
     cout << "\nKopijavimo operatorius\n";
     cout << "c masyvas\n";
     c.testav();
+    cout << "b masyvas\n";
+    b.testav();
     cout << "b klases 4 elementas pakeistas i 65423\n";
     b.setMasyvas(3, 65423);
     b.testav();
@@ -160,7 +162,7 @@ void klasiuTestavimas(){
     cout << "c masyvas\n";
     c.testav();
     cout << "c klases 1 elementas pakeistas i -555\n";
-    c.setMasyvas(1, -555);
+    c.setMasyvas(0, -555);
     c.testav();
     studentai_class d = std::move(c);
     cout << "Naujai klasei d nustumta c klase su pakeistu skaicium \n"; d.testav();
