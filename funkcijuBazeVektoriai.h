@@ -117,3 +117,15 @@ void spausdinimasTerminaleSkirstymas();
 
 void laikoSpausdinimas(duration<double> readTime, duration<double> sortTime ,duration<double> typeTime);
 
+/*! \mainpage Ignas Maliauka Objektinis programavimas
+ *
+ * \section intro_sec Doxygen puslapis.
+ *
+ * Galima pamatyti ivairius failus, taip pat yra pakomentuotos klases.
+ *
+ * \section install_sec Instaliacija
+ *
+ * \subsection step1 Step 1: instaliacijos pradzia...
+ *
+ * etc...
+ */

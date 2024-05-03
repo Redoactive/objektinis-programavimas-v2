@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['kas_20nauja_201_205_20versjoje_0',['Kas nauja 1.5 versjoje',['../md_read_me.html#autotoc_md1',1,'']]],
-  ['klase_1',['Klase',['../md_read_me.html#autotoc_md2',1,'Bazine klase'],['../md_read_me.html#autotoc_md3',1,'Derrived klase']]],
-  ['klase_20yra_20abstrakti_2',['Bazine klase yra abstrakti',['../md_read_me.html#autotoc_md4',1,'']]],
-  ['klasesrealizacija_2ecpp_3',['klasesRealizacija.cpp',['../klases_realizacija_8cpp.html',1,'']]],
-  ['klasiutestavimas_4',['klasiuTestavimas',['../funkcijos_vektoriai_8cpp.html#a5ed3f12cf35499739379c2e6e9f5ca97',1,'klasiuTestavimas():&#160;funkcijosVektoriai.cpp'],['../funkciju_baze_vektoriai_8h.html#a5ed3f12cf35499739379c2e6e9f5ca97',1,'klasiuTestavimas():&#160;funkcijosVektoriai.cpp']]]
+  ['ignas_20maliauka_20objektinis_20programavimas_0',['Ignas Maliauka Objektinis programavimas',['../index.html',1,'']]],
+  ['includes_2eh_1',['Includes.h',['../_includes_8h.html',1,'']]],
+  ['instaliacija_2',['Instaliacija',['../index.html#install_sec',1,'']]],
+  ['instaliacijos_20pradzia_3',['Step 1: instaliacijos pradzia...',['../index.html#step1',1,'']]]
 ];

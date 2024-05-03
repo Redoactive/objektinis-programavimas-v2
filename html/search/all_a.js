@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['laikospausdinimas_0',['laikoSpausdinimas',['../bendros_funkcijos_8cpp.html#adb3a08b11be0fdec17ec64a32065cd9a',1,'laikoSpausdinimas(duration&lt; double &gt; readTime, duration&lt; double &gt; sortTime, duration&lt; double &gt; typeTime):&#160;bendrosFunkcijos.cpp'],['../funkciju_baze_vektoriai_8h.html#adb3a08b11be0fdec17ec64a32065cd9a',1,'laikoSpausdinimas(duration&lt; double &gt; readTime, duration&lt; double &gt; sortTime, duration&lt; double &gt; typeTime):&#160;bendrosFunkcijos.cpp']]],
-  ['less_1',['Less',['../funkcijos_vektoriai_8cpp.html#aabb318625ca90e062814cde25abdf35b',1,'funkcijosVektoriai.cpp']]],
-  ['lessm_2',['LessM',['../funkcijos_vektoriai_8cpp.html#a31bfc352a55b34654009c8c1e4fbfb23',1,'funkcijosVektoriai.cpp']]]
+  ['kas_20nauja_202_200_20versjoje_0',['Kas nauja 2.0 versjoje',['../md_read_me.html#autotoc_md1',1,'']]],
+  ['klasesrealizacija_2ecpp_1',['klasesRealizacija.cpp',['../klases_realizacija_8cpp.html',1,'']]],
+  ['klasiutestavimas_2',['klasiuTestavimas',['../funkcijos_vektoriai_8cpp.html#a5ed3f12cf35499739379c2e6e9f5ca97',1,'klasiuTestavimas():&#160;funkcijosVektoriai.cpp'],['../funkciju_baze_vektoriai_8h.html#a5ed3f12cf35499739379c2e6e9f5ca97',1,'klasiuTestavimas():&#160;funkcijosVektoriai.cpp']]]
 ];

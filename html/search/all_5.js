@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['egzaminas_5f_0',['egzaminas_',['../classstudentai__base.html#a4a7a9f1422c6fdb099b0ed8bc02cdf98',1,'studentai_base']]],
-  ['extraspace_1',['extraSpace',['../bendros_funkcijos_8cpp.html#a48b0c1b7ba3ca7fb4c76cae8973477a2',1,'extraSpace(string a, int b):&#160;bendrosFunkcijos.cpp'],['../_funkciju_baze_8h.html#a48b0c1b7ba3ca7fb4c76cae8973477a2',1,'extraSpace(string a, int b):&#160;bendrosFunkcijos.cpp'],['../funkciju_baze_vektoriai_8h.html#a48b0c1b7ba3ca7fb4c76cae8973477a2',1,'extraSpace(string a, int b):&#160;bendrosFunkcijos.cpp']]]
+  ['darbassuvektoriais_0',['darbasSuVektoriais',['../funkcijos_vektoriai_8cpp.html#a825b0ae43d3e4d4c5224a6780c9d0525',1,'darbasSuVektoriais():&#160;funkcijosVektoriai.cpp'],['../_funkciju_baze_8h.html#a825b0ae43d3e4d4c5224a6780c9d0525',1,'darbasSuVektoriais():&#160;funkcijosVektoriai.cpp']]],
+  ['distribution_1',['distribution',['../_includes_8h.html#a6c39dd166dd4df87504e773f7c82f18e',1,'distribution:&#160;Includes.h'],['../bendros_funkcijos_8cpp.html#a2a3889f6bf1f5b64f39b8bd96daf39f7',1,'distribution(1, 10):&#160;bendrosFunkcijos.cpp']]],
+  ['doxygen_20puslapis_2',['Doxygen puslapis.',['../index.html#intro_sec',1,'']]],
+  ['dydis_5f_3',['dydis_',['../classstudentai__base.html#a2d84e31f5bd863581af25101182f3ec4',1,'studentai_base']]]
 ];

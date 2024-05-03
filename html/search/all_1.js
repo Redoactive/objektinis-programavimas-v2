@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['5_20versija_0',['V1.5 Versija',['../md_read_me.html',1,'']]],
-  ['5_20versjoje_1',['Kas nauja 1.5 versjoje',['../md_read_me.html#autotoc_md1',1,'']]]
+  ['1_3a_20instaliacijos_20pradzia_0',['Step 1: instaliacijos pradzia...',['../index.html#step1',1,'']]]
 ];

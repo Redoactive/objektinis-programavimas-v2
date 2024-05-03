@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Objektinis programavimas: V1.5 Versija</title>
+<title>Objektinis programavimas: V2.0 Versija</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,33 +71,17 @@ $(function() {
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">V1.5 Versija</div></div>
+  <div class="headertitle"><div class="title">V2.0 Versija</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Kas nauja 1.5 versjoje</h1>
+Kas nauja 2.0 versjoje</h1>
 <ol type="1">
-<li>Klase atskirta i dvi</li>
-<li>sukurtas papildomas failas perkelt funkciju definitions</li>
-<li>Bazine klase padaryta abstrakcia</li>
+<li>Istrinti seni failai skirti darbui su skirtingais konteineriais</li>
+<li>sukurta Doxygen dokumentacija ir joje aprasytos klases</li>
+<li>Reikia dar atlikti unit testavimus, refactorinti koda ir aprasyti viska readMe faile </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Bazine klase</h1>
-<p><img src="images/baze.png" alt="" class="inline"/></p>
-<p>Bazineje klaseje saugomi kintamieji, kurie yra protected, kad juos galetu panaudoti derrived klase ir kelios papildomos funkcijos iskaitant pure virtual function </p>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Derrived klase</h1>
-<p><img src="images/derrived.png" alt="" class="inline"/></p>
-<p>Derrived klaseje yra laikomi get'eriai ir set'eriai, </p>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Bazine klase yra abstrakti</h1>
-<p><img src="images/funkcijaAbstrakti.png" alt="" class="inline"/></p>
-<p>Bazines klases negalima kurti, kadangi joje yra naudojama gryna virtuali funkcija, tai pavercia klase i abstrakcia </p>
-<h1><a class="anchor" id="autotoc_md5"></a>
-testavimas</h1>
-<p><img src="images/test.png" alt="" class="inline"/></p>
-<p>Tai parodo, kad derrived klase teisingai naudoja overloadintus konstruktorius ir operatorius </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

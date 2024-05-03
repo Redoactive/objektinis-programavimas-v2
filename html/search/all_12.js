@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['v1_205_20versija_0',['V1.5 Versija',['../md_read_me.html',1,'']]],
-  ['vardas_5f_1',['vardas_',['../classstudentai__base.html#aed893d618f45464238eaab7a6774c598',1,'studentai_base']]],
-  ['versija_2',['V1.5 Versija',['../md_read_me.html',1,'']]],
-  ['versjoje_3',['Kas nauja 1.5 versjoje',['../md_read_me.html#autotoc_md1',1,'']]],
-  ['vidurkioapsk_4',['vidurkioApsk',['../funkcijos_vektoriai_8cpp.html#ac1ed17c62e4f51cc9f3544ac777b134d',1,'vidurkioApsk(vector&lt; int &gt; a, int egzaminas):&#160;funkcijosVektoriai.cpp'],['../funkciju_baze_vektoriai_8h.html#ac1ed17c62e4f51cc9f3544ac777b134d',1,'vidurkioApsk(vector&lt; int &gt; a, int egzaminas):&#160;funkcijosVektoriai.cpp']]],
-  ['vidurkis_5f_5',['vidurkis_',['../classstudentai__base.html#aafbdc301e8ed2fe4deac246d8ff53842',1,'studentai_base']]]
+  ['tarpai_0',['tarpai',['../bendros_funkcijos_8cpp.html#aafc1424a70eb1559c2e93dd747a8939c',1,'tarpai(string a, int tarpuDydis):&#160;bendrosFunkcijos.cpp'],['../_funkciju_baze_8h.html#aafc1424a70eb1559c2e93dd747a8939c',1,'tarpai(string a, int tarpuDydis):&#160;bendrosFunkcijos.cpp'],['../funkciju_baze_vektoriai_8h.html#aafc1424a70eb1559c2e93dd747a8939c',1,'tarpai(string a, int tarpuDydis):&#160;bendrosFunkcijos.cpp']]],
+  ['testav_1',['testav',['../classstudentai__base.html#af11c7602c423145e51c939a75e7d8335',1,'studentai_base::testav()'],['../classstudentai__class.html#af6d5f47ca657419febd732b4f9d77c89',1,'studentai_class::testav()']]],
+  ['treciaspasirinkimas_2',['treciasPasirinkimas',['../funkcijos_vektoriai_8cpp.html#aca52672a7b99fc7f4e4afd521268c630',1,'treciasPasirinkimas():&#160;funkcijosVektoriai.cpp'],['../funkciju_baze_vektoriai_8h.html#aca52672a7b99fc7f4e4afd521268c630',1,'treciasPasirinkimas():&#160;funkcijosVektoriai.cpp']]]
 ];
