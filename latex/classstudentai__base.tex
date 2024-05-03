@@ -14,13 +14,13 @@ Inheritance diagram for studentai\+\_\+base\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{classstudentai__base_a42bab4188e94f1010d9dd0b166e55ca7}{set\+Masyvas}} (int a, int b)
-\item 
+\begin{DoxyCompactList}\small\item\em Pakeicia rodykleje skaiciu, kad pamatyti ar gerai kopijavimas/movinimas vyksta. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classstudentai__base_af11c7602c423145e51c939a75e7d8335}{testav}} ()=0
-\item 
+\begin{DoxyCompactList}\small\item\em Isspausdina rodykles turini, jei tuscia, sako kad yra null, siuo atveju tai yra pilnai virtuali funkcija. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classstudentai__base_a27fd4961ddad91cd941797ea27195353}{studentai\+\_\+base}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Brief description -\/ Tai yra konstruktorius. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classstudentai__base_aa077381869173310223171f04bf44430}{\texorpdfstring{$\sim$}{\string~}studentai\+\_\+base}} ()
-\begin{DoxyCompactList}\small\item\em Brief description -\/ Tai yra konstruktorius. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,10 +36,10 @@ double \mbox{\hyperlink{classstudentai__base_aafbdc301e8ed2fe4deac246d8ff53842}{
 \item 
 double \mbox{\hyperlink{classstudentai__base_ad4108ba445a68230cdf4a3fc4051e9f1}{mediana\+\_\+}}
 \item 
-int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classstudentai__base_ad5dfad8a29f2cd20eee03bdb6f40340e}{rodykle\+\_\+}}
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classstudentai__base_ad5dfad8a29f2cd20eee03bdb6f40340e}{rodykle\+\_\+}} = nullptr
 \item 
-int \mbox{\hyperlink{classstudentai__base_a2d84e31f5bd863581af25101182f3ec4}{dydis\+\_\+}}
-\end{DoxyCompactItemize}
+int \mbox{\hyperlink{classstudentai__base_a2d84e31f5bd863581af25101182f3ec4}{dydis\+\_\+}} = 0
+\begin{DoxyCompactList}\small\item\em Rodykle ir dydis yra naudojami testavimo tikslams. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -49,17 +49,17 @@ int \mbox{\hyperlink{classstudentai__base_a2d84e31f5bd863581af25101182f3ec4}{dyd
 \doxysubsubsection{\texorpdfstring{studentai\_base()}{studentai\_base()}}
 {\footnotesize\ttfamily studentai\+\_\+base\+::studentai\+\_\+base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classstudentai__base_aa077381869173310223171f04bf44430}\label{classstudentai__base_aa077381869173310223171f04bf44430} 
+
+
+Brief description -\/ Tai yra konstruktorius. 
+
+Detailed description -\/ Cia vyksta konstruktoriaus dalykai Pvz jis sukuria kintamus Tada executina tai kas tarp siu skliaustu \{\} Po to konstruktorius uzsidaro \Hypertarget{classstudentai__base_aa077381869173310223171f04bf44430}\label{classstudentai__base_aa077381869173310223171f04bf44430} 
 \index{studentai\_base@{studentai\_base}!````~studentai\_base@{\texorpdfstring{$\sim$}{\string~}studentai\_base}}
 \index{````~studentai\_base@{\texorpdfstring{$\sim$}{\string~}studentai\_base}!studentai\_base@{studentai\_base}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}studentai\_base()}{\string~studentai\_base()}}
 {\footnotesize\ttfamily virtual studentai\+\_\+base\+::\texorpdfstring{$\sim$}{\string~}studentai\+\_\+base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 
-
-Brief description -\/ Tai yra konstruktorius. 
-
-Detailed description -\/ Cia vyksta konstruktoriaus dalykai Pvz jis sukuria kintamus Tada executina tai kas tarp siu skliaustu \{\} Po to konstruktorius uzsidaro 
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classstudentai__base_a42bab4188e94f1010d9dd0b166e55ca7}\label{classstudentai__base_a42bab4188e94f1010d9dd0b166e55ca7} 
@@ -68,11 +68,19 @@ Detailed description -\/ Cia vyksta konstruktoriaus dalykai Pvz jis sukuria kint
 \doxysubsubsection{\texorpdfstring{setMasyvas()}{setMasyvas()}}
 {\footnotesize\ttfamily virtual void studentai\+\_\+base\+::set\+Masyvas (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
+
+
+Pakeicia rodykleje skaiciu, kad pamatyti ar gerai kopijavimas/movinimas vyksta. 
+
 \Hypertarget{classstudentai__base_af11c7602c423145e51c939a75e7d8335}\label{classstudentai__base_af11c7602c423145e51c939a75e7d8335} 
 \index{studentai\_base@{studentai\_base}!testav@{testav}}
 \index{testav@{testav}!studentai\_base@{studentai\_base}}
 \doxysubsubsection{\texorpdfstring{testav()}{testav()}}
 {\footnotesize\ttfamily virtual void studentai\+\_\+base\+::testav (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Isspausdina rodykles turini, jei tuscia, sako kad yra null, siuo atveju tai yra pilnai virtuali funkcija. 
 
 
 
@@ -91,7 +99,11 @@ Implemented in \mbox{\hyperlink{classstudentai__class_af6d5f47ca657419febd732b4f
 \index{studentai\_base@{studentai\_base}!dydis\_@{dydis\_}}
 \index{dydis\_@{dydis\_}!studentai\_base@{studentai\_base}}
 \doxysubsubsection{\texorpdfstring{dydis\_}{dydis\_}}
-{\footnotesize\ttfamily int studentai\+\_\+base\+::dydis\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily int studentai\+\_\+base\+::dydis\+\_\+ = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Rodykle ir dydis yra naudojami testavimo tikslams. 
 
 \Hypertarget{classstudentai__base_a4a7a9f1422c6fdb099b0ed8bc02cdf98}\label{classstudentai__base_a4a7a9f1422c6fdb099b0ed8bc02cdf98} 
 \index{studentai\_base@{studentai\_base}!egzaminas\_@{egzaminas\_}}
@@ -115,7 +127,7 @@ Implemented in \mbox{\hyperlink{classstudentai__class_af6d5f47ca657419febd732b4f
 \index{studentai\_base@{studentai\_base}!rodykle\_@{rodykle\_}}
 \index{rodykle\_@{rodykle\_}!studentai\_base@{studentai\_base}}
 \doxysubsubsection{\texorpdfstring{rodykle\_}{rodykle\_}}
-{\footnotesize\ttfamily int\texorpdfstring{$\ast$}{*} studentai\+\_\+base\+::rodykle\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily int\texorpdfstring{$\ast$}{*} studentai\+\_\+base\+::rodykle\+\_\+ = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
 
 \Hypertarget{classstudentai__base_aed893d618f45464238eaab7a6774c598}\label{classstudentai__base_aed893d618f45464238eaab7a6774c598} 
 \index{studentai\_base@{studentai\_base}!vardas\_@{vardas\_}}

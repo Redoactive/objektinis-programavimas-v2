@@ -65,6 +65,8 @@ studentai_class::studentai_class(const studentai_class& a){
     for (int i = 0; i < a.dydis_; i++){
         rodykle_[i] = a.rodykle_[i];
     }
+    //cout << "kopiviavimo konstruktorius suveike\n";
+
 }
 
 studentai_class studentai_class::operator=(const studentai_class& a){ // kopiviavimo operatorius / priskirimas
@@ -88,6 +90,8 @@ studentai_class studentai_class::operator=(const studentai_class& a){ // kopivia
         temporaryPointer[i] = a.rodykle_[i];
     }
     rodykle_ = temporaryPointer;
+    //cout << "kopiviavimo operatorius suveike\n";
+
     return *this;
 }
 
@@ -111,6 +115,7 @@ studentai_class::studentai_class (studentai_class&& a){ // move konstruktorius
     dydis_ = a.dydis_;
     rodykle_ = a.rodykle_;
     a.rodykle_ = nullptr;
+    cout << "Move konstruktorius suveike\n";
 }
 
 studentai_class studentai_class::operator=(studentai_class&& a){ // move operatorius
@@ -136,6 +141,8 @@ studentai_class studentai_class::operator=(studentai_class&& a){ // move operato
     a.egzaminas_ = 0;
     a.mediana_ = 0;
     a.vidurkis_ = 0;
+    cout << "Move operatorius suveike\n";
+
     return *this;
 }
 
