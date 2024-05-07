@@ -18,3 +18,18 @@ Visi teisingi testai.
 
 ![](images/Testai.png)
 
+Neteisingai atlikti testai.
+
+![](images/Nepavyko.png)
+
+Test casai ir ka jie daro.
+
+![](images/paprastiTestai.png)
+
+Kaip sie testai yra iskvieciami.
+
+![](images/kvietimas.png)
+
+Doxygen dokumentacija. Klasiu kaikurie nariai yra komentuoti
+
+![](images/Doxygen.png)
