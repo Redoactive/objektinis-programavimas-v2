@@ -109,7 +109,6 @@
   <ItemGroup>
     <None Include="..\..\Objektinis-programavimasV.2\.gitignore" />
     <None Include="..\..\Objektinis-programavimasV.2\makefile" />
-    <None Include="..\..\Objektinis-programavimasV.2\readMe.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
