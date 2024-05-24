@@ -1,0 +1,71 @@
+\doxysection{funckiju\+Baze\+Dekai.\+h}
+\hypertarget{funckiju_baze_dekai_8h_source}{}\label{funckiju_baze_dekai_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}includes.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ struct\ studentaiDekas\{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ \ \ \ string\ vardas;}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ string\ pavarde;}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ deque<int>\ balai;}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ \ \ \ int\ egzaminas;}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ double\ vidurkis;}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ \ \ \ double\ mediana;}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \};}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ vardas\_;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ pavarde\_;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ deque<int>\ balai\_;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ egzaminas\_;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ vidurkis\_;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mediana\_;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}()\ :\ vardas\_(\textcolor{stringliteral}{"{}"{}}),\ pavarde\_(\textcolor{stringliteral}{"{}"{}}),\ balai\_(0),\ egzaminas\_(0),\ vidurkis\_(0),\ mediana\_(0)\{\};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}(\textcolor{keywordtype}{string}\ vardas,\ \textcolor{keywordtype}{string}\ pavarde,\ deque<int>\ balai,\ \textcolor{keywordtype}{int}\ egzaminas,\ \textcolor{keywordtype}{double}\ vidurkis,\ \textcolor{keywordtype}{double}\ mediana)\ :\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ vardas\_(vardas),\ pavarde\_(pavarde),\ balai\_(balai),\ egzaminas\_(egzaminas),\ vidurkis\_(vidurkis),\ mediana\_(mediana)\{\};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstudentai__class_deque}{\string~studentai\_classDeque}}()\{\};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setVardas(\textcolor{keywordtype}{string}\ a)\{vardas\_\ =\ a;\};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setPavarde(\textcolor{keywordtype}{string}\ a)\{pavarde\_\ =\ a;\};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setBalai(deque<int>\ a)\{balai\_\ =\ a;\};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setEgzaminas(\textcolor{keywordtype}{int}\ a)\{egzaminas\_\ =\ a;\};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setVidurkis(\textcolor{keywordtype}{double}\ a)\{vidurkis\_\ =\ a;\};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setMediana(\textcolor{keywordtype}{double}\ a)\{mediana\_\ =\ a;\};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getVardas()\{\textcolor{keywordflow}{return}\ vardas\_;\};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getPavarde()\{\textcolor{keywordflow}{return}\ pavarde\_;\};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ deque<int>\ getBalai()\{\textcolor{keywordflow}{return}\ balai\_;\};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getEgzaminas()\{\textcolor{keywordflow}{return}\ egzaminas\_;\};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ getVidurkis()\{\textcolor{keywordflow}{return}\ vidurkis\_;\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ getMediana()\{\textcolor{keywordflow}{return}\ mediana\_;\};}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{string}\ tarpai(\textcolor{keywordtype}{string}\ a,\ \textcolor{keywordtype}{int}\ tarpuDydis);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{string}\ extraSpace\ (\textcolor{keywordtype}{string}\ a,\ \textcolor{keywordtype}{int}\ b);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ pirmasPasirinkimasDekai();}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ antrasPasirinkimasDekai();}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ treciasPasirinkimasDekai();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ NuskaitymasFailoDekai(\textcolor{keywordtype}{string}\ fileName);}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ failoGeneracija();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ skirstymasDekai();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ rusiavimoMenuSkirstymasDekai();}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ rusiavimoMenuDekai();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{bool}\ rusiavimasVardasDekas(\ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\ \&a,\ \ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\ \&b);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{bool}\ rusiavimasPavardeDekas(\ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\ \&a,\ \ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\ \&b);}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{bool}\ rusiavimasVidurkisDekas(\ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\ \&a,\ \ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\ \&b);}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{bool}\ rusiavimasMedianaDekas(\ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\ \&a,\ \ \mbox{\hyperlink{classstudentai__class_deque}{studentai\_classDeque}}\ \&b);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ spausdinimasTerminaleDekai();}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ spausdinimasTerminaleSkirstymasDekai();}
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ spausdinimasFaileDekai();}
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ spausdinimasFaileSkirstymasDekai();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ laikoSpausdinimas(duration<double>\ readTime,\ duration<double>\ sortTime\ ,duration<double>\ typeTime);}
+
+\end{DoxyCode}
