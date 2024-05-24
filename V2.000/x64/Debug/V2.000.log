@@ -1,0 +1,10 @@
+﻿  bendrosFunkcijos.cpp
+C:\Users\ignas\Desktop\New folder\objektinis-programavimas-v2\Solut\V2.000\bendrosFunkcijos.cpp(5,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  funkcijosVektoriai.cpp
+C:\Users\ignas\Desktop\New folder\objektinis-programavimas-v2\Solut\V2.000\funkcijosVektoriai.cpp(206,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ignas\Desktop\New folder\objektinis-programavimas-v2\Solut\V2.000\funkcijosVektoriai.cpp(271,37): warning C4101: 'e': unreferenced local variable
+C:\Users\ignas\Desktop\New folder\objektinis-programavimas-v2\Solut\V2.000\funkcijosVektoriai.cpp(680,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  klasesRealizacija.cpp
+  main.cpp
+  Generating Code...
+  V2.000.vcxproj -> C:\Users\ignas\Desktop\New folder\objektinis-programavimas-v2\Solut\x64\Debug\V2.000.exe
