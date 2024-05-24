@@ -1,8 +1,8 @@
 
 main:
-	g++ -o program main.cpp funkcijosVektoriai.cpp bendrosFunkcijos.cpp funkcijosDekai.cpp funkcijosListai.cpp klasesRealizacija.cpp
+	g++ -o program main.cpp funkcijosVektoriai.cpp bendrosFunkcijos.cpp klasesRealizacija.cpp
 opt:
-	g++ -o optimised -O3 main.cpp funkcijosVektoriai.cpp bendrosFunkcijos.cpp funkcijosDekai.cpp funkcijosListai.cpp
+	g++ -o optimised -O3 main.cpp funkcijosVektoriai.cpp bendrosFunkcijos.cpp
 optRun:
 	optimised.exe
 run:
