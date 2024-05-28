@@ -87,7 +87,7 @@ template <typename T> class myVector{
             return arr[index];
         }
         else{
-            throw std::out_of_range;
+            throw std::out_of_range("Vector out of range");
         }
     }
 
@@ -194,5 +194,62 @@ template <typename T> class myVector{
         }
         std::copy(last, arr + currentSize, first);
         currentSize -= (last - first);
+    }
+
+
+    // Swap the contents with another vector
+    void swap(myVector& other) {
+        std::swap(arr, other.arr);
+        std::swap(capacity, other.capacity);
+        std::swap(currentSize, other.currentSize);
+    }
+
+    // Resize the vector to contain n elements
+    void resize(size_t n) {
+        if (n > capacity) {
+            reserve(n);
+        }
+        if (n > currentSize) {
+            std::fill(arr + currentSize, arr + n, T());
+        }
+        currentSize = n;
+    }
+        // Insert a single element at position
+    T* insert(T* position, const T& val) {
+        size_t index = position - arr;
+        if (currentSize == capacity) {
+            reserve(capacity == 0 ? 1 : 2 * capacity);
+        }
+        position = arr + index;
+        std::copy_backward(position, arr + currentSize, arr + currentSize + 1);
+        *position = val;
+        ++currentSize;
+        return position;
+    }
+
+    // Insert multiple elements at position
+    void insert(T* position, size_t n, const T& val) {
+        size_t index = position - arr;
+        if (currentSize + n > capacity) {
+            reserve(currentSize + n);
+        }
+        position = arr + index;
+        std::copy_backward(position, arr + currentSize, arr + currentSize + n);
+        std::fill(position, position + n, val);
+        currentSize += n;
+    }
+
+    // Insert elements from range [first, last) at position
+    template <typename InputIterator>
+    void insert(T* position, InputIterator first, InputIterator last) {
+        size_t index = position - arr;
+        size_t n = std::distance(first, last);
+        if (currentSize + n > capacity) {
+            reserve(currentSize + n);
+        }
+        position = arr + index;
+        std::copy_backward(position, arr + currentSize, arr + currentSize + n);
+        std::copy(first, last, position);
+        currentSize += n;
     }
 };
