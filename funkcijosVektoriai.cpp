@@ -124,10 +124,9 @@ bool darbasBaigtas = false;
     laikoSpausdinimas(readTime, sortTime, typeTime);
 }
 void vektoriuTestavimas(){
-    myVector<int> a;
-    a.push(5);
-    a[0]= 2;
-    a.print();
+    myVector<int> a(10);
+    myVector<int> b(50);
+    if (a == b){cout <<"equal";}
 }
 void klasiuTestavimas(){
     studentai_class a;

@@ -8,8 +8,8 @@ template <typename T> class myVector{
     public:
     //creates an empty vector with capacity of 1
     myVector(){
-        arr = new T[1];
-        capacity = 1;
+        arr = new T[];
+        capacity = 0;
         currentSize = 0;
     }
     //creates a vector and fills it
@@ -20,6 +20,12 @@ template <typename T> class myVector{
         }
         capacity = value;
         currentSize = value;
+    }
+    myVector(T data){
+        arr = new T[1];
+        arr[0] = data;
+        capacity = 1;
+        currentSize = 1;
     }
 
     ~myVector(){
@@ -251,5 +257,35 @@ template <typename T> class myVector{
         std::copy_backward(position, arr + currentSize, arr + currentSize + n);
         std::copy(first, last, position);
         currentSize += n;
+    }
+
+
+    // Comparison operators
+    bool operator==(const Vector& other) const {
+        if (currentSize != other.size) return false;
+        for (size_t i = 0; i < currentSize; ++i) {
+            if (arr[i] != other.arr[i]) return false;
+        }
+        return true;
+    }
+
+    bool operator!=(const Vector& other) const {
+        return !(*this == other);
+    }
+
+    bool operator<(const Vector& other) const {
+        return std::lexicographical_compare(arr, arr + currentSize, other.arr, other.arr + other.size);
+    }
+
+    bool operator<=(const Vector& other) const {
+        return !(other < *this);
+    }
+
+    bool operator>(const Vector& other) const {
+        return other < *this;
+    }
+
+    bool operator>=(const Vector& other) const {
+        return !(*this < other);
     }
 };
