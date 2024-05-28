@@ -194,7 +194,7 @@ template <typename T> class myVector{
 
 
     T& operator[] (size_t index) const{
-        if (index > currentSize) {
+        if (index >= capacity) {
             throw std::out_of_range("Index out of rangee");
         }
         return arr[index];

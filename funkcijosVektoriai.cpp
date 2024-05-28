@@ -272,7 +272,7 @@ void vektoriuTestavimas(){
     {
         myVector<int> vect(5,50);
         for (int i = 0; i <= vect.size(); i++){
-            cout << vect[i -1] << endl;
+            cout << vect[i] << endl;
         }
     }
     catch(const std::exception& e)
