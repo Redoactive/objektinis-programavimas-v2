@@ -1,3 +1,4 @@
+#pragma once
 #include "Includes.h"
 template <typename T> class myVector{
     private:
@@ -12,6 +13,7 @@ template <typename T> class myVector{
         capacity = 1;
         currentSize = 0;
     }
+    
     //creates a vector and fills it
     myVector(size_t value, T data){
         arr = new T[value];
@@ -21,11 +23,61 @@ template <typename T> class myVector{
         capacity = value;
         currentSize = value;
     }
+    // Initializer list constructor
+    myVector(std::initializer_list<T> ilist) : arr(new T[1]), capacity(1), currentSize(0) {
+        reserve(ilist.size());
+        for (const auto& elem : ilist) {
+            push_back(elem);
+        }
+    }
     myVector(T data){
         arr = new T[1];
         arr[0] = data;
         capacity = 1;
         currentSize = 1;
+    }
+
+    // Copy constructor
+    myVector(const myVector& other) : arr(nullptr), capacity(0), currentSize(0) {
+        reserve(other.currentSize);
+        std::copy(other.arr, other.arr + other.currentSize, arr);
+        currentSize = other.currentSize;
+    }
+
+    // Move constructor
+    myVector(myVector&& other) noexcept : arr(other.arr), capacity(other.capacity), currentSize(other.scurrentSizeize) {
+        other.arr = nullptr;
+        other.capacity = 0;
+        other.currentSize = 0;
+    }
+
+  // Copy assignment operator
+    myVector& operator=(const myVector& other) {
+        if (this == &other) {
+            return *this;
+        }
+        T* new_arr = new T[other.capacity];
+        std::copy(other.arr, other.arr + other.currentSize, new_arr);
+        delete[] arr;
+        arr = new_arr;
+        capacity = other.capacity;
+        currentSize = other.currentSize;
+        return *this;
+    }
+
+    // Move assignment operator
+    myVector& operator=(myVector&& other) noexcept {
+        if (this == &other) {
+            return *this;
+        }
+        delete[] arr;
+        arr = other.arr;
+        capacity = other.capacity;
+        currentSize = other.currentSize;
+        other.arr = nullptr;
+        other.capacity = 0;
+        other.currentSize = 0;
+        return *this;
     }
 
     ~myVector(){
@@ -81,7 +133,7 @@ template <typename T> class myVector{
 
 
     // function to get size of the vector
-    int getSize(){ 
+    int size() const{ 
         return currentSize; 
     }
     // function to get capacity of the vector
@@ -141,9 +193,9 @@ template <typename T> class myVector{
 
 
 
-    T& operator[] (size_t index){
-        if (index >= currentSize) {
-            throw std::out_of_range("Index out of range");
+    T& operator[] (size_t index) const{
+        if (index > currentSize) {
+            throw std::out_of_range("Index out of rangee");
         }
         return arr[index];
     }

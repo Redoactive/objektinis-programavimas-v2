@@ -1,8 +1,8 @@
 #include "funkcijuBazeVektoriai.h"
 #include "myVector.h"
-static vector<studentai_class> duomenys;
-static vector<studentai_class> geriStudentai;
-static vector<studentai_class> blogiStudentai;
+static myVector<studentai_class> duomenys;
+static myVector<studentai_class> geriStudentai;
+static myVector<studentai_class> blogiStudentai;
 //globalus laikai
 // static duration<double> createTime;
 // static duration<double> printTime;
@@ -141,7 +141,7 @@ void vektoriuTestavimas(){
     if (a >= b){cout <<"Pirmas ne mazesnis negu antras\n";}
 
     // clear ir erase 
-    cout << "-----------------------clear, erase----------------------------------\n";
+    cout << "-----------------------clear, pop, erase----------------------------------\n";
     //myVector<int> a(200);
     //myVector<int> b(50);
     myVector<int> c (5, 50);
@@ -166,16 +166,16 @@ void vektoriuTestavimas(){
     // empty, getsize, get capacity
     cout << "-----------------------empty, getsize, get capacity----------------------------------\n";
     myVector<double> d (100, 1);
-    cout << "vector size is " << d.getSize() << endl;
+    cout << "vector size is " << d.size() << endl;
     cout << "vector capacity is " << d.getCapacity() << endl;
     cout << "adding one element\n";
     d.push_back(5);
-    cout << "vector size is " << d.getSize() << endl;
+    cout << "vector size is " << d.size() << endl;
     cout << "vector capacity is " << d.getCapacity() << endl;
     cout << "clearing vector\n";
     d.clear();
     d.empty() ? cout << "Vector is empty\n":cout << "Vector is not empty\n";
-    cout << "vector size is " << d.getSize() << endl;
+    cout << "vector size is " << d.size() << endl;
     cout << "vector capacity is " << d.getCapacity() << endl;
 
 
@@ -204,7 +204,17 @@ void vektoriuTestavimas(){
     cout << e.at(4) << endl;
     e.pop_back();
     e.print();
-    // e.at(4); throws an error
+    try{
+        cout << e.at(4);
+    }
+    catch(out_of_range& e){
+        cerr << "Error, after bounds checking myVector returned " << e.what() << endl;
+    }
+    catch(...){
+        cerr << "Unkown error\n";
+        terminate();
+    }
+    
 
 
 
@@ -256,7 +266,20 @@ void vektoriuTestavimas(){
         }
     }
     cout << "vector resizes -  " << vcount << ", myVector resizes - " << mycount << endl;
+    cout << "-------------------------------- Papildomas testavimas -----------------------\n";
 
+    try
+    {
+        myVector<int> vect(5,50);
+        for (int i = 0; i <= vect.size(); i++){
+            cout << vect[i -1] << endl;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 }
 void klasiuTestavimas(){
     studentai_class a;
@@ -314,8 +337,7 @@ void klasiuTestavimas(){
     cout << "Klasei c nustumta d klase su pakeistu skaicium \n"; c.testav();
     cout << "Likusios klases d rodykle\n"; d.testav();
 }
-double medianosApsk(vector<int> a, int egzaminas){
-    
+double medianosApsk(myVector<int> a, int egzaminas){
     sort(a.begin(), a.end());
     int n = a.size() / 2;
     if(n % 2 == 0){
@@ -325,10 +347,10 @@ double medianosApsk(vector<int> a, int egzaminas){
         return (a[n] + a[n++]) / 2 * 0.4 + egzaminas * 0.6;
     }
 }
-double vidurkioApsk(vector<int> a, int egzaminas){
+double vidurkioApsk(myVector<int> a, int egzaminas){
     double vidurkis = 0;
-    for (int i : a){
-        vidurkis += i;
+    for (int i = 0; i < a.size(); i++){
+        vidurkis += a[i];
     }
     return vidurkis / a.size() * 0.4 + 0.6 * egzaminas;
 }
@@ -336,7 +358,7 @@ double vidurkioApsk(vector<int> a, int egzaminas){
 void pirmasPasirinkimas(){
     string a;
     int temporary;
-    vector<int> bal;
+    myVector<int> bal;
     //pagrindinis ciklas
     studentai_class dabartinisStudentas;
     bool darbasBaigtas = false;
@@ -391,20 +413,19 @@ void pirmasPasirinkimas(){
                 cerr << "Nezinoma klaida! \n";
                 continue;
             }
-            bal.push_back(temporary);
             
+            bal.push_back(temporary);
             
         }
         dabartinisStudentas.setBalai(bal);
         cout << "Iveskite egzamino rezultata\n";
         cin >> temporary;
         dabartinisStudentas.setEgzaminas(temporary);
-
-        dabartinisStudentas.setVidurkis(vidurkioApsk(bal, temporary)) ;
-        dabartinisStudentas.setMediana(medianosApsk(bal, temporary));
+        // dabartinisStudentas.getBalai().print();
+        dabartinisStudentas.setVidurkis(vidurkioApsk(dabartinisStudentas.getBalai(), temporary)) ;
+        dabartinisStudentas.setMediana(medianosApsk(dabartinisStudentas.getBalai(), temporary));
         //issaugomi duomenys
         duomenys.push_back(dabartinisStudentas);        
-
 
         //paprasoma baigti ivesti
         cout << "Jeigu norite baigti ivedineti duomenys, parasykite ( s )\n";
@@ -417,7 +438,7 @@ void pirmasPasirinkimas(){
 }
 void antrasPasirinkimas(){
     string a;
-    vector<int> bal;
+    myVector<int> bal;
     //pagrindinis ciklas
     studentai_class dabartinisStudentas;
     bool darbasBaigtas = false;
@@ -467,11 +488,11 @@ void antrasPasirinkimas(){
     }
 }
 void treciasPasirinkimas(){
-    vector<int> bal;
+    myVector<int> bal;
     //Vardu baze || vardai gali nesutapti su ne mergiotinem pavardem
-    vector<string> bVardas = {"", "Andrius", "Marius", "Ignas", "Petras",
+    myVector<string> bVardas = {"", "Andrius", "Marius", "Ignas", "Petras",
     "Ieva", "Liepa", "Rugile", "Onute", "Asta", "Ugne", "Deimante", "Povilas"};
-    vector<string> bPavarde = {"", "Pavardenis", "Maliauka", "Ablamas",
+    myVector<string> bPavarde = {"", "Pavardenis", "Maliauka", "Ablamas",
     "Jonaiskis", "Grazetis", "Pavardenis", "Simpsonas", "Dundulis", "Mazetis", "Petrauskas"};
         
     //pagrindinis ciklas
@@ -526,7 +547,7 @@ void NuskaitymasFailo(string fileName){
 
     string temp;
     int temporary;
-    vector<int> bal;
+    myVector<int> bal;
 
     //patikrinti kiek namu darbu yra faile
     fin >> temp >> temp;
@@ -839,15 +860,7 @@ void skirstymas(){
             }
         }
         if (strategija == '3'){
-            // vector<studentai>::iterator itr;
-            // while (true){
-            //     itr = find_if(duomenys.begin(),duomenys.end(), Less);
-            //     if(itr->vidurkis < 5){
-            //         break;
-            //     }
-            //     geriStudentai.push_back(*itr);
-            //     duomenys.erase(itr);
-            // }
+
             partition(duomenys.begin(), duomenys.end(), [](studentai_class a){return a.getVidurkis() < 5;});
             for (int i = b; i > 0; i--){
                 if(duomenys[i - 1].getVidurkis() >= 5){

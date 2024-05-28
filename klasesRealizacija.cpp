@@ -1,5 +1,5 @@
 #include "funkcijuBazeVektoriai.h"
-
+#include "myVector.h"
 studentai_class::studentai_class(int dydis)
 {
     dydis_ = dydis;
@@ -67,7 +67,7 @@ studentai_class::studentai_class(const studentai_class& a){
     }
 }
 
-studentai_class studentai_class::operator=(const studentai_class& a){ // kopiviavimo operatorius / priskirimas
+studentai_class studentai_class::operator=(const studentai_class& a) { // kopiviavimo operatorius / priskirimas
     if (&a == this){
         return *this;
     }
@@ -151,7 +151,7 @@ studentai_class::studentai_class(){
     dydis_ = 0;
 }
 
-studentai_class::studentai_class(string vardas, string pavarde, vector<int> balai, int egzaminas, double vidurkis, double mediana){
+studentai_class::studentai_class(string vardas, string pavarde, myVector<int> balai, int egzaminas, double vidurkis, double mediana){
     vardas_ = vardas;
     pavarde_ = pavarde;
     balai_ = balai;

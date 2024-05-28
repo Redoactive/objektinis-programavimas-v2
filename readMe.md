@@ -30,21 +30,21 @@
 ## 100.000.txt
 |Darbas                 |std::vector|myVector |
 |-----------------------|-----------|---------|
-|Duomenu nuskaitymas    |0.2695445  |0.0001122|
-|skirstymas i dvi grupes|0.0452824  |0.000937 |
-|Rusiavimas             |0.2883375  |0.0071594|
-|Visas laikas           |0.6031644  |0.0071594|
+|Duomenu nuskaitymas    |0.2695445  |0.2869592|
+|skirstymas i dvi grupes|0.0452824  |0.1115644|
+|Rusiavimas             |0.2883375  |0.3545991|
+|Visas laikas           |0.6031644  |0.7531227|
 ## 1.000.000.txt
 |Darbas                 |std::vector|myVector |
 |-----------------------|-----------|---------|
-|Duomenu nuskaitymas    |2.609202   |0.0001122|
-|skirstymas i dvi grupes|0.5331666  |0.000937 |
-|Rusiavimas             |3.764685   |0.0071594|
-|Visas laikas           |6.907054   |0.0071594|
+|Duomenu nuskaitymas    |2.609202   |2.738449 |
+|skirstymas i dvi grupes|0.5331666  |1.227727 |
+|Rusiavimas             |3.764685   |4.563468 |
+|Visas laikas           |6.907054   |8.529645 |
 ## 10.000.000.txt
 |Darbas                 |std::vector|myVector |
 |-----------------------|-----------|---------|
-|Duomenu nuskaitymas    |27.49252   |0.0001122|
-|skirstymas i dvi grupes|4.522078   |0.000937 |
-|Rusiavimas             |46.87415   |0.0071594|
-|Visas laikas           |78.88875   |0.0071594|
+|Duomenu nuskaitymas    |27.49252   |30.6472  |
+|skirstymas i dvi grupes|4.522078   |11.05496 |
+|Rusiavimas             |46.87415   |58.14309 |
+|Visas laikas           |78.88875   |99.84526 |
