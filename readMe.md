@@ -6,8 +6,16 @@
 
 
 # Funkciju testavimas
-
-
+## Vektoriu palyginimai
+![](images/Comparison.png)
+## Clear, pop, erase
+![](images/clear.png)
+## empty, getsize, get capacity
+![](images/functions.png)
+## first, last, begin, end
+![](images/first.png)
+## [], at, pop
+![](images/popat.png)
 
 # myVector ir std::vector spartos testavimas
 
@@ -48,3 +56,10 @@
 |skirstymas i dvi grupes|4.522078   |11.05496 |
 |Rusiavimas             |46.87415   |58.14309 |
 |Visas laikas           |78.88875   |99.84526 |
+
+
+
+
+
+## Papildomas testavimas
+![](images/extra.png)
