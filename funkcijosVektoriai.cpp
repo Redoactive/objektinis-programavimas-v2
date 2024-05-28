@@ -1,4 +1,5 @@
 #include "funkcijuBazeVektoriai.h"
+#include "myVector.h"
 static vector<studentai_class> duomenys;
 static vector<studentai_class> geriStudentai;
 static vector<studentai_class> blogiStudentai;
@@ -27,7 +28,8 @@ bool darbasBaigtas = false;
         << "( 5 ) - Generuoti faila\n"
         << "( 6 ) - Suskirstyti i gerus mokinius ir i nereikalingus civilizacijai mokinius ir baigti\n"
         << "( 7 ) - Baigti darba be skirstymo\n"
-        << "( 8 ) - Testuoti klases\n";
+        << "( 8 ) - Testuoti klases\n"
+        << "( 9 ) - Testuoti vektoriu\n";
         char pasirinkimas;
         cin >> pasirinkimas;
         string failoPav;
@@ -62,6 +64,9 @@ bool darbasBaigtas = false;
         case '8':
             klasiuTestavimas();
             return;
+        case '9':
+            vektoriuTestavimas();
+            return;
         default:
             cout << "Blogai ivedete duomenys, bandykite dar karta\n";
             break;
@@ -78,11 +83,6 @@ bool darbasBaigtas = false;
         rusiavimoMenu();
     }
     
-    
-
-
-
-
      //klausiama ar vartotojas spausdinti ekrane ar faile
     while(true){
         try {
@@ -122,6 +122,12 @@ bool darbasBaigtas = false;
 
     
     laikoSpausdinimas(readTime, sortTime, typeTime);
+}
+void vektoriuTestavimas(){
+    myVector<int> a;
+    a.push(5);
+    a[0]= 2;
+    a.print();
 }
 void klasiuTestavimas(){
     studentai_class a;

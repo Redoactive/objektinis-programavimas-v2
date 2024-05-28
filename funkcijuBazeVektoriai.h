@@ -66,7 +66,7 @@ class studentai_class : public studentai_base{
 };
 string extraSpace (string a, int b);
 
-
+void vektoriuTestavimas();
 void klasiuTestavimas();
 //Vektorius
 void pirmasPasirinkimas();
