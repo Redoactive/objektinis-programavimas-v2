@@ -8,7 +8,7 @@ template <typename T> class myVector{
     public:
     //creates an empty vector with capacity of 1
     myVector(){
-        arr = new T[];
+        arr = new T[0];
         capacity = 0;
         currentSize = 0;
     }
@@ -42,7 +42,7 @@ template <typename T> class myVector{
             capacity = new_capacity;
         }
     }
-    void push(T duomenys){
+    void pushBack(T duomenys){
  
         // if capacity reached, double size
         if (currentSize == capacity) {
@@ -65,28 +65,10 @@ template <typename T> class myVector{
     }
 
     // function to delete last element
-    void pop(){
+    void popBack(){
         currentSize--; 
     }
 
-
-    void push(T duomenys, int index){
- 
-        // if index is equal to capacity then do push
-        if (index == capacity)
-        {
-            push(duomenys);
-        }
-        // if else(index > capacity)
-        // {
-        //     cout << "error, out of bounds\n";
-        //     terminate();
-        // }
-        else
-        {
-            arr[index] = duomenys;
-        }
-    }
 
     T at(size_t index){
         if (index < currentSize){
@@ -261,31 +243,31 @@ template <typename T> class myVector{
 
 
     // Comparison operators
-    bool operator==(const Vector& other) const {
-        if (currentSize != other.size) return false;
+    bool operator==(const myVector& other) const {
+        if (currentSize != other.currentSize) return false;
         for (size_t i = 0; i < currentSize; ++i) {
             if (arr[i] != other.arr[i]) return false;
         }
         return true;
     }
 
-    bool operator!=(const Vector& other) const {
+    bool operator!=(const myVector& other) const {
         return !(*this == other);
     }
 
-    bool operator<(const Vector& other) const {
-        return std::lexicographical_compare(arr, arr + currentSize, other.arr, other.arr + other.size);
+    bool operator<(const myVector& other) const {
+        return std::lexicographical_compare(arr, arr + currentSize, other.arr, other.arr + other.currentSize);
     }
 
-    bool operator<=(const Vector& other) const {
+    bool operator<=(const myVector& other) const {
         return !(other < *this);
     }
 
-    bool operator>(const Vector& other) const {
+    bool operator>(const myVector& other) const {
         return other < *this;
     }
 
-    bool operator>=(const Vector& other) const {
+    bool operator>=(const myVector& other) const {
         return !(*this < other);
     }
 };

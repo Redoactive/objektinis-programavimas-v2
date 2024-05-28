@@ -124,9 +124,83 @@ bool darbasBaigtas = false;
     laikoSpausdinimas(readTime, sortTime, typeTime);
 }
 void vektoriuTestavimas(){
-    myVector<int> a(10);
+
+    // Comparison operatoriai
+    cout << "-----------------------Comparison----------------------------------\n";
+    myVector<int> a(200);
     myVector<int> b(50);
-    if (a == b){cout <<"equal";}
+    if (a == b){cout <<"Lygu\n";}
+    if (a != b){cout <<"Nelygu\n";}
+    if (a < b){cout <<"Pirmas yra mazesnsis uz antra\n";}
+    if (a <= b){cout <<"Pirmas ne didesnis negu antras\n";}
+    if (a > b){cout <<"Pirmas yra didesnis uz antra\n";}
+    if (a >= b){cout <<"Pirmas ne mazesnis negu antras\n";}
+
+
+    // clear ir erase 
+    cout << "-----------------------clear, erase----------------------------------\n";
+    //myVector<int> a(200);
+    //myVector<int> b(50);
+    myVector<int> c (5, 50);
+    a.pushBack(1);
+    b.pushBack(2);
+    cout << "vector a\n";
+    a.print();
+    cout << "vector b\n";
+    b.print();
+    cout << "vector c\n";
+    c.print();
+    a.clear();
+    b.popBack();
+    c.erase(c.begin());
+    cout << "vector a\n";
+    a.print();
+    cout << "vector b\n";
+    b.print();
+    cout << "vector c\n";
+    c.print();
+
+    // empty, getsize, get capacity
+    cout << "-----------------------empty, getsize, get capacity----------------------------------\n";
+    myVector<double> d (100, 1);
+    cout << "vector size is " << d.getSize() << endl;
+    cout << "vector capacity is " << d.getCapacity() << endl;
+    cout << "adding one element\n";
+    d.pushBack(5);
+    cout << "vector size is " << d.getSize() << endl;
+    cout << "vector capacity is " << d.getCapacity() << endl;
+    cout << "clearing vector\n";
+    d.clear();
+    d.empty() ? cout << "Vector is empty\n":cout << "Vector is not empty\n";
+    cout << "vector size is " << d.getSize() << endl;
+    cout << "vector capacity is " << d.getCapacity() << endl;
+
+
+
+    //first, last, begin, end
+    cout << "-----------------------first, last, begin, end----------------------------------\n";
+    myVector<int> e;
+    for (int i = 0; i < 5; i++){
+        e.pushBack(i);
+    }
+    cout << "First - " << e.first() << endl;
+    cout << "Last - " << e.last() << endl;
+    cout << "Begin - " << e.begin() << endl;
+    cout << "End - " << e.end() << endl;
+
+
+
+    //[], at, pop
+    cout << "-----------------------[], at, pop----------------------------------\n";
+    // myVector<int> e;
+    // for (int i = 0; i < 5; i++){
+    //     e.pushBack(i);
+    // }
+    e.print();
+    e[4] = 500;
+    cout << e.at(4) << endl;
+    e.popBack();
+    // e.at(4); throws an error
 }
 void klasiuTestavimas(){
     studentai_class a;
