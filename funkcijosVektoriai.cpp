@@ -145,8 +145,8 @@ void vektoriuTestavimas(){
     //myVector<int> a(200);
     //myVector<int> b(50);
     myVector<int> c (5, 50);
-    a.pushBack(1);
-    b.pushBack(2);
+    a.push_back(1);
+    b.push_back(2);
     cout << "vector a\n";
     a.print();
     cout << "vector b\n";
@@ -154,7 +154,7 @@ void vektoriuTestavimas(){
     cout << "vector c\n";
     c.print();
     a.clear();
-    b.popBack();
+    b.pop_back();
     c.erase(c.begin());
     cout << "vector a\n";
     a.print();
@@ -169,7 +169,7 @@ void vektoriuTestavimas(){
     cout << "vector size is " << d.getSize() << endl;
     cout << "vector capacity is " << d.getCapacity() << endl;
     cout << "adding one element\n";
-    d.pushBack(5);
+    d.push_back(5);
     cout << "vector size is " << d.getSize() << endl;
     cout << "vector capacity is " << d.getCapacity() << endl;
     cout << "clearing vector\n";
@@ -184,7 +184,7 @@ void vektoriuTestavimas(){
     cout << "-----------------------first, last, begin, end----------------------------------\n";
     myVector<int> e;
     for (int i = 0; i < 5; i++){
-        e.pushBack(i);
+        e.push_back(i);
     }
     cout << "First - " << e.first() << endl;
     cout << "Last - " << e.last() << endl;
@@ -202,7 +202,7 @@ void vektoriuTestavimas(){
     e.print();
     e[4] = 500;
     cout << e.at(4) << endl;
-    e.popBack();
+    e.pop_back();
     e.print();
     // e.at(4); throws an error
 
@@ -228,7 +228,7 @@ void vektoriuTestavimas(){
     myVector<int> v2;
     timeS = high_resolution_clock::now();
     for (int i = 1; i <= sz; ++i){
-        v2.pushBack(i);
+        v2.push_back(i);
     }
     timeE = high_resolution_clock::now();
     vectorTestingTime = timeE - timeS;
@@ -244,7 +244,7 @@ void vektoriuTestavimas(){
     cout << "vector capacity -  " << vCap << ", myVector capacity - " << myCap << endl;
     for (int i = 1; i <= sz; i++){
         v3.push_back(i);
-        v4.pushBack(i);
+        v4.push_back(i);
         if (vCap != v3.capacity()){
             
             vcount++;

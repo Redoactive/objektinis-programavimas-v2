@@ -42,7 +42,7 @@ template <typename T> class myVector{
             capacity = new_capacity;
         }
     }
-    void pushBack(T duomenys){
+    void push_back(T duomenys){
  
         // if capacity reached, double size
         if (currentSize == capacity) {
@@ -65,7 +65,7 @@ template <typename T> class myVector{
     }
 
     // function to delete last element
-    void popBack(){
+    void pop_back(){
         currentSize--; 
     }
 
