@@ -8,8 +8,8 @@ template <typename T> class myVector{
     public:
     //creates an empty vector with capacity of 1
     myVector(){
-        arr = new T[0];
-        capacity = 0;
+        arr = new T[1];
+        capacity = 1;
         currentSize = 0;
     }
     //creates a vector and fills it

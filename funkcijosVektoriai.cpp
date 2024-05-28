@@ -10,6 +10,7 @@ static duration<double> readTime;
 static duration<double> sortTime;
 static duration<double> typeTime;
 
+
 static bool arSkirtingiVektoriai = false;
 
 
@@ -200,7 +201,50 @@ void vektoriuTestavimas(){
     e[4] = 500;
     cout << e.at(4) << endl;
     e.popBack();
+    e.print();
     // e.at(4); throws an error
+
+
+
+
+    cout << "-------------------------------- Laiko testavimas -----------------------\n";
+    // Pradėti v1 užpildymo laiko matavimą
+    unsigned int sz = 100000000;  // 100000, 1000000, 10000000, 100000000
+    std::vector<int> v1;
+    duration<double> vectorTestingTime;
+    auto timeS = high_resolution_clock::now();
+    for (int i = 1; i <= sz; ++i){
+        v1.push_back(i);
+    }
+    auto timeE = high_resolution_clock::now();
+    vectorTestingTime = timeE - timeS;
+    // Baigti v1 užpildymo laiko matavimą
+    cout << "std::vector irasymo laikas - " << vectorTestingTime.count() << endl;
+
+    // Pradėti v2 užpildymo laiko matavimą
+
+    myVector<int> v2;
+    timeS = high_resolution_clock::now();
+    for (int i = 1; i <= sz; ++i){
+        v2.pushBack(i);
+    }
+    timeE = high_resolution_clock::now();
+    vectorTestingTime = timeE - timeS;
+// Baigti v2 užpildymo laiko matavimą 
+    cout << "myVector irasymo laikas - " << vectorTestingTime.count()<< endl;
+
+
+    cout << "-------------------------------- Matuojamas resize kiekis -----------------------\n";
+    std::vector<int> v3;
+    myVector<int> v4;
+    int mySize = v4.getCapacity();
+    int vSize = v3.capacity();
+    cout << "vector capacity -  " << vSize << ", myVector capacity - " << mySize << endl;
+    for (int i = 1; i <= sz; ++i){
+        v1.push_back(i);
+        v2.pushBack(i);
+    }
+
 }
 void klasiuTestavimas(){
     studentai_class a;
