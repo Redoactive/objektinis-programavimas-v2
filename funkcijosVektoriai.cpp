@@ -126,6 +126,9 @@ bool darbasBaigtas = false;
 }
 void vektoriuTestavimas(){
 
+
+
+
     // Comparison operatoriai
     cout << "-----------------------Comparison----------------------------------\n";
     myVector<int> a(200);
@@ -136,7 +139,6 @@ void vektoriuTestavimas(){
     if (a <= b){cout <<"Pirmas ne didesnis negu antras\n";}
     if (a > b){cout <<"Pirmas yra didesnis uz antra\n";}
     if (a >= b){cout <<"Pirmas ne mazesnis negu antras\n";}
-
 
     // clear ir erase 
     cout << "-----------------------clear, erase----------------------------------\n";
