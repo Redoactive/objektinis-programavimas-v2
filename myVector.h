@@ -6,11 +6,20 @@ template <typename T> class myVector{
         int currentSize;
 
     public:
-
+    //creates an empty vector with capacity of 1
     myVector(){
         arr = new T[1];
         capacity = 1;
         currentSize = 0;
+    }
+    //creates a vector and fills it
+    myVector(size_t value, T data){
+        arr = new T[value];
+        for (int i = 0; i < value; i++){
+            arr[i] = data;
+        }
+        capacity = value;
+        currentSize = value;
     }
 
     ~myVector(){
@@ -73,12 +82,13 @@ template <typename T> class myVector{
         }
     }
 
-    T get(int index){
-        // if index is within the range
-        if (index < currentSize)
+    T at(size_t index){
+        if (index < currentSize){
             return arr[index];
-        // if index is not within range
-        return -1;
+        }
+        else{
+            throw std::out_of_range;
+        }
     }
 
 
@@ -166,5 +176,23 @@ template <typename T> class myVector{
         }
         currentSize = new_size;
         std::copy(first, last, arr);
+    }
+
+    // Erase a single element at position
+    void erase(T* position) {
+        if (position < arr || position >= arr + currentSize) {
+            throw std::out_of_range("Position out of range");
+        }
+        std::copy(position + 1, arr + currentSize, position);
+        --currentSize;
+    }
+
+    // Erase elements in range
+    void erase(T* first, T* last) {
+        if (first < arr || last > arr + currentSize || first > last) {
+            throw std::out_of_range("Range out of range");
+        }
+        std::copy(last, arr + currentSize, first);
+        currentSize -= (last - first);
     }
 };
