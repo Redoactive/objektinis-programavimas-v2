@@ -2,7 +2,9 @@
 ## Kas nauja 3 versjoje
 1. Sukurta nuosava vektoriaus klase - myVector
 2. Patikrintos funkcijos
-3. Atlikti testavimai
+3. Atlikti laiko testavimai
+4. Sukurta Dokumentacija
+5. Supakuotas projektas
 
 
 # Funkciju testavimas
@@ -32,7 +34,7 @@
 # Resize Kiekis
 ![](images/ResizeKiekis.png)
 
-## Atminties perskirstymas myVector konteineryje yra 1 mažesnins del to, kad default myVector sukuriamas su 1 capacity
+Atminties perskirstymas myVector konteineryje yra 1 mažesnins del to, kad default myVector sukuriamas su 1 capacity
 
 # Programos veikimo laikas su konteineriais
 ## 100.000.txt
