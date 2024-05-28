@@ -4,7 +4,7 @@ var searchData=
   ['readme_2emd_1',['readMe.md',['../read_me_8md.html',1,'']]],
   ['reserve_2',['reserve',['../classmy_vector.html#af6e4fead142b3c9309638cd18f98825d',1,'myVector']]],
   ['resize_3',['resize',['../classmy_vector.html#af782667b9847d5e1ca9345d3b678c1f3',1,'myVector']]],
-  ['resize_20kiekis_4',['Resize Kiekis',['../md_read_me.html#autotoc_md4',1,'']]],
+  ['resize_20kiekis_4',['Resize Kiekis',['../md_read_me.html#autotoc_md9',1,'']]],
   ['rodykle_5f_5',['rodykle_',['../classstudentai__base.html#ad5dfad8a29f2cd20eee03bdb6f40340e',1,'studentai_base']]],
   ['rusiavimasmediana_6',['rusiavimasMediana',['../funkcijos_vektoriai_8cpp.html#a93d06a5e32e2d064306efc227511a30f',1,'rusiavimasMediana(studentai_class &amp;a, studentai_class &amp;b):&#160;funkcijosVektoriai.cpp'],['../funkciju_baze_vektoriai_8h.html#a93d06a5e32e2d064306efc227511a30f',1,'rusiavimasMediana(studentai_class &amp;a, studentai_class &amp;b):&#160;funkcijosVektoriai.cpp']]],
   ['rusiavimaspavarde_7',['rusiavimasPavarde',['../funkcijos_vektoriai_8cpp.html#aa578ba9812f1edc0eea88571151e674b',1,'rusiavimasPavarde(studentai_class &amp;a, studentai_class &amp;b):&#160;funkcijosVektoriai.cpp'],['../funkciju_baze_vektoriai_8h.html#aa578ba9812f1edc0eea88571151e674b',1,'rusiavimasPavarde(studentai_class &amp;a, studentai_class &amp;b):&#160;funkcijosVektoriai.cpp']]],
