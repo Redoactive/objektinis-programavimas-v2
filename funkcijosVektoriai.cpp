@@ -213,7 +213,7 @@ void vektoriuTestavimas(){
     std::vector<int> v1;
     duration<double> vectorTestingTime;
     auto timeS = high_resolution_clock::now();
-    for (int i = 1; i <= sz; ++i){
+    for (int i = 1; i <= sz; i++){
         v1.push_back(i);
     }
     auto timeE = high_resolution_clock::now();
@@ -237,13 +237,23 @@ void vektoriuTestavimas(){
     cout << "-------------------------------- Matuojamas resize kiekis -----------------------\n";
     std::vector<int> v3;
     myVector<int> v4;
-    int mySize = v4.getCapacity();
-    int vSize = v3.capacity();
-    cout << "vector capacity -  " << vSize << ", myVector capacity - " << mySize << endl;
-    for (int i = 1; i <= sz; ++i){
-        v1.push_back(i);
-        v2.pushBack(i);
+    int vcount = 0, vCap = v3.capacity();
+    int mycount = 0, myCap = v4.getCapacity();
+    cout << "vector capacity -  " << vCap << ", myVector capacity - " << myCap << endl;
+    for (int i = 1; i <= sz; i++){
+        v3.push_back(i);
+        v4.pushBack(i);
+        if (vCap != v3.capacity()){
+            
+            vcount++;
+            vCap = v3.capacity();
+        }
+        if (myCap != v4.getCapacity()){
+            mycount++;
+            myCap = v4.getCapacity();
+        }
     }
+    cout << "vector resizes -  " << vcount << ", myVector resizes - " << mycount << endl;
 
 }
 void klasiuTestavimas(){
